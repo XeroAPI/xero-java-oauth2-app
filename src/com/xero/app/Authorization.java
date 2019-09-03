@@ -25,7 +25,7 @@ public class Authorization extends HttpServlet {
     private static final long serialVersionUID = 1L;
     final String clientId = "--YOUR_CLIENT_ID--";
     final String clientSecret = "--YOUR_CLIENT_SECRET--";
-    final String redirectURI = "--YOUR_REDIRECT_URI--";
+    final String redirectURI = "http://localhost:8080/xero-java-oauth2-app/Callback";
     
     final String TOKEN_SERVER_URL = "https://identity.xero.com/connect/token";
     final String AUTHORIZATION_SERVER_URL = "https://login.xero.com/identity/connect/authorize";
