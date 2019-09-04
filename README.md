@@ -37,6 +37,12 @@ You'll need to set the *clientId, clientSecret and redirectURI* in the following
 * Callback.java
 * TokenRefresh.java
 
+## Build and deploy
+Compile your app and deploy to a server (tomcat, etc)
+```sh
+mvn clean install
+```
+
 
 ## License
 
