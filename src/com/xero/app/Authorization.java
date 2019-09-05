@@ -57,7 +57,6 @@ public class Authorization extends HttpServlet {
         scopeList.add("accounting.journals.read");
         scopeList.add("accounting.reports.read");
         scopeList.add("accounting.attachments");
-        scopeList.add("paymentservices");
 
         DataStoreFactory DATA_STORE_FACTORY = new MemoryDataStoreFactory();
         AuthorizationCodeFlow flow = new AuthorizationCodeFlow.Builder(BearerToken.authorizationHeaderAccessMethod(),
