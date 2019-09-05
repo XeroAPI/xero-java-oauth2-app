@@ -1,9 +1,7 @@
 # xero-java-oauth2-app
-This java project demonstrates how to use the Xero-Java SDK.  
+This java project demonstrates how to use the Xero-Java SDK.  Clone this repository to your local machine to begin.
 
-Note: this project was built & tested using Eclipse and Tomcat
-
-Clone this repository to your local machine to begin.
+Note: this project was built & tested using [Eclipse](https://www.eclipse.org/downloads/) and [Tomcat 8.x server](http://tomcat.apache.org/)
 
 ## Import the projects into Eclipse
 
