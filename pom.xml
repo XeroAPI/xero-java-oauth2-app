@@ -3,7 +3,7 @@
   <groupId>xero-java-oauth2-app</groupId>
   <artifactId>xero-java-oauth2-app</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
     <dependencies>
       <dependency>
         <groupId>com.github.xeroapi</groupId>

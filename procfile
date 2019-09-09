@@ -1,0 +1,1 @@
+web: java -jar target/xero-java-oauth2-app 0.0.1-SNAPSHOT.jar
