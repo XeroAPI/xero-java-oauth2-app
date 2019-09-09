@@ -6,6 +6,7 @@
     "Java",
     "API"
   ],
+
   "repository": "https://github.com/XeroAPI/xero-java-oauth2-app",
   "success_url": "/",
   "env": {
@@ -19,5 +20,10 @@
       "description": "Your redirect uri that you set at developer.xero.com, it must match the URL for your Heroku app plus /Callback"
     },
     "NODE_ENV": "production"
-  }
+  },
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-java"
+    }
+  ]
 }
