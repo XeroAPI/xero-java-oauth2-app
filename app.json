@@ -1,0 +1,24 @@
+{
+  "name": "Xero Java oAuth 2 App",
+  "description": "App to demonstrate Xero Java SDK with OAuth 2 support",
+  "keywords": [
+    "Xero",
+    "Java",
+    "API"
+  ],
+  "repository": "https://github.com/XeroAPI/xero-java-oauth2-app",
+  "success_url": "/",
+  "env": {
+    "XERO_CLIENT_ID": {
+      "description": "Your Xero Client ID. Get one from developer.xero.com"
+    },
+    "XERO_CLIENT_SECRET": {
+      "description": "Your Xero Client Secret. Get one from developer.xero.com"
+    },
+    },
+    "XERO_REDIRECT_URI": {
+      "description": "Your redirect uri that you set at developer.xero.com, it must match the URL for your Heroku app plus '/Callback'"
+    },
+    "NODE_ENV": "production"
+  }
+}
