@@ -16,7 +16,7 @@
       "description": "Your Xero Client Secret. Get one from developer.xero.com"
     },
     "XERO_REDIRECT_URI": {
-      "description": "Your redirect uri that you set at developer.xero.com, it must match the URL for your Heroku app plus '/Callback'"
+      "description": "Your redirect uri that you set at developer.xero.com, it must match the URL for your Heroku app plus /Callback"
     },
     "NODE_ENV": "production"
   }
