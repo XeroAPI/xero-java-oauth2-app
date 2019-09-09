@@ -1,1 +1,0 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* xero-java-oauth2-app-0.0.1-SNAPSHOT
