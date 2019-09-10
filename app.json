@@ -1,6 +1,7 @@
 {
   "name": "Xero Java oAuth 2 App",
   "description": "App to demonstrate Xero Java SDK with OAuth 2 support",
+  "logo": "https://duke.kenai.com/iconSized/duke.gif",
   "keywords": [
     "Xero",
     "Java",
@@ -18,12 +19,6 @@
     },
     "XERO_REDIRECT_URI": {
       "description": "Your redirect uri that you set at developer.xero.com, it must match the URL for your Heroku app plus /Callback"
-    },
-    "NODE_ENV": "production"
-  },
-  "buildpacks": [
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-java"
     }
-  ]
+  }
 }
