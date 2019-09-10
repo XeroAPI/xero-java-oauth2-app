@@ -7,4 +7,13 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
+    <servlet>
+    	<servlet-name>Authorization</servlet-name>
+    	<servlet-path>com.xero.app.Authorization</servlet-path>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>Authorization</servlet-name>
+    	<url-pattern>/Authorization</url-pattern>
+	</servlet-mapping>
 </web-app>
