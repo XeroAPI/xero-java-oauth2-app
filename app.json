@@ -1,7 +1,6 @@
 {
   "name": "Xero Java oAuth 2 App",
   "description": "App to demonstrate Xero Java SDK with OAuth 2 support",
-  "logo": "https://duke.kenai.com/iconSized/duke.gif",
   "keywords": [
     "Xero",
     "Java",

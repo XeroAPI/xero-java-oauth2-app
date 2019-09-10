@@ -24,16 +24,17 @@ import com.google.api.client.util.store.MemoryDataStoreFactory;
 public class Authorization extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    final String clientId = System.getenv("XERO_CLIENT_ID");
-    final String clientSecret = System.getenv("XERO_CLIENT_SECRET");
-    final String redirectURI = System.getenv("XERO_REDIRECT_URI");
-
+    final String clientId = "--YOUR_CLIENT_ID--";
+    final String clientSecret = "--YOUR_CLIENT_SECRET--";
+    final String redirectURI = "--YOUR_REDIRECT_URI--";
+    
     final String TOKEN_SERVER_URL = "https://identity.xero.com/connect/token";
     final String AUTHORIZATION_SERVER_URL = "https://login.xero.com/identity/connect/authorize";
     final NetHttpTransport HTTP_TRANSPORT = new NetHttpTransport();
     final JsonFactory JSON_FACTORY = new JacksonFactory();
     final String secretState = "secret" + new Random().nextInt(999_999);
 
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
