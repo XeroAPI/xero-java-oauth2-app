@@ -28,13 +28,16 @@ To obtain your *XERO_CLIENT_ID and XERO_CLIENT_SECRET*, follow these steps and c
 
 * Click "Generate a secret" button.
 
-### Copy your client id and client secret to Heroku form AND save for use later.
+![Xero : Generate secret](images/xero-newapp-02.png)
+
+### Complete New App on Heroku
+* Copy your client id and client secret to Heroku form AND save for use later.
 
 ![Heroku : Create New App](images/heroku-newapp-02.png)
 
-### At developer.xero.com - click the "Save" button. You secret is now hidden.
+### Save your Xero client secret
+* At developer.xero.com - click the "Save" button. You secret is now hidden.
 
-![Xero : Generate secret](images/xero-newapp-02.png)
 
 ### Deploy your Heroku App
 * Click the "Deploy App" buttong ... app will build and deploy
