@@ -9,7 +9,7 @@ Don't have a Heroku account, you can [create one for free](https://signup.heroku
 ### Click to deploy this app to Heroku
 <a href="https://heroku.com/deploy?template=https://github.com/SidneyAllen/xero-java-oauth2-app/tree/master" target="_blank"><img src="https://www.herokucdn.com/deploy/button.svg"></a>
 
-
+<a href="http://example.com/" target="_blank">example</a>
 Give your new Heroku app a name.
 ![Heroku : Create New App](images/heroku-newapp-01.png)
 
