@@ -6,8 +6,7 @@
     "Java",
     "API"
   ],
-
-  "repository": "https://github.com/XeroAPI/xero-java-oauth2-app",
+  "repository": "https://github.com/SidneyAllen/xero-java-oauth2-app",
   "success_url": "/",
   "env": {
     "XERO_CLIENT_ID": {
