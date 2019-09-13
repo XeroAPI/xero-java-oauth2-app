@@ -10,7 +10,7 @@ Don't have a Heroku account, you can [create one for free](https://signup.heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SidneyAllen/xero-java-oauth2-app/tree/master)
 
 Give your new Heroku app a name.
-![Heroku : Create New App](images/heroku-newapp-02.png)
+![Heroku : Create New App](images/heroku-newapp-01.png)
 
 Notice, your redirectUri will include the name of your app.
 
@@ -28,9 +28,17 @@ To obtain your ClientId and ClientSecret, follow these steps and create a Xero a
 
 * Click "Generate a secret" button.
 * Copy your client id and client secret to Heroku form AND save for use later.
-* Click the "Save" button. You secret is now hidden.
+
+![Heroku : Create New App](images/heroku-newapp-02.png)
+
+* At developer.xero.com - click the "Save" button. You secret is now hidden.
 
 ![Xero : Generate secret](images/xero-newapp-01.png)
+
+* Click the "Deploy App" buttong ... app will build and deploy
+* Click the 
+
+![Heroku : Create New App](images/heroku-newapp-03.png)
 
 
 ## Import the project into Eclipse
