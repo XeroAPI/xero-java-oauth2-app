@@ -15,7 +15,7 @@ Give your new Heroku app a name.
 Notice, your redirectUri will include the name of your app.
 
 ### Create oAuth 2 app in Xero.
-To obtain your API keys, follow these steps and create a Xero app
+To obtain your ClientId and ClientSecret, follow these steps and create a Xero app
 
 * Create a [free Xero user account](https://www.xero.com/us/signup/api/) (if you don't have one)
 * Login to [Xero developer center](https://developer.xero.com/myapps)
