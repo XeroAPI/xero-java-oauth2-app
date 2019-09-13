@@ -3,7 +3,37 @@ This java project demonstrates how to use the Xero-Java SDK.  Clone this reposit
 
 Note: this project was built & tested using [Eclipse](https://www.eclipse.org/downloads/) and [Tomcat 8.x server](http://tomcat.apache.org/)
 
-## Import the projects into Eclipse
+## Depoloy to Heroku
+Don't have a Heroku account, you can [create one for free](https://signup.heroku.com/).
+
+### Click to deploy this app to Heroku
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SidneyAllen/xero-java-oauth2-app/tree/master)
+
+Give your new Heroku app a name.
+![Heroku : Create New App](images/heroku-newapp.png)
+
+Notice, your redirectUri will include the name of your app.
+
+### Create oAuth 2 app in Xero.
+To obtain your API keys, follow these steps and create a Xero app
+
+* Create a [free Xero user account](https://www.xero.com/us/signup/api/) (if you don't have one)
+* Login to [Xero developer center](https://developer.xero.com/myapps)
+* Click "Try oAuth2" link
+* Enter your App name, company url, privacy policy url.
+* Enter the redirect URI (this is your callback url - localhost, etc)
+* Agree to terms and condition and click "Create App".
+
+![Xero : Create oAuth 2 App](images/xero-newapp-01.png)
+
+* Click "Generate a secret" button.
+* Copy your client id and client secret to Heroku form AND save for use later.
+* Click the "Save" button. You secret is now hidden.
+
+![Xero : Generate secret](images/xero-newapp-01.png)
+
+
+## Import the project into Eclipse
 
 In Eclipse, go to File > New > Java Working Set and create a working set called “Xero Java App" (or something appropriate).
 
