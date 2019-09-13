@@ -20,8 +20,9 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 
 public class TokenRefresh {
     final static Logger logger = LogManager.getLogger(AuthenticatedResource.class);
-    final String clientId = "--YOUR_CLIENT_ID--";
-    final String clientSecret = "--YOUR_CLIENT_SECRET--";
+    // Set these values using envirnoment variables or hardcoded.
+    final String clientId = System.getenv("XERO_CLIENT_ID");
+    final String clientSecret = System.getenv("XERO_CLIENT_SECRET");
     final String TOKEN_SERVER_URL = "https://identity.xero.com/connect/token";
 
     public TokenRefresh() {
