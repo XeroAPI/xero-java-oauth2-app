@@ -7,7 +7,9 @@ Note: this project was built & tested using [Eclipse](https://www.eclipse.org/do
 Don't have a Heroku account, you can [create one for free](https://signup.heroku.com/).
 
 ### Click to deploy this app to Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SidneyAllen/xero-java-oauth2-app/tree/master){:target="_blank"}
+<a href="https://heroku.com/deploy?template=https://github.com/SidneyAllen/xero-java-oauth2-app/tree/master" target="_blank"><img src="https://www.herokucdn.com/deploy/button.svg"></a>
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SidneyAllen/xero-java-oauth2-app/tree/master)
 
 Give your new Heroku app a name.
 ![Heroku : Create New App](images/heroku-newapp-01.png)
