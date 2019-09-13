@@ -21,7 +21,7 @@ To obtain your ClientId and ClientSecret, follow these steps and create a Xero a
 * Login to [Xero developer center](https://developer.xero.com/myapps)
 * Click "Try oAuth2" link
 * Enter your App name, company url, privacy policy url.
-* Enter the redirect URI (this is your callback url - localhost, etc)
+* Enter the redirect URI (this is your callback url - https://youappname.heroku.com/Callback)
 * Agree to terms and condition and click "Create App".
 
 ![Xero : Create oAuth 2 App](images/xero-newapp-01.png)
