@@ -33,10 +33,10 @@ To obtain your ClientId and ClientSecret, follow these steps and create a Xero a
 
 * At developer.xero.com - click the "Save" button. You secret is now hidden.
 
-![Xero : Generate secret](images/xero-newapp-01.png)
+![Xero : Generate secret](images/xero-newapp-02.png)
 
 * Click the "Deploy App" buttong ... app will build and deploy
-* Click the 
+* Click the "view" button to launch your app in a browser.
 
 ![Heroku : Create New App](images/heroku-newapp-03.png)
 
