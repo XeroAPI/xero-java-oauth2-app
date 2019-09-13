@@ -17,7 +17,7 @@
     },
     "XERO_REDIRECT_URI": {
       "description": "Your redirect uri that you set at developer.xero.com, it must match the URL for your Heroku app plus /Callback",
-      "value": "https://[YOUR-APP-NAME].heroku.com/Callback"
+      "value": "https://[YOUR-APP-NAME].herokuapp.com/Callback"
     }
   }
 }
