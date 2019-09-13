@@ -7,7 +7,7 @@ Note: this project was built & tested using [Eclipse](https://www.eclipse.org/do
 Don't have a Heroku account, you can [create one for free](https://signup.heroku.com/).
 
 ### Click to deploy this app to Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SidneyAllen/xero-java-oauth2-app/tree/master)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/SidneyAllen/xero-java-oauth2-app/tree/master){:target="_blank"}
 
 Give your new Heroku app a name.
 ![Heroku : Create New App](images/heroku-newapp-01.png)
@@ -40,15 +40,16 @@ To obtain your *XERO_CLIENT_ID and XERO_CLIENT_SECRET*, follow these steps and c
 
 
 ### Deploy your Heroku App
-* Click the "Deploy App" buttong ... app will build and deploy
+* Click the "Deploy App" button ... app will build and deploy
 * Click the "view" button to launch your app in a browser.
 
 ![Heroku : Create New App](images/heroku-newapp-03.png)
 
 
 ## Import the project into Eclipse
+To modify this code, clone or download the repository.
 
-In Eclipse, go to File > New > Java Working Set and create a working set called “Xero Java App" (or something appropriate).
+Then, in Eclipse, go to File > New > Java Working Set and create a working set called “Xero Java App" (or something appropriate).
 
 Go to File > Import > General and select Existing Projects into Workspace.
 
