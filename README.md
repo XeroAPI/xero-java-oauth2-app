@@ -44,7 +44,7 @@ To obtain your *XERO_CLIENT_ID and XERO_CLIENT_SECRET*, follow these steps and c
 
 ![Heroku : Create New App](images/heroku-newapp-03.png)
 
-###Ready to play with this code? 
+### Ready to play with this code? 
 Fork the repository, clone, edit the code, push changes and deploy to Heroku again.
 
 ## Import the project into Eclipse
