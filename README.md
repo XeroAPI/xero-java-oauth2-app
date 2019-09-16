@@ -1,5 +1,5 @@
 # Xero Java oAuth2 App
-This java project demonstrates how to use the Xero-Java SDK.  Clone this repository to your local machine to begin.
+This java project demonstrates how to use the Xero-Java SDK.  
 
 Note: this project was built & tested using [Eclipse](https://www.eclipse.org/downloads/) and [Tomcat 8.x server](http://tomcat.apache.org/)
 
@@ -38,16 +38,18 @@ To obtain your *XERO_CLIENT_ID and XERO_CLIENT_SECRET*, follow these steps and c
 ### Save your Xero client secret
 * At developer.xero.com - click the "Save" button. You secret is now hidden.
 
-
 ### Deploy your Heroku App
 * Click the "Deploy App" button ... app will build and deploy
 * Click the "view" button to launch your app in a browser.
 
 ![Heroku : Create New App](images/heroku-newapp-03.png)
 
+###Ready to play with this code? 
+Fork the repository, clone, edit the code, push changes and deploy to Heroku again.
 
 ## Import the project into Eclipse
-To modify this code, clone or download the repository.
+
+To start you can clone or download this repository to your local machine.
 
 Then, in Eclipse, go to File > New > Java Working Set and create a working set called “Xero Java App" (or something appropriate).
 
