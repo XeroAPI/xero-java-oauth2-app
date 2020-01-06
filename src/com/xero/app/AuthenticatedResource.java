@@ -21,7 +21,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.xero.api.*;
 import com.xero.models.accounting.*;
 import com.xero.models.accounting.Phone.PhoneTypeEnum;
+import com.xero.models.bankfeeds.CreditDebitIndicator;
+import com.xero.models.bankfeeds.EndBalance;
+import com.xero.models.bankfeeds.FeedConnection;
+import com.xero.models.bankfeeds.FeedConnections;
+import com.xero.models.bankfeeds.StartBalance;
+import com.xero.models.bankfeeds.Statement;
+import com.xero.models.bankfeeds.StatementLine;
+import com.xero.models.bankfeeds.Statements;
+import com.xero.models.bankfeeds.FeedConnection.AccountTypeEnum;
 import com.xero.api.client.AccountingApi;
+import com.xero.api.client.BankFeedsApi;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,6 +42,7 @@ public class AuthenticatedResource extends HttpServlet {
     private static final long serialVersionUID = 1L;
     final static Logger logger = LogManager.getLogger(AuthenticatedResource.class);
     private AccountingApi accountingApi = null;
+    private BankFeedsApi bankFeedsApi = null;
 
     private String htmlString = "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\" integrity=\"sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7\" crossorigin=\"anonymous\">"
             + "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css\" integrity=\"sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r\" crossorigin=\"anonymous\">"
@@ -41,6 +52,7 @@ public class AuthenticatedResource extends HttpServlet {
             + "<form action=\"./AuthenticatedResource\" method=\"post\">" + "<div class=\"form-group\">"
             + "<label for=\"object\">Create, Read, Update & Delete</label>"
             + "<select name=\"object\" class=\"form-control\" id=\"object\">"
+            + "<option value=\"--\" >---- ACCOUNTING ----</option>"
             + "<option value=\"Accounts\" >Accounts</option>"
             + "<option value=\"CreateAttachments\">Attachments - Create</option>"
             + "<option value=\"GetAttachments\">Attachments - Get</option>"
@@ -67,7 +79,11 @@ public class AuthenticatedResource extends HttpServlet {
             + "<option value=\"RepeatingInvoices\" >RepeatingInvoices</option>"
             + "<option value=\"Reports\" >Reports</option>" + "<option value=\"TaxRates\">TaxRates</option>"
             + "<option value=\"TrackingCategories\" >TrackingCategories</option>"
-            + "<option value=\"Users\">Users</option>" + "<option value=\"Errors\" >Errors</option>"
+            + "<option value=\"Users\">Users</option>" 
+            + "<option value=\"Errors\" >Errors</option>"
+            + "<option value=\"--\" >---- BANK FEEDS ----</option>"
+            + "<option value=\"BankFeedConnections\" >Connection</option>"
+            + "<option value=\"BankStatements\" >Statements</option>"
             + "<input class=\"btn btn-default\" type=\"submit\" value=\"submit\">" + "</div>" + "</form></div>";
 
     /**
@@ -143,7 +159,318 @@ public class AuthenticatedResource extends HttpServlet {
         // Get Singleton - instance of accounting client
         accountingApi = AccountingApi.getInstance(defaultClient);
 
-        if (object.equals("Accounts")) {
+        // Init BankFeeds client
+        ApiClient defaultBankFeedsClient = new ApiClient("https://api.xero.com/bankfeeds.xro/1.0",null,null,null,null);
+        // Get Singleton - instance of bankfeed client
+        bankFeedsApi = BankFeedsApi.getInstance(defaultBankFeedsClient);
+        
+        
+        if(object.equals("BankFeedConnections")) {
+            /* BANKFEED CONNECTIONS */
+            // Create New Feed Connection
+            // Success
+            // We need to pause for 10 seconds before using our FeedConnectionId
+            UUID feedConnectionId = null;
+          /*
+            try {
+                FeedConnection newBank = new FeedConnection();
+                newBank.setAccountName("SDK Bank " + loadRandomNum());
+                newBank.setAccountNumber("1234" + loadRandomNum());
+                newBank.setAccountType(AccountTypeEnum.BANK);
+                newBank.setAccountToken("foobar" + loadRandomNum());
+                newBank.setCurrency("GBP");
+                
+                FeedConnections feedConnections = new FeedConnections();
+                feedConnections.addItemsItem(newBank);
+                
+                FeedConnections fc1 = bankFeedsApi.createFeedConnections(accessToken,xeroTenantId,feedConnections);
+                messages.add("CREATE Bank with status: " + fc1.getItems().get(0).getStatus());
+                feedConnectionId = fc1.getItems().get(0).getId();
+                messages.add("CREATED Bank feed ID: " + feedConnectionId);
+                try {
+                    System.out.println("Sleep for 10 seconds");
+                    Thread.sleep(10000);
+                } catch(InterruptedException e) {
+                    System.out.println(e);
+                }
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+            
+            // READ a single feed connection
+            // Success
+            try {
+                FeedConnection oneFC = bankFeedsApi.getFeedConnection(accessToken,xeroTenantId,feedConnectionId);
+                messages.add("READ One Bank: " + oneFC.getAccountName());
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+    
+            // Delete Feed Connection
+            // Success
+            try {
+                FeedConnections deleteFeedConnections = new FeedConnections();
+                FeedConnection feedConnectionOne = new FeedConnection();
+                feedConnectionOne.setId(feedConnectionId);
+                deleteFeedConnections.addItemsItem(feedConnectionOne);
+                
+                FeedConnections deletedFeedConnection = bankFeedsApi.deleteFeedConnections(accessToken,xeroTenantId,deleteFeedConnections);              
+                messages.add("Deleted Bank status: " + deletedFeedConnection.getItems().get(0).getStatus());
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+         
+            // Get ALL Feed Connection
+            // Fail 500 ERROR
+            */
+            try {
+                FeedConnections fc = bankFeedsApi.getFeedConnections(accessToken, xeroTenantId, 1,87654321);
+                messages.add("Total Banks found: " + fc.getItems().size());
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+           
+        } else if(object.equals("BankStatements")) {
+            
+            // Create One Statement
+            /*
+             * You need a valid FeedconnectionId
+             */
+            UUID feedConnectionId = null;
+            try {
+                FeedConnection newBank = new FeedConnection();
+                newBank.setAccountName("SDK Bank " + loadRandomNum());
+                newBank.setAccountNumber("1234" + loadRandomNum());
+                newBank.setAccountType(AccountTypeEnum.BANK);
+                newBank.setAccountToken("foobar" + loadRandomNum());
+                newBank.setCurrency(com.xero.models.bankfeeds.CurrencyCode.GBP);
+                
+                FeedConnections feedConnections = new FeedConnections();
+                feedConnections.addItemsItem(newBank);
+                
+                FeedConnections fc1 = bankFeedsApi.createFeedConnections(accessToken,xeroTenantId,feedConnections);
+                feedConnectionId = fc1.getItems().get(0).getId();
+                
+                messages.add("CREATED new Bank feed ID: " + feedConnectionId);
+                try {
+                    System.out.println("Sleep for 10 seconds");
+                    Thread.sleep(10000);
+                } catch(InterruptedException e) {
+                    System.out.println(e);
+                }
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+               
+            //Create a single Statement
+            /*
+             * You need a valid StatementId later
+             */
+            
+            UUID statementId = null;
+    
+            try {
+                Statements newStatements = new Statements();
+                Statement newStatement = new Statement();
+                
+                LocalDate stDate = LocalDate.of(year, lastMonth, day);
+                newStatement.setStartDate(stDate);
+                LocalDate endDate = LocalDate.of(year, nextMonth, day);
+                newStatement.endDate(endDate);
+                StartBalance stBalance = new StartBalance();
+                stBalance.setAmount(100.00);
+                stBalance.setCreditDebitIndicator(CreditDebitIndicator.CREDIT);
+                newStatement.setStartBalance(stBalance);
+                
+                EndBalance endBalance = new EndBalance();
+                endBalance.setAmount(150.00);
+                endBalance.setCreditDebitIndicator(CreditDebitIndicator.CREDIT);
+                newStatement.endBalance(endBalance);
+                
+                newStatement.setFeedConnectionId(feedConnectionId);
+                
+                StatementLine newStatementLine = new StatementLine();
+                newStatementLine.setAmount(50.00);
+                newStatementLine.setChequeNumber("123" + loadRandomNum());
+                newStatementLine.setDescription("My new line");
+                newStatementLine.setCreditDebitIndicator(CreditDebitIndicator.CREDIT);
+                newStatementLine.setReference("Foobar" + loadRandomNum());
+                newStatementLine.setPayeeName("StarLord" + loadRandomNum());
+                newStatementLine.setTransactionId("1234" + loadRandomNum());
+                LocalDate postedDate = LocalDate.of(year, lastMonth, day +1);
+                newStatementLine.setPostedDate(postedDate);
+            
+                List<StatementLine> statementLines= new ArrayList<StatementLine>();
+                statementLines.add(newStatementLine);
+                newStatement.setStatementLines(statementLines);
+                newStatements.addItemsItem(newStatement);
+                Statements rStatements = bankFeedsApi.createStatements(accessToken,xeroTenantId,newStatements);
+                messages.add("New Bank Statement Status: " + rStatements.getItems().get(0).getStatus());
+                statementId = rStatements.getItems().get(0).getId();
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+           
+            // GET a single Statement
+            //You'll need an existing Statement ID, to get One Statement    
+            // works successfully
+            try {  
+                Statement oneStatement = bankFeedsApi.getStatement(accessToken,xeroTenantId,statementId);                
+                messages.add("New Bank Statement Status: " + oneStatement.getStatementLineCount());
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+            
+        
+            // Create Duplicate Statement - to test error handling
+            // You'll need an existing FeedConnectionId
+            // Works successfully
+            // Returns 409 error as expected
+            
+            try {
+                Statements newStatements = new Statements();
+                Statement newStatement = new Statement();
+                LocalDate stDate = LocalDate.of(year, lastMonth, 01);
+                newStatement.setStartDate(stDate);
+                LocalDate endDate = LocalDate.of(year, lastMonth, 15);
+                newStatement.endDate(endDate);
+                StartBalance stBalance = new StartBalance();
+                stBalance.setAmount(100.00);
+                stBalance.setCreditDebitIndicator(CreditDebitIndicator.CREDIT);
+                newStatement.setStartBalance(stBalance);
+                
+                EndBalance endBalance = new EndBalance();
+                endBalance.setAmount(150.00);
+                endBalance.setCreditDebitIndicator(CreditDebitIndicator.CREDIT);
+                newStatement.endBalance(endBalance);
+                
+                newStatement.setFeedConnectionId(feedConnectionId);
+                
+                StatementLine newStatementLine = new StatementLine();
+                newStatementLine.setAmount(50.0);
+                newStatementLine.setChequeNumber("123");
+                newStatementLine.setDescription("My new line");
+                newStatementLine.setCreditDebitIndicator(CreditDebitIndicator.CREDIT);
+                newStatementLine.setReference("Foobar" );
+                newStatementLine.setPayeeName("StarLord");
+                newStatementLine.setTransactionId("1234");
+                LocalDate postedDate = LocalDate.of(year, lastMonth, 05);
+                newStatementLine.setPostedDate(postedDate);
+            
+                List<StatementLine> arrayStatementLines = new ArrayList<StatementLine>();
+                arrayStatementLines.add(newStatementLine);
+                
+                newStatement.setStatementLines(arrayStatementLines);
+                
+                newStatements.addItemsItem(newStatement);
+                Statements rStatements2 = bankFeedsApi.createStatements(accessToken, xeroTenantId, newStatements);
+                messages.add("New Bank Statement Status: " + rStatements2.getItems().get(0).getStatus());
+                
+                //DUPLICATE
+                Statements rStatements3 = bankFeedsApi.createStatements(accessToken, xeroTenantId, newStatements);
+                messages.add("New Bank Statement Status: " + rStatements3.getItems().get(0).getStatus());
+                messages.add("New Bank Statement Error: " + rStatements3.getItems().get(0).getErrors().get(0).getDetail());
+                
+            } catch (Exception e) { 
+                System.out.println(e.toString());               
+            }
+            
+            //Get ALL Statements
+            try {
+                Statements allStatements = bankFeedsApi.getStatements(accessToken,xeroTenantId,1, 3, null, null);
+                messages.add("Statement total: " + allStatements.getItems().size());
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+            
+            /*
+            // Create Multiple Statements in a POST
+             * you'll need a valid feedConnectionId2 value
+             */
+            /*
+            UUID feedConnectionId2 = UUID.fromString("2ebe6393-f3bb-48ab-9a0e-b04fa8585a70");
+            try {
+                Statements arrayOfStatements = new Statements();
+                Statement newStatement = new Statement();
+                
+                LocalDate stDate = LocalDate.of(year, lastMonth, day);              
+                newStatement.setStartDate(stDate);
+    
+                LocalDate endDate = LocalDate.of(year, lastMonth, day);                         
+                newStatement.endDate(endDate);
+                StartBalance stBalance = new StartBalance();
+                stBalance.setAmount(100.00);
+                stBalance.setCreditDebitIndicator(CreditDebitIndicator.CREDIT);
+                newStatement.setStartBalance(stBalance);
+                
+                EndBalance endBalance = new EndBalance();
+                endBalance.setAmount(150.00);
+                endBalance.setCreditDebitIndicator(CreditDebitIndicator.CREDIT);
+                newStatement.endBalance(endBalance);         
+                newStatement.setFeedConnectionId(feedConnectionId);
+       
+                StatementLine newStatementLine = new StatementLine();
+                newStatementLine.setAmount(50.00);
+                newStatementLine.setChequeNumber("123" + loadRandomNum());
+                newStatementLine.setDescription("My new line");
+                newStatementLine.setCreditDebitIndicator(CreditDebitIndicator.CREDIT);
+                newStatementLine.setReference("Foobar" + loadRandomNum());
+                newStatementLine.setPayeeName("StarLord" + loadRandomNum());
+                newStatementLine.setTransactionId("1234" + loadRandomNum());
+                
+                LocalDate postedDate = LocalDate.of(year, lastMonth, day);              
+                newStatementLine.setPostedDate(postedDate);
+            
+                List<StatementLine> arrayStatementLines = new ArrayList<StatementLine>();
+                arrayStatementLines.add(newStatementLine);
+                newStatement.setStatementLines(arrayStatementLines);
+               
+                arrayOfStatements.addItemsItem(newStatement);
+                
+                Statement newStatement2 = new Statement();
+                LocalDate stDate2 = LocalDate.of(year, lastMonth, day);             
+                newStatement2.setStartDate(stDate2);
+    
+                LocalDate endDate2 = LocalDate.of(year, lastMonth, day);                
+                newStatement2.endDate(endDate2);
+                StartBalance stBalance2 = new StartBalance();
+                stBalance2.setAmount(100.00);
+                stBalance2.setCreditDebitIndicator(CreditDebitIndicator.CREDIT);
+                newStatement2.setStartBalance(stBalance2);
+                
+                EndBalance endBalance2 = new EndBalance();
+                endBalance2.setAmount(150.00);
+                endBalance2.setCreditDebitIndicator(CreditDebitIndicator.CREDIT);
+                newStatement2.endBalance(endBalance2);
+                
+                newStatement2.setFeedConnectionId(feedConnectionId2);
+                
+                StatementLine newStatementLine2 = new StatementLine();
+                newStatementLine2.setAmount(50.00);
+                newStatementLine2.setChequeNumber("123" + loadRandomNum());
+                newStatementLine2.setDescription("My new line");
+                newStatementLine2.setCreditDebitIndicator(CreditDebitIndicator.CREDIT);
+                newStatementLine2.setReference("Foobar" + loadRandomNum());
+                newStatementLine2.setPayeeName("StarLord" + loadRandomNum());
+                newStatementLine2.setTransactionId("1234" + loadRandomNum());
+                LocalDate postedDate2 = LocalDate.of(year, lastMonth, day);
+                newStatementLine2.setPostedDate(postedDate2);
+            
+                List<StatementLine> arrayStatementLines2 = new ArrayList<StatementLine>();
+                arrayStatementLines2.add(newStatementLine);
+                newStatement.setStatementLines(arrayStatementLines2);
+                arrayOfStatements.addItemsItem(newStatement);
+                
+                Statements rStatements = bankFeedsApi.createStatements(accessToken, xeroTenantId, arrayOfStatements);
+                
+                messages.add("Statement Status: " + rStatements.getItems().get(0).getStatus());
+           
+            } catch (Exception e) {
+                messages.add("Generic Exception " + e.toString());
+            }
+            */
+        
+        } else if (object.equals("Accounts")) {
             // ACCOUNTS
             try {
                 // GET all accounts
@@ -839,10 +1166,9 @@ public class AuthenticatedResource extends HttpServlet {
                 contact3.setName("Foo" + loadRandomNum());
                 contacts.addContactsItem(contact3);
 
-                Contacts newContacts = accountingApi.createContacts(accessToken, xeroTenantId, contacts);
+                Contacts newContacts = accountingApi.createContacts(accessToken, xeroTenantId, contacts, false);
                 messages.add("Create multiple Contacts - count : " + newContacts.getContacts().size());
 
-                /*
                 // UPDATE contact
                 newContact.getContacts().get(0).setName("Foo");
                 UUID contactID = newContact.getContacts().get(0).getContactID();
@@ -889,7 +1215,7 @@ public class AuthenticatedResource extends HttpServlet {
                         contactID, newHistoryRecords);
                 messages.add("Contact History - note added to  : "
                         + newInvoiceHistory.getHistoryRecords().get(0).getDetails());
-                 */
+                 
             } catch (XeroApiException xe) {
                 this.addError(xe, messages);
             } catch (Exception e) {
@@ -1445,7 +1771,7 @@ public class AuthenticatedResource extends HttpServlet {
                 myItems.addItemsItem(item2);
 
                 // CREATE Multiple Items
-                Items newItems = accountingApi.createItems(accessToken, xeroTenantId, myItems);
+                Items newItems = accountingApi.createItems(accessToken, xeroTenantId, myItems, false);
                 messages.add("Create multiple items - count : " + newItems.getItems().size());
 
                 // Update Item
@@ -1549,14 +1875,12 @@ public class AuthenticatedResource extends HttpServlet {
 
                 UUID sourceTransactionID1 = newInvoice.getInvoices().get(0).getInvoiceID();
                 UUID sourceLineItemID1 = newInvoice.getInvoices().get(0).getLineItems().get(0).getLineItemID();
-                LinkedTransactions newLinkedTransactions = new LinkedTransactions();
                 LinkedTransaction newLinkedTransaction = new LinkedTransaction();
                 newLinkedTransaction.setSourceTransactionID(sourceTransactionID1);
                 newLinkedTransaction.setSourceLineItemID(sourceLineItemID1);
-                newLinkedTransactions.addLinkedTransactionsItem(newLinkedTransaction);
-
+               
                 LinkedTransactions createdLinkedTransaction = accountingApi.createLinkedTransaction(accessToken,
-                        xeroTenantId, newLinkedTransactions);
+                        xeroTenantId, newLinkedTransaction);
                 messages.add("Create LinkedTransaction - Status : "
                         + createdLinkedTransaction.getLinkedTransactions().get(0).getStatus());
 
@@ -1571,15 +1895,13 @@ public class AuthenticatedResource extends HttpServlet {
 
                 UUID sourceTransactionID2 = newInvoice2.getInvoices().get(0).getInvoiceID();
                 UUID sourceLineItemID2 = newInvoice2.getInvoices().get(0).getLineItems().get(0).getLineItemID();
-                LinkedTransactions newLinkedTransactions2 = new LinkedTransactions();
                 LinkedTransaction newLinkedTransaction2 = new LinkedTransaction();
                 newLinkedTransaction2.setSourceTransactionID(sourceTransactionID2);
                 newLinkedTransaction2.setSourceLineItemID(sourceLineItemID2);
                 newLinkedTransaction2.setContactID(newContactID);
-                newLinkedTransactions2.addLinkedTransactionsItem(newLinkedTransaction2);
-
+               
                 LinkedTransactions createdLinkedTransaction2 = accountingApi.createLinkedTransaction(accessToken,
-                        xeroTenantId, newLinkedTransactions2);
+                        xeroTenantId, newLinkedTransaction2);
                 messages.add("Create LinkedTransaction 2 - Status : "
                         + createdLinkedTransaction2.getLinkedTransactions().get(0).getStatus());
 
@@ -1605,17 +1927,15 @@ public class AuthenticatedResource extends HttpServlet {
 
                 UUID sourceTransactionID3 = newInvoice3.getInvoices().get(0).getInvoiceID();
                 UUID sourceLineItemID3 = newInvoice3.getInvoices().get(0).getLineItems().get(0).getLineItemID();
-                LinkedTransactions newLinkedTransactions3 = new LinkedTransactions();
                 LinkedTransaction newLinkedTransaction3 = new LinkedTransaction();
                 newLinkedTransaction3.setSourceTransactionID(sourceTransactionID3);
                 newLinkedTransaction3.setSourceLineItemID(sourceLineItemID3);
                 newLinkedTransaction3.setContactID(useContact.getContactID());
                 newLinkedTransaction3.setTargetTransactionID(sourceTransactionID4);
                 newLinkedTransaction3.setTargetLineItemID(sourceLineItemID4);
-                newLinkedTransactions3.addLinkedTransactionsItem(newLinkedTransaction3);
-
+               
                 LinkedTransactions createdLinkedTransaction3 = accountingApi.createLinkedTransaction(accessToken,
-                        xeroTenantId, newLinkedTransactions3);
+                        xeroTenantId, newLinkedTransaction3);
                 messages.add("Create LinkedTransaction 3 - Status : "
                         + createdLinkedTransaction3.getLinkedTransactions().get(0).getStatus());
 
@@ -1658,7 +1978,6 @@ public class AuthenticatedResource extends HttpServlet {
                 Accounts accounts = accountingApi.getAccounts(accessToken, xeroTenantId, ifModifiedSince, where, order);
                 String accountCode = accounts.getAccounts().get(0).getCode();
                 where = null;
-                ManualJournals manualJournals = new ManualJournals();
                 ManualJournal manualJournal = new ManualJournal();
                 LocalDate currDate = LocalDate.now();
                 manualJournal.setDate(currDate);
@@ -1675,9 +1994,9 @@ public class AuthenticatedResource extends HttpServlet {
                 debit.setAccountCode(accountCode);
                 debit.setLineAmount(-100.00);
                 manualJournal.addJournalLinesItem(debit);
-                manualJournals.addManualJournalsItem(manualJournal);
+             
                 ManualJournals createdManualJournals = accountingApi.createManualJournal(accessToken, xeroTenantId,
-                        manualJournals);
+                        manualJournal);
                 UUID newManualJournalId = createdManualJournals.getManualJournals().get(0).getManualJournalID();
                 messages.add("Create Manual Journal - Narration : "
                         + createdManualJournals.getManualJournals().get(0).getNarration());
@@ -1771,16 +2090,14 @@ public class AuthenticatedResource extends HttpServlet {
                     inv.setInvoiceID(allInvoices.getInvoices().get(0).getInvoiceID());
                     where = null;
 
-                    Allocations allocations = new Allocations();
                     Allocation allocation = new Allocation();
                     allocation.setAmount(1.0);
                     LocalDate currDate = LocalDate.now();
                     allocation.setDate(currDate);
                     allocation.setInvoice(inv);
-                    allocations.addAllocationsItem(allocation);
-
+                  
                     Allocations newAllocation = accountingApi.createOverpaymentAllocation(accessToken, xeroTenantId,
-                            overpaymentId, allocations);
+                            overpaymentId, allocation);
                     messages.add("Create OverPayment allocation - Amt : "
                             + newAllocation.getAllocations().get(0).getAmount());
 
@@ -1822,7 +2139,6 @@ public class AuthenticatedResource extends HttpServlet {
                 paymentAccount.setCode(accountsWhere.getAccounts().get(0).getCode());
                 where = null;
 
-                Payments createPayments = new Payments();
                 Payment createPayment = new Payment();
                 createPayment.setAccount(paymentAccount);
                 createPayment.setInvoice(inv);
@@ -1830,9 +2146,8 @@ public class AuthenticatedResource extends HttpServlet {
 
                 LocalDate currDate = LocalDate.now();
                 createPayment.setDate(currDate);
-                createPayments.addPaymentsItem(createPayment);
 
-                Payments newPayments = accountingApi.createPayment(accessToken, xeroTenantId, createPayments);
+                Payments newPayments = accountingApi.createPayment(accessToken, xeroTenantId, createPayment);
                 messages.add("Create Payments - Amt : " + newPayments.getPayments().get(0).getAmount());
 
                 // GET all Payments
@@ -2344,7 +2659,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newTaxRate.addTaxComponentsItem(rate01);
                 newTaxRates.addTaxRatesItem(newTaxRate);
 
-                TaxRates createdTaxRate = accountingApi.createTaxRate(accessToken, xeroTenantId, newTaxRates);
+                TaxRates createdTaxRate = accountingApi.createTaxRates(accessToken, xeroTenantId, newTaxRates);
                 messages.add("CREATE TaxRate - name : " + createdTaxRate.getTaxRates().get(0).getName());
 
                 // UDPATE Tax Rate

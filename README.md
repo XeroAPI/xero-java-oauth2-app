@@ -6,6 +6,8 @@ Note: this project was built & tested using [Eclipse](https://www.eclipse.org/do
 ## Depoloy to Heroku
 Don't have a Heroku account, you can [create one for free](https://signup.heroku.com/).
 
+Make sure you have signed in to GitHub!
+
 ### Click to deploy this app to Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 

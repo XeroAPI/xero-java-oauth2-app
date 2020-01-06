@@ -69,7 +69,12 @@ public class Callback extends HttpServlet {
         scopeList.add("accounting.journals.read");
         scopeList.add("accounting.reports.read");
         scopeList.add("accounting.attachments");
-        scopeList.add("paymentservices");
+        
+        // If you have access to Xero Bank Feeds you'll need to uncomment this scope.
+        //scopeList.add("bankfeeds");
+
+        // If you have access to Xero Payment Services APIs you'll need to uncomment this scope.
+        //scopeList.add("paymentservices");
 
         DataStoreFactory DATA_STORE_FACTORY = new MemoryDataStoreFactory();
 
@@ -95,7 +100,7 @@ public class Callback extends HttpServlet {
         // Init IdentityApi client
         ApiClient defaultClient = new ApiClient("https://api.xero.com", null, null, null, requestFactory);
         IdentityApi idApi = new IdentityApi(defaultClient);
-        List<Connection> connection = idApi.getConnections();
+        List<Connection> connection = idApi.getConnections(tokenResponse.getAccessToken());
 
         TokenStorage store = new TokenStorage();
         store.saveItem(response, "jwt_token", tokenResponse.toPrettyString());

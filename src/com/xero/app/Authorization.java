@@ -60,6 +60,12 @@ public class Authorization extends HttpServlet {
         scopeList.add("accounting.journals.read");
         scopeList.add("accounting.reports.read");
         scopeList.add("accounting.attachments");
+        
+        // If you have access to Xero Bank Feeds you'll need to uncomment this scope.
+        //scopeList.add("bankfeeds");
+
+        // If you have access to Xero Payment Services APIs you'll need to uncomment this scope.
+        //scopeList.add("paymentservices");
 
         DataStoreFactory DATA_STORE_FACTORY = new MemoryDataStoreFactory();
         AuthorizationCodeFlow flow = new AuthorizationCodeFlow.Builder(BearerToken.authorizationHeaderAccessMethod(),
