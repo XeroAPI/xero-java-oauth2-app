@@ -31,10 +31,12 @@ public class TokenStorage {
 
     public void clear(HttpServletResponse response) {
         HashMap<String, String> map = new HashMap<String, String>();
-        map.put("tempToken", "");
-        map.put("tempTokenSecret", "");
-        map.put("sessionHandle", "");
-        map.put("tokenTimestamp", "");
+        map.put("jwt_token", "");
+        map.put("id_token", "");        
+        map.put("access_token", "");
+        map.put("refresh_token", "");
+        map.put("expires_in_seconds", "");
+        map.put("xero_tenant_id", "");
 
         save(response, map);
     }
