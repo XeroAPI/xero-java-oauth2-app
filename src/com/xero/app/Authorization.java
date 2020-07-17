@@ -62,14 +62,14 @@ public class Authorization extends HttpServlet {
         scopeList.add("accounting.attachments");
         scopeList.add("projects");
         scopeList.add("assets");
-        //scopeList.add("paymentservices");
-        scopeList.add("payroll");
         scopeList.add("payroll.employees");
         scopeList.add("payroll.payruns");
         scopeList.add("payroll.payslip");
         scopeList.add("payroll.timesheets");
         scopeList.add("payroll.settings");
-        scopeList.add("payroll.payrollcalendars");
+        // scopeList.add("payroll.payrollcalendars");
+        // scopeList.add("paymentservices");
+        // scopeList.add("payroll");
         
         DataStoreFactory DATA_STORE_FACTORY = new MemoryDataStoreFactory();
         AuthorizationCodeFlow flow = new AuthorizationCodeFlow.Builder(BearerToken.authorizationHeaderAccessMethod(),
