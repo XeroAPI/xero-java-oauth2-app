@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
+
+import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.BearerToken;
 import com.google.api.client.auth.oauth2.ClientParametersAuthentication;
 import com.google.api.client.http.GenericUrl;
@@ -24,18 +26,15 @@ import com.google.api.client.util.store.MemoryDataStoreFactory;
 public class Authorization extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    // Set these values using envirnoment variables or hardcoded.
-    final String clientId = System.getenv("XERO_CLIENT_ID");
-    final String clientSecret = System.getenv("XERO_CLIENT_SECRET");
-    final String redirectURI = System.getenv("XERO_REDIRECT_URI");
-    
     final String TOKEN_SERVER_URL = "https://identity.xero.com/connect/token";
     final String AUTHORIZATION_SERVER_URL = "https://login.xero.com/identity/connect/authorize";
     final NetHttpTransport HTTP_TRANSPORT = new NetHttpTransport();
     final JsonFactory JSON_FACTORY = new JacksonFactory();
     final String secretState = "secret" + new Random().nextInt(999_999);
+    final String clientId = System.getenv("XERO_CLIENT_ID");
+    final String clientSecret = System.getenv("XERO_CLIENT_SECRET");
+    final String redirectURI = System.getenv("XERO_REDIRECT_URI");
 
-    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -49,6 +48,7 @@ public class Authorization extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         ArrayList<String> scopeList = new ArrayList<String>();
         scopeList.add("openid");
         scopeList.add("email");
@@ -60,13 +60,17 @@ public class Authorization extends HttpServlet {
         scopeList.add("accounting.journals.read");
         scopeList.add("accounting.reports.read");
         scopeList.add("accounting.attachments");
-        
-        // If you have access to Xero Bank Feeds you'll need to uncomment this scope.
-        //scopeList.add("bankfeeds");
-
-        // If you have access to Xero Payment Services APIs you'll need to uncomment this scope.
+        scopeList.add("projects");
+        scopeList.add("assets");
         //scopeList.add("paymentservices");
-
+        scopeList.add("payroll");
+        scopeList.add("payroll.employees");
+        scopeList.add("payroll.payruns");
+        scopeList.add("payroll.payslip");
+        scopeList.add("payroll.timesheets");
+        scopeList.add("payroll.settings");
+        scopeList.add("payroll.payrollcalendars");
+        
         DataStoreFactory DATA_STORE_FACTORY = new MemoryDataStoreFactory();
         AuthorizationCodeFlow flow = new AuthorizationCodeFlow.Builder(BearerToken.authorizationHeaderAccessMethod(),
                 HTTP_TRANSPORT, JSON_FACTORY, new GenericUrl(TOKEN_SERVER_URL),

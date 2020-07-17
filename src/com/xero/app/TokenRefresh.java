@@ -4,8 +4,11 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
+
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.exceptions.JWTDecodeException;
@@ -18,13 +21,15 @@ import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 
+
 public class TokenRefresh {
-    final static Logger logger = LogManager.getLogger(AuthenticatedResource.class);
-    // Set these values using envirnoment variables or hardcoded.
+    final static Logger logger = LoggerFactory.getLogger(TokenRefresh.class);
+    
+    final String TOKEN_SERVER_URL = "https://identity.xero.com/connect/token";
     final String clientId = System.getenv("XERO_CLIENT_ID");
     final String clientSecret = System.getenv("XERO_CLIENT_SECRET");
-    final String TOKEN_SERVER_URL = "https://identity.xero.com/connect/token";
-
+    final String redirectURI = System.getenv("XERO_REDIRECT_URI");
+    
     public TokenRefresh() {
         super();
     }

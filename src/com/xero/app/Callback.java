@@ -30,11 +30,9 @@ import com.xero.models.identity.Connection;
 @WebServlet("/Callback")
 public class Callback extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    // Set these values using envirnoment variables or hardcoded.
     final String clientId = System.getenv("XERO_CLIENT_ID");
     final String clientSecret = System.getenv("XERO_CLIENT_SECRET");
     final String redirectURI = System.getenv("XERO_REDIRECT_URI");
-
     final String TOKEN_SERVER_URL = "https://identity.xero.com/connect/token";
     final String AUTHORIZATION_SERVER_URL = "https://login.xero.com/identity/connect/authorize";
     final NetHttpTransport HTTP_TRANSPORT = new NetHttpTransport();
@@ -69,13 +67,16 @@ public class Callback extends HttpServlet {
         scopeList.add("accounting.journals.read");
         scopeList.add("accounting.reports.read");
         scopeList.add("accounting.attachments");
-        
-        // If you have access to Xero Bank Feeds you'll need to uncomment this scope.
-        //scopeList.add("bankfeeds");
-
-        // If you have access to Xero Payment Services APIs you'll need to uncomment this scope.
+        scopeList.add("projects");
+        scopeList.add("assets");
         //scopeList.add("paymentservices");
-
+        scopeList.add("payroll.employees");
+        scopeList.add("payroll.payruns");
+        scopeList.add("payroll.payslip");
+        scopeList.add("payroll.timesheets");
+        scopeList.add("payroll.settings");
+        scopeList.add("payroll.payrollcalendars");
+        
         DataStoreFactory DATA_STORE_FACTORY = new MemoryDataStoreFactory();
 
         AuthorizationCodeFlow flow = new AuthorizationCodeFlow.Builder(BearerToken.authorizationHeaderAccessMethod(),
@@ -97,11 +98,10 @@ public class Callback extends HttpServlet {
         HttpTransport transport = new NetHttpTransport();
         HttpRequestFactory requestFactory = transport.createRequestFactory(credential);
 
-        // Init IdentityApi client
-        ApiClient defaultClient = new ApiClient("https://api.xero.com", null, null, null, requestFactory);
-        IdentityApi idApi = new IdentityApi(defaultClient);
-        List<Connection> connection = idApi.getConnections(tokenResponse.getAccessToken());
-
+        ApiClient defaultIdentityClient = new ApiClient("https://api.xero.com", null, null, null, null);
+        IdentityApi idApi = new IdentityApi(defaultIdentityClient);
+        List<Connection> connection = idApi.getConnections(tokenResponse.getAccessToken(),null);
+       
         TokenStorage store = new TokenStorage();
         store.saveItem(response, "jwt_token", tokenResponse.toPrettyString());
         store.saveItem(response, "access_token", tokenResponse.getAccessToken());

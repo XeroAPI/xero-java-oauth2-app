@@ -4,6 +4,7 @@
 .project
 .settings/
 target/
+.env
 
 # Log file
 *.log
