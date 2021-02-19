@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
-
-import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.BearerToken;
 import com.google.api.client.auth.oauth2.ClientParametersAuthentication;
 import com.google.api.client.http.GenericUrl;
@@ -70,6 +68,10 @@ public class Authorization extends HttpServlet {
         // scopeList.add("payroll.payrollcalendars");
         // scopeList.add("paymentservices");
         // scopeList.add("payroll");
+
+        // Save your secretState variable and compare in callback to prevent CSRF
+        TokenStorage store = new TokenStorage();
+        store.saveItem(response, "state", secretState);
         
         DataStoreFactory DATA_STORE_FACTORY = new MemoryDataStoreFactory();
         AuthorizationCodeFlow flow = new AuthorizationCodeFlow.Builder(BearerToken.authorizationHeaderAccessMethod(),

@@ -14,10 +14,7 @@ import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.BearerToken;
 import com.google.api.client.auth.oauth2.ClientParametersAuthentication;
 import com.google.api.client.auth.oauth2.TokenResponse;
-import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.http.GenericUrl;
-import com.google.api.client.http.HttpRequestFactory;
-import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
@@ -56,60 +53,50 @@ public class Callback extends HttpServlet {
             code = request.getParameter("code");
         }
 
-        ArrayList<String> scopeList = new ArrayList<String>();
-        scopeList.add("openid");
-        scopeList.add("email");
-        scopeList.add("profile");
-        scopeList.add("offline_access");
-        scopeList.add("accounting.settings");
-        scopeList.add("accounting.transactions");
-        scopeList.add("accounting.contacts");
-        scopeList.add("accounting.journals.read");
-        scopeList.add("accounting.reports.read");
-        scopeList.add("accounting.attachments");
-        scopeList.add("projects");
-        scopeList.add("assets");
-        scopeList.add("payroll.employees");
-        scopeList.add("payroll.payruns");
-        scopeList.add("payroll.payslip");
-        scopeList.add("payroll.timesheets");
-        scopeList.add("payroll.settings");
-        // scopeList.add("payroll.payrollcalendars");
-        // scopeList.add("paymentservices");
-        // scopeList.add("payroll");
-        
-        DataStoreFactory DATA_STORE_FACTORY = new MemoryDataStoreFactory();
-
-        AuthorizationCodeFlow flow = new AuthorizationCodeFlow.Builder(BearerToken.authorizationHeaderAccessMethod(),
-                HTTP_TRANSPORT, JSON_FACTORY, new GenericUrl(TOKEN_SERVER_URL),
-                new ClientParametersAuthentication(clientId, clientSecret), clientId, AUTHORIZATION_SERVER_URL)
-                .setScopes(scopeList).setDataStoreFactory(DATA_STORE_FACTORY).build();
-
-        TokenResponse tokenResponse = flow.newTokenRequest(code).setRedirectUri(redirectURI).execute();
-
-        HttpTransport httpTransport = new NetHttpTransport();
-        JsonFactory jsonFactory = new JacksonFactory();
-        GoogleCredential credential = new GoogleCredential.Builder().setTransport(httpTransport)
-                .setJsonFactory(jsonFactory).setClientSecrets(clientId, clientSecret).build();
-        credential.setAccessToken(tokenResponse.getAccessToken());
-        credential.setRefreshToken(tokenResponse.getRefreshToken());
-        credential.setExpiresInSeconds(tokenResponse.getExpiresInSeconds());
-
-        // Create requestFactory with credentials
-        HttpTransport transport = new NetHttpTransport();
-        HttpRequestFactory requestFactory = transport.createRequestFactory(credential);
-
-        ApiClient defaultIdentityClient = new ApiClient("https://api.xero.com", null, null, null, null);
-        IdentityApi idApi = new IdentityApi(defaultIdentityClient);
-        List<Connection> connection = idApi.getConnections(tokenResponse.getAccessToken(),null);
-       
+        // Retrieve your stored secretState variable 
         TokenStorage store = new TokenStorage();
-        store.saveItem(response, "jwt_token", tokenResponse.toPrettyString());
-        store.saveItem(response, "access_token", tokenResponse.getAccessToken());
-        store.saveItem(response, "refresh_token", tokenResponse.getRefreshToken());
-        store.saveItem(response, "expires_in_seconds", tokenResponse.getExpiresInSeconds().toString());
-        store.saveItem(response, "xero_tenant_id", connection.get(0).getTenantId().toString());
+        String secretState =store.get(request, "state");
+ 
+        // Compare to state prevent CSRF
+        if (request.getParameter("state") != null && secretState.equals(request.getParameter("state").toString())) {
 
-        response.sendRedirect("./AuthenticatedResource");
+            ArrayList<String> scopeList = new ArrayList<String>();
+            scopeList.add("openid");
+            scopeList.add("email");
+            scopeList.add("profile");
+            scopeList.add("offline_access");
+            scopeList.add("accounting.settings");
+            scopeList.add("accounting.transactions");
+            scopeList.add("accounting.contacts");
+            scopeList.add("accounting.journals.read");
+            scopeList.add("accounting.reports.read");
+            scopeList.add("accounting.attachments");
+            
+            DataStoreFactory DATA_STORE_FACTORY = new MemoryDataStoreFactory();
+
+            AuthorizationCodeFlow flow = new AuthorizationCodeFlow.Builder(BearerToken.authorizationHeaderAccessMethod(),
+                    HTTP_TRANSPORT, JSON_FACTORY, new GenericUrl(TOKEN_SERVER_URL),
+                    new ClientParametersAuthentication(clientId, clientSecret), clientId, AUTHORIZATION_SERVER_URL)
+                    .setScopes(scopeList).setDataStoreFactory(DATA_STORE_FACTORY).build();
+
+            TokenResponse tokenResponse = flow.newTokenRequest(code).setRedirectUri(redirectURI).execute();
+
+            ApiClient defaultIdentityClient = new ApiClient("https://api.xero.com", null, null, null, null);
+            IdentityApi idApi = new IdentityApi(defaultIdentityClient);
+            List<Connection> connection = idApi.getConnections(tokenResponse.getAccessToken(),null);
+        
+            //TokenStorage store = new TokenStorage();
+            store.saveItem(response, "jwt_token", tokenResponse.toPrettyString());
+            store.saveItem(response, "id_token", tokenResponse.get("id_token").toString());
+            store.saveItem(response, "access_token", tokenResponse.getAccessToken());
+            store.saveItem(response, "refresh_token", tokenResponse.getRefreshToken());
+            store.saveItem(response, "expires_in_seconds", tokenResponse.getExpiresInSeconds().toString());
+            store.saveItem(response, "xero_tenant_id", connection.get(0).getTenantId().toString());
+
+            response.sendRedirect("./AuthenticatedResource");
+        } else {
+            System.out.println("Invalid state - possible CSFR");
+        }
+
     }
 }
