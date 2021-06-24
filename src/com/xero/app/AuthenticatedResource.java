@@ -188,6 +188,7 @@ public class AuthenticatedResource extends HttpServlet {
             + "<option value=\"BankTransfers\" >BankTransfers</option>"
             + "<option value=\"BatchPayments\" >BatchPayments</option>"
             + "<option value=\"BrandingThemes\">BrandingThemes</option>"
+            + "<option value=\"Budgets\">Budgets</option>"
             + "<option value=\"Contacts\">Contacts</option>" + "<option value=\"ContactGroups\" >ContactGroups</option>"
             + "<option value=\"ContactGroupContacts\">ContactGroups Contacts</option>"
             + "<option value=\"CreditNotes\" >CreditNotes</option>"
@@ -3943,7 +3944,36 @@ public class AuthenticatedResource extends HttpServlet {
                 System.out.println(e.getMessage());
             }
             
-        } else if (object.equals("Contacts")) {
+        } else if (object.equals("Budgets")) {
+            /* BUDGETS */
+            try {
+                // GET all budgets
+                List<UUID> budgetIds = new ArrayList<UUID>();
+                LocalDate dateTo  = null;
+                LocalDate dateFrom = null;
+                Budgets budgets = accountingApi.getBudgets(accessToken, xeroTenantId, budgetIds, dateTo, dateFrom);
+                messages.add("Get All Budgets - Total : " + budgets.getBudgets().size());
+
+                // GET single budget
+                if(budgets.getBudgets().size() > 0)
+                {
+                    UUID id = budgets.getBudgets().get(0).getBudgetID();
+                    messages.add("Get Budget Description for - " + id.toString() + ": " + budgets.getBudgets().size());
+                }
+            } catch (XeroBadRequestException e) {
+                this.addBadRequest(e, messages); 
+            } catch (XeroForbiddenException e) {
+                this.addError(e, messages); 
+            } catch (XeroNotFoundException e) {
+                this.addError(e, messages); 
+            } catch (XeroUnauthorizedException e) {
+                this.addError(e, messages); 
+            } catch (XeroMethodNotAllowedException e) {
+                this.addMethodNotAllowedException(e, messages); 
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }else if (object.equals("Contacts")) {
             /* CONTACTS */
             try {
                 // CREATE Single contact
@@ -5788,6 +5818,9 @@ public class AuthenticatedResource extends HttpServlet {
                 // reportBASorGSTlist - AU and NZ only
                 //ReportWithRows reportTax = accountingApi.getReportBASorGSTList(accessToken, xeroTenantId);
                 //System.out.println(reportTax.toString());
+
+                ReportWithRows reportsList = accountingApi.getReportsList(accessToken, xeroTenantId);
+                System.out.println(reportsList.toString());
                 // reportBudgetSummary
                 int budgetPeriod = 1;
                 int budgetTimeframe = 3;
