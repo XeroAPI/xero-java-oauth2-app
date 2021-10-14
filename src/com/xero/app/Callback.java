@@ -65,12 +65,16 @@ public class Callback extends HttpServlet {
             scopeList.add("email");
             scopeList.add("profile");
             scopeList.add("offline_access");
+            scopeList.add("accounting.budgets.read");
             scopeList.add("accounting.settings");
             scopeList.add("accounting.transactions");
             scopeList.add("accounting.contacts");
             scopeList.add("accounting.journals.read");
             scopeList.add("accounting.reports.read");
             scopeList.add("accounting.attachments");
+            //scopeList.add("finance.accountingactivity.read");
+            //scopeList.add("finance.cashvalidation.read");
+            //scopeList.add("finance.statements.read");
             
             DataStoreFactory DATA_STORE_FACTORY = new MemoryDataStoreFactory();
 
