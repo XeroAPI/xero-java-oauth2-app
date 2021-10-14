@@ -43,6 +43,15 @@ import com.xero.models.bankfeeds.Statement;
 import com.xero.models.bankfeeds.StatementLine;
 import com.xero.models.bankfeeds.Statements;
 import com.xero.models.bankfeeds.FeedConnection.AccountTypeEnum;
+import com.xero.models.finance.AccountUsageResponse;
+import com.xero.models.finance.BalanceSheetResponse;
+import com.xero.models.finance.CashValidationResponse;
+import com.xero.models.finance.CashflowResponse;
+import com.xero.models.finance.LockHistoryResponse;
+import com.xero.models.finance.ProfitAndLossResponse;
+import com.xero.models.finance.ReportHistoryResponse;
+import com.xero.models.finance.TrialBalanceResponse;
+import com.xero.models.finance.UserActivitiesResponse;
 import com.xero.models.assets.BookDepreciationSetting.AveragingMethodEnum;
 import com.xero.models.assets.BookDepreciationSetting.DepreciationCalculationMethodEnum;
 import com.xero.models.assets.BookDepreciationSetting.DepreciationMethodEnum;
@@ -100,6 +109,7 @@ import com.xero.models.project.TimeEntryCreateOrUpdate;
 import com.xero.api.client.AccountingApi;
 import com.xero.api.client.AssetApi;
 import com.xero.api.client.BankFeedsApi;
+import com.xero.api.client.FinanceApi;
 import com.xero.api.client.IdentityApi;
 import com.xero.api.client.PayrollAuApi;
 import com.xero.api.client.PayrollUkApi;
@@ -120,6 +130,7 @@ public class AuthenticatedResource extends HttpServlet {
     private AssetApi assetApi = null;
     private ProjectApi projectApi = null;
     private BankFeedsApi bankFeedsApi = null;
+    private FinanceApi financeApi = null;
     
     private String htmlString = "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\" integrity=\"sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7\" crossorigin=\"anonymous\">"
             + "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css\" integrity=\"sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r\" crossorigin=\"anonymous\">"
@@ -210,7 +221,12 @@ public class AuthenticatedResource extends HttpServlet {
             + "<option value=\"Reports\" >Reports</option>"
             + "<option value=\"TaxRates\">TaxRates</option>"
             + "<option value=\"TrackingCategories\" >TrackingCategories</option>"
-            + "<option value=\"Users\">Users</option>" + "<option value=\"Errors\" >Errors</option>"
+            + "<option value=\"Users\">Users</option>" 
+            + "<option value=\"Errors\" >Errors</option>"
+            + "<option value=\"--\" >---- Finance ----</option>"
+            + "<option value=\"CashValidation\" >Cash Validation</option>"
+            + "<option value=\"AccountingActivities\" >Accounting Activities</option>"
+            + "<option value=\"FinancialStatements\" >Financial Statements</option>"
             + "</select>" + "</div>" + "<div class=\"form-group\">"
             + "<input class=\"btn btn-default\" type=\"submit\" value=\"submit\">" + "</div>" + "</form></div>";
 
@@ -318,6 +334,11 @@ public class AuthenticatedResource extends HttpServlet {
         ApiClient defaultBankFeedsClient = new ApiClient("https://api.xero.com/bankfeeds.xro/1.0",null,null,null,null);
         // Get Singleton - instance of bankfeed client
         bankFeedsApi = BankFeedsApi.getInstance(defaultBankFeedsClient);
+
+        // Init Finance client
+        ApiClient defaultFinanceClient = new ApiClient("https://api.xero.com/finance.xro/1.0",null,null,null,null);
+        // Get Singleton - instance of finance client
+        financeApi = FinanceApi.getInstance(defaultFinanceClient);
         
         
         if(object.equals("Connections")) {
@@ -1300,7 +1321,132 @@ public class AuthenticatedResource extends HttpServlet {
                 System.out.println(e.getMessage());
             }  
         
-        } else if (object.equals("PayrollUkEmployees")) {
+        } else if(object.equals("CashValidation")) {
+            /* CashValidation */
+            List<CashValidationResponse> cashValidationResponse = new ArrayList<CashValidationResponse>();
+            Double cash = 0.0;
+                try {
+                    cashValidationResponse = financeApi.getCashValidation(accessToken, xeroTenantId, null, null, null);
+                    messages.add("Accounts Found: " + cashValidationResponse.size());
+                    for (CashValidationResponse cvResponse : cashValidationResponse) {
+                        cash += cvResponse.getCashAccount().getAccountBalance();
+                    }
+                    messages.add("Total cash on hand: " + cash);
+                    
+                } catch (XeroBadRequestException e) {
+                    this.addBadRequest(e, messages); 
+                } catch (XeroForbiddenException e) {
+                    this.addError(e, messages); 
+                } catch (XeroNotFoundException e) {
+                    this.addError(e, messages); 
+                } catch (XeroUnauthorizedException e) {
+                    this.addError(e, messages); 
+                } catch (XeroMethodNotAllowedException e) {
+                    this.addMethodNotAllowedException(e, messages); 
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }  
+            } else if(object.equals("AccountingActivities")) {
+                /* AccountUsage */
+                    try {
+                        AccountUsageResponse accountUsageResponse = financeApi.getAccountingActivityAccountUsage(accessToken, xeroTenantId, null, null);
+                        messages.add("Total Account Activities: " + accountUsageResponse.getAccountUsage().size());
+                    } catch (XeroBadRequestException e) {
+                        this.addBadRequest(e, messages); 
+                    } catch (XeroForbiddenException e) {
+                        this.addError(e, messages); 
+                    } catch (XeroNotFoundException e) {
+                        this.addError(e, messages); 
+                    } catch (XeroUnauthorizedException e) {
+                        this.addError(e, messages); 
+                    } catch (XeroMethodNotAllowedException e) {
+                        this.addMethodNotAllowedException(e, messages); 
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }  
+                 /* LockHistory */
+                    try {
+                        LockHistoryResponse lockHistoryResponse = financeApi.getAccountingActivityLockHistory(accessToken, xeroTenantId, null);
+                        messages.add("Total Lock Dates: " + lockHistoryResponse.getLockDates().size());
+                    } catch (XeroBadRequestException e) {
+                        this.addBadRequest(e, messages); 
+                    } catch (XeroForbiddenException e) {
+                        this.addError(e, messages); 
+                    } catch (XeroNotFoundException e) {
+                        this.addError(e, messages); 
+                    } catch (XeroUnauthorizedException e) {
+                        this.addError(e, messages); 
+                    } catch (XeroMethodNotAllowedException e) {
+                        this.addMethodNotAllowedException(e, messages); 
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }  
+                /* ReportHistory */
+                    try {
+                        ReportHistoryResponse reportHistoryResponse = financeApi.getAccountingActivityReportHistory(accessToken, xeroTenantId, null);
+                        messages.add("Total Reports Published: " + reportHistoryResponse.getReports().size());
+                    } catch (XeroBadRequestException e) {
+                        this.addBadRequest(e, messages); 
+                    } catch (XeroForbiddenException e) {
+                        this.addError(e, messages); 
+                    } catch (XeroNotFoundException e) {
+                        this.addError(e, messages); 
+                    } catch (XeroUnauthorizedException e) {
+                        this.addError(e, messages); 
+                    } catch (XeroMethodNotAllowedException e) {
+                        this.addMethodNotAllowedException(e, messages); 
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                /* UserActivities */
+                    try {
+                        UserActivitiesResponse userActivitiesResponse = financeApi.getAccountingActivityUserActivities(accessToken, xeroTenantId, null);
+                        messages.add("Total Users: " + userActivitiesResponse.getUsers().size());
+                    } catch (XeroBadRequestException e) {
+                        this.addBadRequest(e, messages); 
+                    } catch (XeroForbiddenException e) {
+                        this.addError(e, messages); 
+                    } catch (XeroNotFoundException e) {
+                        this.addError(e, messages); 
+                    } catch (XeroUnauthorizedException e) {
+                        this.addError(e, messages); 
+                    } catch (XeroMethodNotAllowedException e) {
+                        this.addMethodNotAllowedException(e, messages); 
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+            } else if(object.equals("FinancialStatements")) {
+                /* FinancialStatements */
+                        try {
+                            BalanceSheetResponse balanceSheetResponse = financeApi.getFinancialStatementBalanceSheet(accessToken, xeroTenantId, null);
+                            messages.add("Total Assets: " + balanceSheetResponse.getAsset().getTotal());
+                            messages.add("Total Liabilities: " + balanceSheetResponse.getLiability().getTotal());
+                            messages.add("Total Equity: " + balanceSheetResponse.getEquity().getTotal());
+
+                            CashflowResponse cashflowResponse = financeApi.getFinancialStatementCashflow(accessToken, xeroTenantId, null, null);
+                            messages.add("Closing Cash Balance: " + cashflowResponse.getCashBalance().getClosingCashBalance());
+
+                            ProfitAndLossResponse profitAndLossResponse = financeApi.getFinancialStatementProfitAndLoss(accessToken, xeroTenantId, null, null);
+                            messages.add("Total Revenue: " + profitAndLossResponse.getRevenue().getTotal());
+                            messages.add("Total Expense: " + profitAndLossResponse.getExpense().getTotal());
+
+                            TrialBalanceResponse trialBalanceResponse = financeApi.getFinancialStatementTrialBalance(accessToken, xeroTenantId, null);
+                            messages.add("Total Accounts: " + trialBalanceResponse.getAccounts().size());
+                            
+                        } catch (XeroBadRequestException e) {
+                            this.addBadRequest(e, messages); 
+                        } catch (XeroForbiddenException e) {
+                            this.addError(e, messages); 
+                        } catch (XeroNotFoundException e) {
+                            this.addError(e, messages); 
+                        } catch (XeroUnauthorizedException e) {
+                            this.addError(e, messages); 
+                        } catch (XeroMethodNotAllowedException e) {
+                            this.addMethodNotAllowedException(e, messages); 
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }  
+            } else if (object.equals("PayrollUkEmployees")) {
             
             SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
             UUID employeeId = null;
@@ -2108,7 +2254,7 @@ public class AuthenticatedResource extends HttpServlet {
                 UUID earningsRateID = paySlips.getPaySlips().get(0).getEarningsLines().get(0).getEarningsRateID();
                 
                 // GET ALL Time sheets for UK Payroll
-                com.xero.models.payrolluk.Timesheets timesheets = payrollUkApi.getTimesheets(accessToken, xeroTenantId, 1, null);
+                com.xero.models.payrolluk.Timesheets timesheets = payrollUkApi.getTimesheets(accessToken, xeroTenantId, 1, null, null, null, null, null);
                 UUID timesheetID = timesheets.getTimesheets().get(0).getTimesheetID();
                 messages.add("GET All Timesheets found total: " + timesheets.getPagination().getItemCount() );
                 
@@ -3959,6 +4105,7 @@ public class AuthenticatedResource extends HttpServlet {
                 {
                     UUID id = budgets.getBudgets().get(0).getBudgetID();
                     messages.add("Get Budget Description for - " + id.toString() + ": " + budgets.getBudgets().size());
+                    messages.add("Description: " + budgets.getBudgets().get(0).getDescription());
                 }
             } catch (XeroBadRequestException e) {
                 this.addBadRequest(e, messages); 

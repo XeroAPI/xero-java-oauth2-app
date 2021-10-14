@@ -32,7 +32,6 @@ public class Authorization extends HttpServlet {
     final String clientId = System.getenv("XERO_CLIENT_ID");
     final String clientSecret = System.getenv("XERO_CLIENT_SECRET");
     final String redirectURI = System.getenv("XERO_REDIRECT_URI");
-
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -52,12 +51,16 @@ public class Authorization extends HttpServlet {
         scopeList.add("email");
         scopeList.add("profile");
         scopeList.add("offline_access");
+        scopeList.add("accounting.budgets.read");
         scopeList.add("accounting.settings");
         scopeList.add("accounting.transactions");
         scopeList.add("accounting.contacts");
         scopeList.add("accounting.journals.read");
         scopeList.add("accounting.reports.read");
         scopeList.add("accounting.attachments");
+        //scopeList.add("finance.accountingactivity.read");
+        //scopeList.add("finance.cashvalidation.read");
+        //scopeList.add("finance.statements.read");
         scopeList.add("projects");
         scopeList.add("assets");
         scopeList.add("payroll.employees");
