@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="xero-java-oauth2-app:war" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:maven" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c0899599-46b0-4e56-9415-0f7836be1ff2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/xero/app/Logout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/xero/app/AuthenticatedResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/AuthenticatedResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/xero/app/Authorization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/Authorization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/xero/app/Callback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/Callback.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Jsp File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="23Ybw9Pb5ASbXlNrB0cw1oeA5Mn" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/target/xero-java-oauth2-app-0.0.1.war" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/WebContent/css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/WebContent" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="excludedTypes">
+      <set>
+        <option value="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TomeeConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 9 Server" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.73" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="11">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <file path="$PROJECT_DIR$/target/xero-java-oauth2-app-0.0.1.war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/xero_java_oauth2_app_0_0_1_war" />
+          </settings>
+        </file>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_xero-java-oauth2-app_3" />
+        <option name="HTTP_PORT" value="8081" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="34907" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="BuildArtifacts" enabled="true" />
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment />
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="_xero-java-oauth2-app" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="34907" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c0899599-46b0-4e56-9415-0f7836be1ff2" name="Default Changelist" comment="" />
+      <created>1641914204711</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1641914204711</updated>
+      <workItem from="1641914205843" duration="4322000" />
+      <workItem from="1641975152328" duration="14336000" />
+      <workItem from="1642738679449" duration="5636000" />
+      <workItem from="1643014857987" duration="973000" />
+      <workItem from="1643085196985" duration="11840000" />
+      <workItem from="1643099012865" duration="1032000" />
+      <workItem from="1643100360073" duration="501000" />
+      <workItem from="1643107652585" duration="85000" />
+      <workItem from="1643168299847" duration="3389000" />
+      <workItem from="1643171695815" duration="723000" />
+      <workItem from="1643172437932" duration="10009000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added drop zone sent uploaded file to controller">
+      <created>1641988382739</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1641988382739</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Generate first set of csv">
+      <created>1642744382591</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1642744382591</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Working on login process">
+      <created>1643098469429</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1643098469429</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Working on login process">
+      <created>1643098560542</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1643098560542</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Working on login process">
+      <created>1643170947518</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1643170947518</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add drop zone and send uploaded file to controller for next processing" />
+    <MESSAGE value="Generate first set of csv" />
+    <MESSAGE value="Working on login process" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on login process" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="443" y="188" width="1024" height="845" key="#Project_Structure" timestamp="1643173018631">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="443" y="188" width="1024" height="845" key="#Project_Structure/0.27.1920.1053@0.27.1920.1053" timestamp="1643173018631" />
+    <state x="730" y="432" width="450" height="243" key="#TomEE_Server" timestamp="1643172900270">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="730" y="432" width="450" height="243" key="#TomEE_Server/0.27.1920.1053@0.27.1920.1053" timestamp="1643172900270" />
+    <state x="728" y="443" width="453" height="243" key="#Tomcat_Server" timestamp="1641975445237">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="728" y="443" width="453" height="243" key="#Tomcat_Server/0.27.1920.1053@0.27.1920.1053" timestamp="1641975445237" />
+    <state x="836" y="27" width="1084" height="1053" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1643174520198">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="836" y="27" width="1084" height="1053" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1643174520198" />
+    <state x="668" y="302" width="573" height="679" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1643172922895">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="668" y="302" width="573" height="679" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.27.1920.1053@0.27.1920.1053" timestamp="1643172922895" />
+    <state x="428" y="100" width="1054" height="904" key="CommitChangelistDialog2" timestamp="1643170947307">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="428" y="100" width="1054" height="904" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1643170947307" />
+    <state x="737" y="308" width="424" height="513" key="FileChooserDialogImpl" timestamp="1643174283077">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="737" y="308" width="424" height="513" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1643174283077" />
+    <state x="729" y="456" key="Git.Rebase.Log.Action.NewCommitMessage.Dialog" timestamp="1641988478341">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="729" y="456" key="Git.Rebase.Log.Action.NewCommitMessage.Dialog/0.27.1920.1053@0.27.1920.1053" timestamp="1641988478341" />
+    <state width="1874" height="226" key="GridCell.Tab.0.bottom" timestamp="1643183006002">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="226" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1643183006002" />
+    <state width="1874" height="226" key="GridCell.Tab.0.center" timestamp="1643183005988">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="226" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1643183005988" />
+    <state width="1874" height="226" key="GridCell.Tab.0.left" timestamp="1643183005988">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="226" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1643183005988" />
+    <state width="1874" height="226" key="GridCell.Tab.0.right" timestamp="1643183005989">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="226" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1643183005989" />
+    <state width="1874" height="226" key="GridCell.Tab.1.bottom" timestamp="1643183006003">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="226" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1643183006003" />
+    <state width="1874" height="226" key="GridCell.Tab.1.center" timestamp="1643183006002">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="226" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1643183006002" />
+    <state width="1874" height="226" key="GridCell.Tab.1.left" timestamp="1643183006002">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="226" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1643183006002" />
+    <state width="1874" height="226" key="GridCell.Tab.1.right" timestamp="1643183006002">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="226" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1643183006002" />
+    <state width="1874" height="226" key="GridCell.Tab.2.bottom" timestamp="1643183006003">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="226" key="GridCell.Tab.2.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1643183006003" />
+    <state width="1874" height="226" key="GridCell.Tab.2.center" timestamp="1643183006003">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="226" key="GridCell.Tab.2.center/0.27.1920.1053@0.27.1920.1053" timestamp="1643183006003" />
+    <state width="1874" height="226" key="GridCell.Tab.2.left" timestamp="1643183006003">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="226" key="GridCell.Tab.2.left/0.27.1920.1053@0.27.1920.1053" timestamp="1643183006003" />
+    <state width="1874" height="226" key="GridCell.Tab.2.right" timestamp="1643183006003">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="226" key="GridCell.Tab.2.right/0.27.1920.1053@0.27.1920.1053" timestamp="1643183006003" />
+    <state x="545" y="299" width="819" height="507" key="NewModule_or_Project.wizard" timestamp="1641993709238">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="545" y="299" width="819" height="507" key="NewModule_or_Project.wizard/0.27.1920.1053@0.27.1920.1053" timestamp="1641993709238" />
+    <state x="449" y="187" key="SettingsEditor" timestamp="1641976870042">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="449" y="187" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1641976870042" />
+    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1643179262773">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1643179262773" />
+  </component>
+</project>
