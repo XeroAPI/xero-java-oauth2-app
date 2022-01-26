@@ -75,6 +75,10 @@ public class Authorization extends HttpServlet {
         // Save your secretState variable and compare in callback to prevent CSRF
         TokenStorage store = new TokenStorage();
         store.saveItem(response, "state", secretState);
+
+        System.out.println("Client Id => "+clientId);
+        System.out.println("Client Secret => "+clientSecret);
+        System.out.println("Redirect URI => "+ redirectURI);
         
         DataStoreFactory DATA_STORE_FACTORY = new MemoryDataStoreFactory();
         AuthorizationCodeFlow flow = new AuthorizationCodeFlow.Builder(BearerToken.authorizationHeaderAccessMethod(),

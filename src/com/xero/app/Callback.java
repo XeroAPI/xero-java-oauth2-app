@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.BearerToken;
@@ -88,14 +89,19 @@ public class Callback extends HttpServlet {
             ApiClient defaultIdentityClient = new ApiClient("https://api.xero.com", null, null, null, null);
             IdentityApi idApi = new IdentityApi(defaultIdentityClient);
             List<Connection> connection = idApi.getConnections(tokenResponse.getAccessToken(),null);
-        
-            //TokenStorage store = new TokenStorage();
-            store.saveItem(response, "jwt_token", tokenResponse.toPrettyString());
-            store.saveItem(response, "id_token", tokenResponse.get("id_token").toString());
-            store.saveItem(response, "access_token", tokenResponse.getAccessToken());
-            store.saveItem(response, "refresh_token", tokenResponse.getRefreshToken());
-            store.saveItem(response, "expires_in_seconds", tokenResponse.getExpiresInSeconds().toString());
-            store.saveItem(response, "xero_tenant_id", connection.get(0).getTenantId().toString());
+
+            HttpSession session = request.getSession();
+
+            session.setAttribute("jwt_token", tokenResponse.toPrettyString());
+            session.setAttribute("access_token", tokenResponse.getAccessToken());
+            session.setAttribute("refresh_token", tokenResponse.getRefreshToken());
+            session.setAttribute("id_token", tokenResponse.get("id_token").toString());
+            session.setAttribute("xero_tenant_id", connection.get(0).getTenantId().toString());
+            session.setAttribute("connection_tenant_id", connection.get(0).getId().toString());
+            session.setAttribute("expires_in_seconds", tokenResponse.getExpiresInSeconds().toString());
+
+            //setting session to expiry in 30 mins
+            session.setMaxInactiveInterval(30*60);
 
             response.sendRedirect("./AuthenticatedResource");
         } else {
