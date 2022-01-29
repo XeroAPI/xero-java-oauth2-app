@@ -26,8 +26,8 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Ustrd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Max140Text" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Strd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}StructuredRemittanceInformation7" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Ustrd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Max140Text" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Strd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}StructuredRemittanceInformation7" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

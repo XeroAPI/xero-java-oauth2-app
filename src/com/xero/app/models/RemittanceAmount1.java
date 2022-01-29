@@ -26,12 +26,12 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="DuePyblAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ActiveOrHistoricCurrencyAndAmount" minOccurs="0"/>
- *         &lt;element name="DscntApldAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ActiveOrHistoricCurrencyAndAmount" minOccurs="0"/>
- *         &lt;element name="CdtNoteAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ActiveOrHistoricCurrencyAndAmount" minOccurs="0"/>
- *         &lt;element name="TaxAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ActiveOrHistoricCurrencyAndAmount" minOccurs="0"/>
- *         &lt;element name="AdjstmntAmtAndRsn" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}DocumentAdjustment1" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="RmtdAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ActiveOrHistoricCurrencyAndAmount" minOccurs="0"/>
+ *         &lt;element name="DuePyblAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ActiveOrHistoricCurrencyAndAmount" minOccurs="0"/>
+ *         &lt;element name="DscntApldAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ActiveOrHistoricCurrencyAndAmount" minOccurs="0"/>
+ *         &lt;element name="CdtNoteAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ActiveOrHistoricCurrencyAndAmount" minOccurs="0"/>
+ *         &lt;element name="TaxAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ActiveOrHistoricCurrencyAndAmount" minOccurs="0"/>
+ *         &lt;element name="AdjstmntAmtAndRsn" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}DocumentAdjustment1" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="RmtdAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ActiveOrHistoricCurrencyAndAmount" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

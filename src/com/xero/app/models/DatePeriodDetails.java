@@ -22,8 +22,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="FrDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ISODate"/>
- *         &lt;element name="ToDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ISODate"/>
+ *         &lt;element name="FrDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ISODate"/>
+ *         &lt;element name="ToDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ISODate"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

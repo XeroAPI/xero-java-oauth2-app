@@ -26,16 +26,16 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="DbtrAgt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
- *         &lt;element name="CdtrAgt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
- *         &lt;element name="IntrmyAgt1" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
- *         &lt;element name="IntrmyAgt2" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
- *         &lt;element name="IntrmyAgt3" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
- *         &lt;element name="RcvgAgt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
- *         &lt;element name="DlvrgAgt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
- *         &lt;element name="IssgAgt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
- *         &lt;element name="SttlmPlc" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
- *         &lt;element name="Prtry" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ProprietaryAgent2" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="DbtrAgt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
+ *         &lt;element name="CdtrAgt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
+ *         &lt;element name="IntrmyAgt1" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
+ *         &lt;element name="IntrmyAgt2" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
+ *         &lt;element name="IntrmyAgt3" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
+ *         &lt;element name="RcvgAgt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
+ *         &lt;element name="DlvrgAgt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
+ *         &lt;element name="IssgAgt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
+ *         &lt;element name="SttlmPlc" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
+ *         &lt;element name="Prtry" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ProprietaryAgent2" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

@@ -26,12 +26,12 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="RfrdDocInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ReferredDocumentInformation3" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="RfrdDocAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}RemittanceAmount1" minOccurs="0"/>
- *         &lt;element name="CdtrRefInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}CreditorReferenceInformation2" minOccurs="0"/>
- *         &lt;element name="Invcr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}PartyIdentification32" minOccurs="0"/>
- *         &lt;element name="Invcee" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}PartyIdentification32" minOccurs="0"/>
- *         &lt;element name="AddtlRmtInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Max140Text" maxOccurs="3" minOccurs="0"/>
+ *         &lt;element name="RfrdDocInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ReferredDocumentInformation3" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="RfrdDocAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}RemittanceAmount1" minOccurs="0"/>
+ *         &lt;element name="CdtrRefInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}CreditorReferenceInformation2" minOccurs="0"/>
+ *         &lt;element name="Invcr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}PartyIdentification32" minOccurs="0"/>
+ *         &lt;element name="Invcee" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}PartyIdentification32" minOccurs="0"/>
+ *         &lt;element name="AddtlRmtInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Max140Text" maxOccurs="3" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

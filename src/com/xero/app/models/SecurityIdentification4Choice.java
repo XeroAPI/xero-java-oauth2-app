@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;choice>
- *           &lt;element name="ISIN" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ISINIdentifier"/>
- *           &lt;element name="Prtry" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}AlternateSecurityIdentification2"/>
+ *           &lt;element name="ISIN" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ISINIdentifier"/>
+ *           &lt;element name="Prtry" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}AlternateSecurityIdentification2"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *     &lt;/restriction>

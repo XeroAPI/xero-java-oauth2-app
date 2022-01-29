@@ -22,8 +22,8 @@ import javax.xml.bind.annotation.*;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;choice>
- *           &lt;element name="Cd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ChargeType1Code"/>
- *           &lt;element name="Prtry" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}GenericIdentification3"/>
+ *           &lt;element name="Cd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ChargeType1Code"/>
+ *           &lt;element name="Prtry" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}GenericIdentification3"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *     &lt;/restriction>

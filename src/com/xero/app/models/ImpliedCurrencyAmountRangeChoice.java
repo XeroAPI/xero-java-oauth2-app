@@ -26,11 +26,11 @@ import java.math.BigDecimal;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;choice>
- *           &lt;element name="FrAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}AmountRangeBoundary1"/>
- *           &lt;element name="ToAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}AmountRangeBoundary1"/>
- *           &lt;element name="FrToAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}FromToAmountRange"/>
- *           &lt;element name="EQAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ImpliedCurrencyAndAmount"/>
- *           &lt;element name="NEQAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ImpliedCurrencyAndAmount"/>
+ *           &lt;element name="FrAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}AmountRangeBoundary1"/>
+ *           &lt;element name="ToAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}AmountRangeBoundary1"/>
+ *           &lt;element name="FrToAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}FromToAmountRange"/>
+ *           &lt;element name="EQAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ImpliedCurrencyAndAmount"/>
+ *           &lt;element name="NEQAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ImpliedCurrencyAndAmount"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *     &lt;/restriction>

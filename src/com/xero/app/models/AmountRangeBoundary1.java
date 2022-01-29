@@ -25,8 +25,8 @@ import java.math.BigDecimal;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="BdryAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ImpliedCurrencyAndAmount"/>
- *         &lt;element name="Incl" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}YesNoIndicator"/>
+ *         &lt;element name="BdryAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ImpliedCurrencyAndAmount"/>
+ *         &lt;element name="Incl" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}YesNoIndicator"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

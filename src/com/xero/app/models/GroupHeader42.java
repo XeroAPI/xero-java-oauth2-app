@@ -22,11 +22,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="MsgId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Max35Text"/>
- *         &lt;element name="CreDtTm" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ISODateTime"/>
- *         &lt;element name="MsgRcpt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}PartyIdentification32" minOccurs="0"/>
- *         &lt;element name="MsgPgntn" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Pagination" minOccurs="0"/>
- *         &lt;element name="AddtlInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Max500Text" minOccurs="0"/>
+ *         &lt;element name="MsgId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Max35Text"/>
+ *         &lt;element name="CreDtTm" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ISODateTime"/>
+ *         &lt;element name="MsgRcpt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}PartyIdentification32" minOccurs="0"/>
+ *         &lt;element name="MsgPgntn" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Pagination" minOccurs="0"/>
+ *         &lt;element name="AddtlInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Max500Text" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

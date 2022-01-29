@@ -23,8 +23,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;choice>
- *           &lt;element name="NbOfDays" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Max15PlusSignedNumericText"/>
- *           &lt;element name="ActlDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ISODate"/>
+ *           &lt;element name="NbOfDays" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Max15PlusSignedNumericText"/>
+ *           &lt;element name="ActlDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ISODate"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *     &lt;/restriction>

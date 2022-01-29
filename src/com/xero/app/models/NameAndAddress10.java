@@ -24,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Nm" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Max140Text"/>
- *         &lt;element name="Adr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}PostalAddress6"/>
+ *         &lt;element name="Nm" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Max140Text"/>
+ *         &lt;element name="Adr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}PostalAddress6"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

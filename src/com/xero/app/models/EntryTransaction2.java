@@ -26,26 +26,26 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Refs" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}TransactionReferences2" minOccurs="0"/>
- *         &lt;element name="AmtDtls" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}AmountAndCurrencyExchange3" minOccurs="0"/>
- *         &lt;element name="Avlbty" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}CashBalanceAvailability2" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="BkTxCd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}BankTransactionCodeStructure4" minOccurs="0"/>
- *         &lt;element name="Chrgs" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ChargesInformation6" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Intrst" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}TransactionInterest2" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="RltdPties" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}TransactionParty2" minOccurs="0"/>
- *         &lt;element name="RltdAgts" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}TransactionAgents2" minOccurs="0"/>
- *         &lt;element name="Purp" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Purpose2Choice" minOccurs="0"/>
- *         &lt;element name="RltdRmtInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}RemittanceLocation2" maxOccurs="10" minOccurs="0"/>
- *         &lt;element name="RmtInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}RemittanceInformation5" minOccurs="0"/>
- *         &lt;element name="RltdDts" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}TransactionDates2" minOccurs="0"/>
- *         &lt;element name="RltdPric" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}TransactionPrice2Choice" minOccurs="0"/>
- *         &lt;element name="RltdQties" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}TransactionQuantities1Choice" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="FinInstrmId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}SecurityIdentification4Choice" minOccurs="0"/>
- *         &lt;element name="Tax" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}TaxInformation3" minOccurs="0"/>
- *         &lt;element name="RtrInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ReturnReasonInformation10" minOccurs="0"/>
- *         &lt;element name="CorpActn" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}CorporateAction1" minOccurs="0"/>
- *         &lt;element name="SfkpgAcct" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}CashAccount16" minOccurs="0"/>
- *         &lt;element name="AddtlTxInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Max500Text" minOccurs="0"/>
+ *         &lt;element name="Refs" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}TransactionReferences2" minOccurs="0"/>
+ *         &lt;element name="AmtDtls" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}AmountAndCurrencyExchange3" minOccurs="0"/>
+ *         &lt;element name="Avlbty" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}CashBalanceAvailability2" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="BkTxCd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}BankTransactionCodeStructure4" minOccurs="0"/>
+ *         &lt;element name="Chrgs" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ChargesInformation6" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Intrst" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}TransactionInterest2" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="RltdPties" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}TransactionParty2" minOccurs="0"/>
+ *         &lt;element name="RltdAgts" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}TransactionAgents2" minOccurs="0"/>
+ *         &lt;element name="Purp" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Purpose2Choice" minOccurs="0"/>
+ *         &lt;element name="RltdRmtInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}RemittanceLocation2" maxOccurs="10" minOccurs="0"/>
+ *         &lt;element name="RmtInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}RemittanceInformation5" minOccurs="0"/>
+ *         &lt;element name="RltdDts" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}TransactionDates2" minOccurs="0"/>
+ *         &lt;element name="RltdPric" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}TransactionPrice2Choice" minOccurs="0"/>
+ *         &lt;element name="RltdQties" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}TransactionQuantities1Choice" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="FinInstrmId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}SecurityIdentification4Choice" minOccurs="0"/>
+ *         &lt;element name="Tax" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}TaxInformation3" minOccurs="0"/>
+ *         &lt;element name="RtrInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ReturnReasonInformation10" minOccurs="0"/>
+ *         &lt;element name="CorpActn" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}CorporateAction1" minOccurs="0"/>
+ *         &lt;element name="SfkpgAcct" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}CashAccount16" minOccurs="0"/>
+ *         &lt;element name="AddtlTxInf" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Max500Text" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

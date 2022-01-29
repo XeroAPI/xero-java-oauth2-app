@@ -22,14 +22,14 @@ import java.math.BigDecimal;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="TtlChrgsAndTaxAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ActiveOrHistoricCurrencyAndAmount" minOccurs="0"/>
- *         &lt;element name="Amt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ActiveOrHistoricCurrencyAndAmount"/>
- *         &lt;element name="CdtDbtInd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}CreditDebitCode" minOccurs="0"/>
- *         &lt;element name="Tp" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ChargeType2Choice" minOccurs="0"/>
- *         &lt;element name="Rate" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}PercentageRate" minOccurs="0"/>
- *         &lt;element name="Br" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ChargeBearerType1Code" minOccurs="0"/>
- *         &lt;element name="Pty" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
- *         &lt;element name="Tax" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}TaxCharges2" minOccurs="0"/>
+ *         &lt;element name="TtlChrgsAndTaxAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ActiveOrHistoricCurrencyAndAmount" minOccurs="0"/>
+ *         &lt;element name="Amt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ActiveOrHistoricCurrencyAndAmount"/>
+ *         &lt;element name="CdtDbtInd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}CreditDebitCode" minOccurs="0"/>
+ *         &lt;element name="Tp" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ChargeType2Choice" minOccurs="0"/>
+ *         &lt;element name="Rate" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}PercentageRate" minOccurs="0"/>
+ *         &lt;element name="Br" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ChargeBearerType1Code" minOccurs="0"/>
+ *         &lt;element name="Pty" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}BranchAndFinancialInstitutionIdentification4" minOccurs="0"/>
+ *         &lt;element name="Tax" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}TaxCharges2" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

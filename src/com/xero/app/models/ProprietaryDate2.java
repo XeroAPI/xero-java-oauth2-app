@@ -24,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Tp" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Max35Text"/>
- *         &lt;element name="Dt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}DateAndDateTimeChoice"/>
+ *         &lt;element name="Tp" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Max35Text"/>
+ *         &lt;element name="Dt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}DateAndDateTimeChoice"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

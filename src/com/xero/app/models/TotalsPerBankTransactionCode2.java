@@ -24,13 +24,13 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="NbOfNtries" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Max15NumericText" minOccurs="0"/>
- *         &lt;element name="Sum" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}DecimalNumber" minOccurs="0"/>
- *         &lt;element name="TtlNetNtryAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}DecimalNumber" minOccurs="0"/>
- *         &lt;element name="CdtDbtInd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}CreditDebitCode" minOccurs="0"/>
- *         &lt;element name="FcstInd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}TrueFalseIndicator" minOccurs="0"/>
- *         &lt;element name="BkTxCd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}BankTransactionCodeStructure4"/>
- *         &lt;element name="Avlbty" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}CashBalanceAvailability2" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="NbOfNtries" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Max15NumericText" minOccurs="0"/>
+ *         &lt;element name="Sum" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}DecimalNumber" minOccurs="0"/>
+ *         &lt;element name="TtlNetNtryAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}DecimalNumber" minOccurs="0"/>
+ *         &lt;element name="CdtDbtInd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}CreditDebitCode" minOccurs="0"/>
+ *         &lt;element name="FcstInd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}TrueFalseIndicator" minOccurs="0"/>
+ *         &lt;element name="BkTxCd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}BankTransactionCodeStructure4"/>
+ *         &lt;element name="Avlbty" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}CashBalanceAvailability2" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

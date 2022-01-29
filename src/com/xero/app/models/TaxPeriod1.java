@@ -22,9 +22,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Yr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ISODate" minOccurs="0"/>
- *         &lt;element name="Tp" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}TaxRecordPeriod1Code" minOccurs="0"/>
- *         &lt;element name="FrToDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}DatePeriodDetails" minOccurs="0"/>
+ *         &lt;element name="Yr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ISODate" minOccurs="0"/>
+ *         &lt;element name="Tp" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}TaxRecordPeriod1Code" minOccurs="0"/>
+ *         &lt;element name="FrToDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}DatePeriodDetails" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

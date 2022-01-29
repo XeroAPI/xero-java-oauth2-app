@@ -22,10 +22,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="BirthDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ISODate"/>
- *         &lt;element name="PrvcOfBirth" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Max35Text" minOccurs="0"/>
- *         &lt;element name="CityOfBirth" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Max35Text"/>
- *         &lt;element name="CtryOfBirth" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}CountryCode"/>
+ *         &lt;element name="BirthDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ISODate"/>
+ *         &lt;element name="PrvcOfBirth" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Max35Text" minOccurs="0"/>
+ *         &lt;element name="CityOfBirth" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Max35Text"/>
+ *         &lt;element name="CtryOfBirth" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}CountryCode"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

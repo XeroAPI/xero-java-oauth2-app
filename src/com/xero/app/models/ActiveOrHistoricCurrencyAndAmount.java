@@ -20,8 +20,8 @@ import java.math.BigDecimal;
  * <pre>
  * &lt;complexType name="ActiveOrHistoricCurrencyAndAmount">
  *   &lt;simpleContent>
- *     &lt;extension base="&lt;urn:iso:std:iso:20022:tech:xsd:camt.053.001.02>ActiveOrHistoricCurrencyAndAmount_SimpleType">
- *       &lt;attribute name="Ccy" use="required" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ActiveOrHistoricCurrencyCode" />
+ *     &lt;extension base="&lt;urn:iso:std:iso:20022:tech:xsd:camt.053.001.04>ActiveOrHistoricCurrencyAndAmount_SimpleType">
+ *       &lt;attribute name="Ccy" use="required" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ActiveOrHistoricCurrencyCode" />
  *     &lt;/extension>
  *   &lt;/simpleContent>
  * &lt;/complexType>

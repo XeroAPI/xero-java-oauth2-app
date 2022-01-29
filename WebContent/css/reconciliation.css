@@ -140,7 +140,7 @@ form {
     margin: 0;
     font-size: 11px;
     float: left;
-    width: 290px;
+    width: 260px;
 }
 
 .entries a {
@@ -257,8 +257,47 @@ table tbody {
     display: table-row-group;
     float: none;
 }
+table tbody tr {
+    line-height: 1.3;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+    border-collapse: collapse;
+    border-spacing: 0;
+    vertical-align: baseline;
+    padding: 0;
+    margin: 0;
+    font-size: 11px;
+    display: table-row;
+    width: 100%;
+    float: none;
+}
 
-.select {
+.no-border {
+    border: none !important;
+    padding-left: 10px;
+}
+
+table tbody tr td {
+    line-height: 1.3;
+    -webkit-font-smoothing: antialiased;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-weight: 400;
+    margin: 0;
+    font-size: 11px;
+    display: table-cell;
+    float: none;
+    color: #000;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    padding: 2px;
+    overflow: hidden;
+    width: 34px;
+    max-width: 34px;
+    word-wrap: break-word;
+}
+
+select {
     line-height: 1.3;
     color: #000;
     -webkit-font-smoothing: antialiased;
@@ -267,10 +306,9 @@ table tbody {
     font-size: 11px;
     float: left;
     margin-right: 15px;
-    padding-bottom: 10px;
 }
 
-.select label {
+select label {
     line-height: 1.3;
     color: #000;
     -webkit-font-smoothing: antialiased;
@@ -281,6 +319,19 @@ table tbody {
     display: block;
     width: 100%;
     margin-bottom: 3px;
+}
+
+select option {
+    -webkit-font-smoothing: antialiased;
+    border-collapse: collapse;
+    border-spacing: 0;
+    word-wrap: break-word;
+    font-family: Tahoma,Sans-Serif;
+    margin: 0;
+    font-size: 11px;
+    float: left;
+    padding: 0.1em;
+    color: gray;
 }
 
 .checkbox {

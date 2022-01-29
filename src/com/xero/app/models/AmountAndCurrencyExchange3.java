@@ -26,11 +26,11 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="InstdAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}AmountAndCurrencyExchangeDetails3" minOccurs="0"/>
- *         &lt;element name="TxAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}AmountAndCurrencyExchangeDetails3" minOccurs="0"/>
- *         &lt;element name="CntrValAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}AmountAndCurrencyExchangeDetails3" minOccurs="0"/>
- *         &lt;element name="AnncdPstngAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}AmountAndCurrencyExchangeDetails3" minOccurs="0"/>
- *         &lt;element name="PrtryAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}AmountAndCurrencyExchangeDetails4" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="InstdAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}AmountAndCurrencyExchangeDetails3" minOccurs="0"/>
+ *         &lt;element name="TxAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}AmountAndCurrencyExchangeDetails3" minOccurs="0"/>
+ *         &lt;element name="CntrValAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}AmountAndCurrencyExchangeDetails3" minOccurs="0"/>
+ *         &lt;element name="AnncdPstngAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}AmountAndCurrencyExchangeDetails3" minOccurs="0"/>
+ *         &lt;element name="PrtryAmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}AmountAndCurrencyExchangeDetails4" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

@@ -26,15 +26,15 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="InitgPty" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}PartyIdentification32" minOccurs="0"/>
- *         &lt;element name="Dbtr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}PartyIdentification32" minOccurs="0"/>
- *         &lt;element name="DbtrAcct" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}CashAccount16" minOccurs="0"/>
- *         &lt;element name="UltmtDbtr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}PartyIdentification32" minOccurs="0"/>
- *         &lt;element name="Cdtr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}PartyIdentification32" minOccurs="0"/>
- *         &lt;element name="CdtrAcct" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}CashAccount16" minOccurs="0"/>
- *         &lt;element name="UltmtCdtr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}PartyIdentification32" minOccurs="0"/>
- *         &lt;element name="TradgPty" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}PartyIdentification32" minOccurs="0"/>
- *         &lt;element name="Prtry" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ProprietaryParty2" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="InitgPty" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}PartyIdentification32" minOccurs="0"/>
+ *         &lt;element name="Dbtr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}PartyIdentification32" minOccurs="0"/>
+ *         &lt;element name="DbtrAcct" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}CashAccount16" minOccurs="0"/>
+ *         &lt;element name="UltmtDbtr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}PartyIdentification32" minOccurs="0"/>
+ *         &lt;element name="Cdtr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}PartyIdentification32" minOccurs="0"/>
+ *         &lt;element name="CdtrAcct" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}CashAccount16" minOccurs="0"/>
+ *         &lt;element name="UltmtCdtr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}PartyIdentification32" minOccurs="0"/>
+ *         &lt;element name="TradgPty" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}PartyIdentification32" minOccurs="0"/>
+ *         &lt;element name="Prtry" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ProprietaryParty2" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

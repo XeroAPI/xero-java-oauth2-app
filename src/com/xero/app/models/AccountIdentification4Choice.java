@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;choice>
- *           &lt;element name="IBAN" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}IBAN2007Identifier"/>
- *           &lt;element name="Othr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}GenericAccountIdentification1"/>
+ *           &lt;element name="IBAN" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}IBAN2007Identifier"/>
+ *           &lt;element name="Othr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}GenericAccountIdentification1"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *     &lt;/restriction>

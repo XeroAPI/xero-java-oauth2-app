@@ -24,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="FinInstnId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}FinancialInstitutionIdentification7"/>
- *         &lt;element name="BrnchId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}BranchData2" minOccurs="0"/>
+ *         &lt;element name="FinInstnId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}FinancialInstitutionIdentification7"/>
+ *         &lt;element name="BrnchId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}BranchData2" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

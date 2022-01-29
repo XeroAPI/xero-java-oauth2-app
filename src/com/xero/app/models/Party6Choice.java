@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;choice>
- *           &lt;element name="OrgId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}OrganisationIdentification4"/>
- *           &lt;element name="PrvtId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}PersonIdentification5"/>
+ *           &lt;element name="OrgId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}OrganisationIdentification4"/>
+ *           &lt;element name="PrvtId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}PersonIdentification5"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *     &lt;/restriction>

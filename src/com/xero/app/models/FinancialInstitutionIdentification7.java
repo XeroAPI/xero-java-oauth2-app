@@ -24,11 +24,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="BIC" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}BICIdentifier" minOccurs="0"/>
- *         &lt;element name="ClrSysMmbId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ClearingSystemMemberIdentification2" minOccurs="0"/>
- *         &lt;element name="Nm" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Max140Text" minOccurs="0"/>
- *         &lt;element name="PstlAdr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}PostalAddress6" minOccurs="0"/>
- *         &lt;element name="Othr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}GenericFinancialIdentification1" minOccurs="0"/>
+ *         &lt;element name="BIC" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}BICIdentifier" minOccurs="0"/>
+ *         &lt;element name="ClrSysMmbId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ClearingSystemMemberIdentification2" minOccurs="0"/>
+ *         &lt;element name="Nm" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Max140Text" minOccurs="0"/>
+ *         &lt;element name="PstlAdr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}PostalAddress6" minOccurs="0"/>
+ *         &lt;element name="Othr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}GenericFinancialIdentification1" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

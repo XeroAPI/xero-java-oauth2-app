@@ -21,10 +21,10 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="RmtId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Max35Text" minOccurs="0"/>
- *         &lt;element name="RmtLctnMtd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}RemittanceLocationMethod2Code" minOccurs="0"/>
- *         &lt;element name="RmtLctnElctrncAdr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Max2048Text" minOccurs="0"/>
- *         &lt;element name="RmtLctnPstlAdr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}NameAndAddress10" minOccurs="0"/>
+ *         &lt;element name="RmtId" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Max35Text" minOccurs="0"/>
+ *         &lt;element name="RmtLctnMtd" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}RemittanceLocationMethod2Code" minOccurs="0"/>
+ *         &lt;element name="RmtLctnElctrncAdr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}Max2048Text" minOccurs="0"/>
+ *         &lt;element name="RmtLctnPstlAdr" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}NameAndAddress10" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

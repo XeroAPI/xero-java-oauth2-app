@@ -24,14 +24,14 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="AccptncDtTm" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ISODateTime" minOccurs="0"/>
- *         &lt;element name="TradActvtyCtrctlSttlmDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ISODate" minOccurs="0"/>
- *         &lt;element name="TradDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ISODate" minOccurs="0"/>
- *         &lt;element name="IntrBkSttlmDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ISODate" minOccurs="0"/>
- *         &lt;element name="StartDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ISODate" minOccurs="0"/>
- *         &lt;element name="EndDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ISODate" minOccurs="0"/>
- *         &lt;element name="TxDtTm" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ISODateTime" minOccurs="0"/>
- *         &lt;element name="Prtry" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}ProprietaryDate2" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="AccptncDtTm" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ISODateTime" minOccurs="0"/>
+ *         &lt;element name="TradActvtyCtrctlSttlmDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ISODate" minOccurs="0"/>
+ *         &lt;element name="TradDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ISODate" minOccurs="0"/>
+ *         &lt;element name="IntrBkSttlmDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ISODate" minOccurs="0"/>
+ *         &lt;element name="StartDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ISODate" minOccurs="0"/>
+ *         &lt;element name="EndDt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ISODate" minOccurs="0"/>
+ *         &lt;element name="TxDtTm" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ISODateTime" minOccurs="0"/>
+ *         &lt;element name="Prtry" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}ProprietaryDate2" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
