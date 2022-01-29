@@ -238,7 +238,7 @@ public class AuthenticatedResource extends HttpServlet {
 
         HttpSession session = request.getSession(false);
 
-        if (session != null) {
+        /*if (session != null) {
             if (session.getAttribute("xero_tenant_id") == null
                     || session.getAttribute("id_token") == null
                     || session.getAttribute("jwt_token") == null
@@ -254,7 +254,7 @@ public class AuthenticatedResource extends HttpServlet {
         } else {
             response.sendRedirect("./");
             return;
-        }
+        }*/
 
         this.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
