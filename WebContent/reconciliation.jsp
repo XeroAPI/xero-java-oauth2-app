@@ -35,120 +35,7 @@
                                     <td class="no-border">Assign to...</td>
                                 </tr>
                                 </thead>
-                                <tbody id="mappingData">
-                                <tr id="col_0">
-                                    <td class="em columnName" title="Date">Date</td>
-                                    <td class="dataValue">2022-01-03</td>
-                                    <td class="no-border">
-                                        <select id="col_0" class="mapping">
-                                            <option selected="selected">Unassigned</option>
-                                            <option class="opt_0 assignedMapping" value="TransactionDate">Transaction
-                                                Date
-                                            </option>
-                                            <option class="opt_1 assignedMapping" value="Amount">Transaction Amount
-                                            </option>
-                                            <option class="opt_2" value="Payee">Payee</option>
-                                            <option class="opt_3 assignedMapping" value="Notes">Description</option>
-                                            <option class="opt_4" value="Reference">Reference</option>
-                                            <option class="opt_5" value="Type">Transaction Type</option>
-                                            <option class="opt_6" value="ChequeNo">Cheque No.</option>
-                                            <option class="opt_7" value="AccountCode">Account Code</option>
-                                            <option class="opt_8" value="TaxType">Tax Type</option>
-                                            <option class="opt_9" value="AnalysisCode">Analysis Code</option>
-                                            <option class="opt_10" value="TrackingCategory1">Region</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr id="col_1">
-                                    <td class="em columnName" title="Amount">Amount</td>
-                                    <td class="dataValue">110</td>
-                                    <td class="no-border">
-                                        <select id="col_1" class="mapping">
-                                            <option selected="selected">Unassigned</option>
-                                            <option class="opt_0 assignedMapping" value="TransactionDate">Transaction
-                                                Date
-                                            </option>
-                                            <option class="opt_1 assignedMapping" value="Amount">Transaction Amount
-                                            </option>
-                                            <option class="opt_2" value="Payee">Payee</option>
-                                            <option class="opt_3 assignedMapping" value="Notes">Description</option>
-                                            <option class="opt_4" value="Reference">Reference</option>
-                                            <option class="opt_5" value="Type">Transaction Type</option>
-                                            <option class="opt_6" value="ChequeNo">Cheque No.</option>
-                                            <option class="opt_7" value="AccountCode">Account Code</option>
-                                            <option class="opt_8" value="TaxType">Tax Type</option>
-                                            <option class="opt_9" value="AnalysisCode">Analysis Code</option>
-                                            <option class="opt_10" value="TrackingCategory1">Region</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr id="col_2">
-                                    <td class="em columnName" title="Description">Description</td>
-                                    <td class="dataValue">Description</td>
-                                    <td class="no-border">
-                                        <select id="col_2" class="mapping">
-                                            <option selected="selected">Unassigned</option>
-                                            <option class="opt_0 assignedMapping" value="TransactionDate">Transaction
-                                                Date
-                                            </option>
-                                            <option class="opt_1 assignedMapping" value="Amount">Transaction Amount
-                                            </option>
-                                            <option class="opt_2" value="Payee">Payee</option>
-                                            <option class="opt_3 assignedMapping" value="Notes">Description</option>
-                                            <option class="opt_4" value="Reference">Reference</option>
-                                            <option class="opt_5" value="Type">Transaction Type</option>
-                                            <option class="opt_6" value="ChequeNo">Cheque No.</option>
-                                            <option class="opt_7" value="AccountCode">Account Code</option>
-                                            <option class="opt_8" value="TaxType">Tax Type</option>
-                                            <option class="opt_9" value="AnalysisCode">Analysis Code</option>
-                                            <option class="opt_10" value="TrackingCategory1">Region</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr id="col_3">
-                                    <td class="em columnName" title="Reference">Reference</td>
-                                    <td class="dataValue">1</td>
-                                    <td class="no-border">
-                                        <select id="col_3" class="mapping">
-                                            <option selected="selected">Unassigned</option>
-                                            <option class="opt_0 assignedMapping" value="TransactionDate">Transaction
-                                                Date
-                                            </option>
-                                            <option class="opt_1 assignedMapping" value="Amount">Transaction Amount
-                                            </option>
-                                            <option class="opt_2" value="Payee">Payee</option>
-                                            <option class="opt_3 assignedMapping" value="Notes">Description</option>
-                                            <option class="opt_4" value="Reference">Reference</option>
-                                            <option class="opt_5" value="Type">Transaction Type</option>
-                                            <option class="opt_6" value="ChequeNo">Cheque No.</option>
-                                            <option class="opt_7" value="AccountCode">Account Code</option>
-                                            <option class="opt_8" value="TaxType">Tax Type</option>
-                                            <option class="opt_9" value="AnalysisCode">Analysis Code</option>
-                                            <option class="opt_10" value="TrackingCategory1">Region</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr id="col_4">
-                                    <td class="em columnName" title="Check Number">Check Number</td>
-                                    <td class="dataValue">0</td>
-                                    <td class="no-border">
-                                        <select id="col_4" class="mapping">
-                                            <option selected="selected">Unassigned</option>
-                                            <option class="opt_0 assignedMapping" value="TransactionDate">Transaction Date</option>
-                                            <option class="opt_1 assignedMapping" value="Amount">Transaction Amount</option>
-                                            <option class="opt_2" value="Payee">Payee</option>
-                                            <option class="opt_3 assignedMapping" value="Notes">Description</option>
-                                            <option class="opt_4" value="Reference">Reference</option>
-                                            <option class="opt_5" value="Type">Transaction Type</option>
-                                            <option class="opt_6" value="ChequeNo">Cheque No.</option>
-                                            <option class="opt_7" value="AccountCode">Account Code</option>
-                                            <option class="opt_8" value="TaxType">Tax Type</option>
-                                            <option class="opt_9" value="AnalysisCode">Analysis Code</option>
-                                            <option class="opt_10" value="TrackingCategory1">Region</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                </tbody>
+                                <tbody id="entries"></tbody>
                             </table>
 
 
@@ -173,33 +60,79 @@
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
+    var entries = [];
+    entries.push(${ sessionScope.currentEntry });
+    displayCurrentEntry(entries[0]);
+
     function changeEntryPosition(increment) {
         try {
             var currentPage = document.getElementById("currentPage");
             var currentPosition = Number(currentPage.innerHTML) + increment;
+            if(currentPosition <= 0 || currentPosition > ${ sessionScope.entries.size() })
+                return;
         } catch (e) {
             return;
         }
         var url = "reconciliation?position=" + currentPosition;
-        var req = $.ajax({
+        $.ajax({
             type: 'PUT',
             url: url,
             cache: false,
             type: "PUT",
             dataType: 'json',
-            data: {position: currentPosition},
             success: function (data) {
-                console.log(data);
+                document.getElementById("entries").innerHTML = "";
                 var currentPage = document.getElementById("currentPage");
-                console.log(data);
-                console.log("current page => ", currentPage);
-                currentPage.innerHTML = data.position;
+                currentPage.innerHTML = data[0].value;
+                if (!entries.map(entry => entry[0].value).includes(data[0].value))
+                    entries.push(data);
+                displayCurrentEntry(data);
+                console.log("Je suis le tableau magique => ", entries);
             },
             error: function (status) {
                 console.log("Je suis erreur", status);
             }
 
         });
+    }
+
+    function displayCurrentEntry(entry) {
+        entry.shift();
+        var tableBody = document.getElementById("entries");
+        entry.forEach(ntry => {
+            console.log("NTRY => ", ntry);
+            tableBody.innerHTML+=
+                    "<tr id='col_0'>"+
+                    "<td class='em columnName' title='Date'>"+ntry.label+"</td>"+
+                    "<td class='dataValue'>"+ntry.value+"</td>"+
+                    "<td class='no-border'>"+
+                        "<select id='col_0' class='mapping'>"+
+                            "<option selected='selected'>Unassigned</option>"+
+                            "<option class='opt_0"+getOptionStatus(entry, "transactionDate")+"' value='TransactionDate'>Transaction Date</option>"+
+                            "<option class='opt_1"+getOptionStatus(entry, "transactionAmount")+"' value='Amount'>Transaction Amount </option>"+
+                            "<option class='opt_2"+getOptionStatus(entry, "payee")+"' value='Payee'>Payee</option>"+
+                            "<option class='opt_3"+getOptionStatus(entry, "description")+"' value='Notes'>Description</option>"+
+                            "<option class='opt_4"+getOptionStatus(entry, "reference")+"' value='Reference'>Reference</option>"+
+                            "<option class='opt_5"+getOptionStatus(entry, "analisysCode")+"' value='Type'>Transaction Type</option>"+
+                            "<option class='opt_6"+getOptionStatus(entry, "checqueNumber")+"' value='ChequeNo'>Cheque No.</option>"+
+                            "<option class='opt_7"+getOptionStatus(entry, "amountCode")+"' value='AccountCode'>Account Code</option>"+
+                            "<option class='opt_8"+getOptionStatus(entry, "taxType")+"' value='TaxType'>Tax Type</option>"+
+                            "<option class='opt_9"+getOptionStatus(entry, "analysisCode")+"' value='AnalysisCode'>Analysis Code</option>"+
+                            "<option class='opt_10"+getOptionStatus(entry, "trackingCategory")+"' value='TrackingCategory1'>Region</option>"+
+                        "</select>"+
+                    "</td>"+
+                "</tr>";
+        });
+    }
+
+    function getOptionStatus(entry, option) {
+        for (let i = 0; i < entry.length; i++) {
+            let attribute = entry[i];
+            if(attribute.targetColumn === option) {
+                return ' selectedOption';
+            }
+        }
+        return '';
     }
 </script>
 </body>

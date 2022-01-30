@@ -22,6 +22,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import com.google.gson.Gson;
 import com.xero.api.ApiClient;
 import com.xero.api.client.IdentityApi;
 import com.xero.app.models.Document;
@@ -37,6 +38,7 @@ public class ProcessingCamtFile extends HttpServlet {
 	private static final long serialVersionUID = 1273074928096412095L;
 
 	public static final String FILES_FOLDER = "/Images";
+	private Gson gson = new Gson();
 
 	public String uploadPath;
 
@@ -64,10 +66,8 @@ public class ProcessingCamtFile extends HttpServlet {
 			System.out.println(System.getProperty("user.dir"));
 			File stylesheet = new File(
 					"/home/descartes/eclipse/workspace/xero-swiss-camt05x-converter-java/src/com/xero/converter/process.xsl");
-			System.out.println("Premier fichier lu");
 			File xmlSource = new File(
 					"/home/descartes/eclipse/workspace/xero-swiss-camt05x-converter-java/src/com/xero/converter/camt.053.xml");
-			System.out.println("Deuxieme fichier lu");
 
 			/*
 			 * DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -93,20 +93,63 @@ public class ProcessingCamtFile extends HttpServlet {
 				Marshaller marshaller = jc.createMarshaller();
 				marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-				List<Map<String, String>> entries = new ArrayList<>();
+				List<List<Map<String, String>>> entries = new ArrayList<>();
 
 				List<ReportEntry2> list = document.getBkToCstmrStmt().getStmt().get(0).getNtry();
 				
 				Integer i = 1;
 				for (ReportEntry2 ntry : list) {
-					Map<String, String> item = new HashMap<String, String>();
-					item.put("date", ntry.getValDt().getDt().toString());
-					item.put("amount", ntry.getAmt().getValue().toString());
-					item.put("payee", "Payee");
-					item.put("position", i.toString());
-					item.put("description", ntry.getAddtlNtryInf());
-					item.put("reference", ntry.getAcctSvcrRef());
-					item.put("code", ntry.getAmt().getValue().intValue() > 0 ? "CRT" : "DBT");
+					List<Map<String, String>> item = new ArrayList<>();
+
+					Map<String, String> position = new HashMap<String, String>();
+					position.put("label", "postion");
+					position.put("fieldName", "postion");
+					position.put("value", i.toString());
+					position.put("targetColumn", "position");
+					item.add(position);
+
+					Map<String, String> date = new HashMap<String, String>();
+					date.put("label", "Transaction Date");
+					date.put("fieldName", "transactinoDate");
+					date.put("value", ntry.getValDt().getDt().toString());
+					date.put("targetColumn", "transactionDate");
+					item.add(date);
+
+					Map<String, String> amount = new HashMap<String, String>();
+					amount.put("label", "Amount");
+					amount.put("fieldName", "amount");
+					amount.put("value", ntry.getAmt().getValue().toString());
+					amount.put("targetColumn", "transactionAmount");
+					item.add(amount);
+
+					Map<String, String> payee = new HashMap<String, String>();
+					payee.put("label", "Payee");
+					payee.put("fieldName", "payee");
+					payee.put("value", "payee");
+					payee.put("targetColumn", "payee");
+					item.add(payee);
+
+					Map<String, String> description = new HashMap<String, String>();
+					description.put("label", "Description");
+					description.put("fieldName", "description");
+					description.put("value", ntry.getAddtlNtryInf());
+					description.put("targetColumn", "description");
+					item.add(description);
+
+					Map<String, String> reference = new HashMap<String, String>();
+					reference.put("label", "Reference");
+					reference.put("fieldName", "reference");
+					reference.put("targetColumn", "reference");
+					reference.put("value", ntry.getAcctSvcrRef());
+					item.add(reference);
+
+					Map<String, String> code = new HashMap<String, String>();
+					code.put("label", "Analysis code");
+					code.put("fieldName", "AnalysisCode");
+					code.put("targetColumn", "analisysCode");
+					code.put("value", ntry.getAmt().getValue().intValue() > 0 ? "CRT" : "DBT");
+					item.add(code);
+
 					entries.add(item);
 					i++;
 				}
@@ -116,7 +159,7 @@ public class ProcessingCamtFile extends HttpServlet {
 	            session.setAttribute("entries", entries);
 	            
 	            if(entries.size() > 0) {
-	            	session.setAttribute("currentEntry", entries.get(0));
+	            	session.setAttribute("currentEntry", this.gson.toJson(entries.get(0)));
 	            }
 	            
 	            session.setMaxInactiveInterval(30*60);

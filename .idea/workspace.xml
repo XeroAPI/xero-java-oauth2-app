@@ -49,123 +49,9 @@
     <list default="true" id="c0899599-46b0-4e56-9415-0f7836be1ff2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebContent/css/reconciliation.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/css/reconciliation.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/reconciliation.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/reconciliation.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/reconciliation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/reconciliation.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/xero/app/ProcessingCamtFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/ProcessingCamtFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/AccountIdentification4Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/AccountIdentification4Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/AccountInterest2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/AccountInterest2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/AccountSchemeName1Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/AccountSchemeName1Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/AccountStatement2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/AccountStatement2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ActiveOrHistoricCurrencyAndAmount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ActiveOrHistoricCurrencyAndAmount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/AlternateSecurityIdentification2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/AlternateSecurityIdentification2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/AmountAndCurrencyExchange3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/AmountAndCurrencyExchange3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/AmountAndCurrencyExchangeDetails3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/AmountAndCurrencyExchangeDetails3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/AmountAndCurrencyExchangeDetails4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/AmountAndCurrencyExchangeDetails4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/AmountRangeBoundary1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/AmountRangeBoundary1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/BalanceSubType1Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/BalanceSubType1Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/BalanceType12.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/BalanceType12.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/BalanceType5Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/BalanceType5Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/BankToCustomerStatementV02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/BankToCustomerStatementV02.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/BankTransactionCodeStructure4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/BankTransactionCodeStructure4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/BankTransactionCodeStructure5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/BankTransactionCodeStructure5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/BankTransactionCodeStructure6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/BankTransactionCodeStructure6.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/BatchInformation2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/BatchInformation2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/BranchAndFinancialInstitutionIdentification4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/BranchAndFinancialInstitutionIdentification4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/BranchData2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/BranchData2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/CashAccount16.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/CashAccount16.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/CashAccount20.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/CashAccount20.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/CashAccountType2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/CashAccountType2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/CashBalance3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/CashBalance3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/CashBalanceAvailability2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/CashBalanceAvailability2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/CashBalanceAvailabilityDate1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/CashBalanceAvailabilityDate1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ChargeType2Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ChargeType2Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ChargesInformation6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ChargesInformation6.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ClearingSystemIdentification2Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ClearingSystemIdentification2Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ClearingSystemMemberIdentification2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ClearingSystemMemberIdentification2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ContactDetails2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ContactDetails2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/CorporateAction1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/CorporateAction1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/CreditLine2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/CreditLine2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/CreditorReferenceInformation2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/CreditorReferenceInformation2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/CreditorReferenceType1Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/CreditorReferenceType1Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/CreditorReferenceType2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/CreditorReferenceType2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/CurrencyAndAmountRange2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/CurrencyAndAmountRange2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/CurrencyExchange5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/CurrencyExchange5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/DateAndDateTimeChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/DateAndDateTimeChoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/DateAndPlaceOfBirth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/DateAndPlaceOfBirth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/DatePeriodDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/DatePeriodDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/DateTimePeriodDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/DateTimePeriodDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/Document.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/DocumentAdjustment1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/DocumentAdjustment1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/EntryDetails1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/EntryDetails1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/EntryTransaction2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/EntryTransaction2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/FinancialIdentificationSchemeName1Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/FinancialIdentificationSchemeName1Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/FinancialInstitutionIdentification7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/FinancialInstitutionIdentification7.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/FinancialInstrumentQuantityChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/FinancialInstrumentQuantityChoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/FromToAmountRange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/FromToAmountRange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/GenericAccountIdentification1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/GenericAccountIdentification1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/GenericFinancialIdentification1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/GenericFinancialIdentification1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/GenericIdentification3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/GenericIdentification3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/GenericOrganisationIdentification1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/GenericOrganisationIdentification1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/GenericPersonIdentification1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/GenericPersonIdentification1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/GroupHeader42.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/GroupHeader42.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ImpliedCurrencyAmountRangeChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ImpliedCurrencyAmountRangeChoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/InterestType1Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/InterestType1Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/MessageIdentification2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/MessageIdentification2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/NameAndAddress10.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/NameAndAddress10.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/NumberAndSumOfTransactions1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/NumberAndSumOfTransactions1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/NumberAndSumOfTransactions2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/NumberAndSumOfTransactions2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ObjectFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/OrganisationIdentification4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/OrganisationIdentification4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/OrganisationIdentificationSchemeName1Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/OrganisationIdentificationSchemeName1Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/Pagination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/Pagination.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/Party6Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/Party6Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/PartyIdentification32.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/PartyIdentification32.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/PersonIdentification5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/PersonIdentification5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/PersonIdentificationSchemeName1Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/PersonIdentificationSchemeName1Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/PostalAddress6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/PostalAddress6.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ProprietaryAgent2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ProprietaryAgent2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ProprietaryBankTransactionCodeStructure1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ProprietaryBankTransactionCodeStructure1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ProprietaryDate2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ProprietaryDate2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ProprietaryParty2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ProprietaryParty2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ProprietaryPrice2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ProprietaryPrice2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ProprietaryQuantity1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ProprietaryQuantity1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ProprietaryReference1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ProprietaryReference1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/Purpose2Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/Purpose2Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/Rate3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/Rate3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/RateType4Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/RateType4Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ReferredDocumentInformation3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ReferredDocumentInformation3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ReferredDocumentType1Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ReferredDocumentType1Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ReferredDocumentType2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ReferredDocumentType2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/RemittanceAmount1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/RemittanceAmount1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/RemittanceInformation5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/RemittanceInformation5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/RemittanceLocation2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/RemittanceLocation2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ReportEntry2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ReportEntry2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ReportingSource1Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ReportingSource1Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ReturnReason5Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ReturnReason5Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/ReturnReasonInformation10.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/ReturnReasonInformation10.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/SecurityIdentification4Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/SecurityIdentification4Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/StructuredRemittanceInformation7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/StructuredRemittanceInformation7.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TaxAmount1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TaxAmount1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TaxAuthorisation1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TaxAuthorisation1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TaxCharges2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TaxCharges2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TaxInformation3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TaxInformation3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TaxParty1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TaxParty1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TaxParty2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TaxParty2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TaxPeriod1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TaxPeriod1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TaxRecord1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TaxRecord1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TaxRecordDetails1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TaxRecordDetails1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TechnicalInputChannel1Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TechnicalInputChannel1Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TotalTransactions2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TotalTransactions2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TotalsPerBankTransactionCode2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TotalsPerBankTransactionCode2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TransactionAgents2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TransactionAgents2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TransactionDates2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TransactionDates2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TransactionInterest2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TransactionInterest2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TransactionParty2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TransactionParty2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TransactionPrice2Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TransactionPrice2Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TransactionQuantities1Choice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TransactionQuantities1Choice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/TransactionReferences2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/TransactionReferences2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/app/models/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/models/package-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/xero/converter/camt.053.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/converter/camt.053.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/xero/app/Reconciliation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/xero/app/Reconciliation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,17 +124,6 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Tomcat 9 Server" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.73" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="11">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -404,7 +279,8 @@
       <workItem from="1643171695815" duration="723000" />
       <workItem from="1643172437932" duration="10514000" />
       <workItem from="1643448458588" duration="88000" />
-      <workItem from="1643453491039" duration="21311000" />
+      <workItem from="1643453491039" duration="21655000" />
+      <workItem from="1643511419341" duration="9803000" />
     </task>
     <task id="LOCAL-00001" summary="Added drop zone sent uploaded file to controller">
       <created>1641988382739</created>
@@ -462,7 +338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643460040447</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Working on reconciliation">
+      <created>1643480343771</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1643480343771</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -498,13 +381,18 @@
     <MESSAGE value="Working on login process" />
     <MESSAGE value="Working on parsing process" />
     <MESSAGE value="Add camt models" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add camt models" />
+    <MESSAGE value="Working on reconciliation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on reconciliation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="443" y="188" width="1024" height="845" key="#Project_Structure" timestamp="1643173018631">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="443" y="188" width="1024" height="845" key="#Project_Structure/0.27.1920.1053@0.27.1920.1053" timestamp="1643173018631" />
+    <state x="400" y="396" width="1110" height="313" key="#Template_Data_Languages" timestamp="1643517351535">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="400" y="396" width="1110" height="313" key="#Template_Data_Languages/0.27.1920.1053@0.27.1920.1053" timestamp="1643517351535" />
     <state x="730" y="432" width="450" height="243" key="#TomEE_Server" timestamp="1643172900270">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -521,10 +409,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="668" y="302" width="573" height="679" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.27.1920.1053@0.27.1920.1053" timestamp="1643172922895" />
-    <state x="428" y="100" width="1054" height="904" key="CommitChangelistDialog2" timestamp="1643460040048">
+    <state x="428" y="100" width="1054" height="904" key="CommitChangelistDialog2" timestamp="1643480343561">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="428" y="100" width="1054" height="904" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1643460040048" />
+    <state x="428" y="100" width="1054" height="904" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1643480343561" />
     <state x="737" y="308" width="424" height="513" key="FileChooserDialogImpl" timestamp="1643174283077">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -533,54 +421,54 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="729" y="456" key="Git.Rebase.Log.Action.NewCommitMessage.Dialog/0.27.1920.1053@0.27.1920.1053" timestamp="1641988478341" />
-    <state width="1874" height="381" key="GridCell.Tab.0.bottom" timestamp="1643480294401">
+    <state width="1874" height="168" key="GridCell.Tab.0.bottom" timestamp="1643521299166">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="381" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1643480294401" />
-    <state width="1874" height="381" key="GridCell.Tab.0.center" timestamp="1643480294399">
+    <state width="1874" height="168" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1643521299166" />
+    <state width="1874" height="168" key="GridCell.Tab.0.center" timestamp="1643521299164">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="381" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1643480294399" />
-    <state width="1874" height="381" key="GridCell.Tab.0.left" timestamp="1643480294396">
+    <state width="1874" height="168" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1643521299164" />
+    <state width="1874" height="168" key="GridCell.Tab.0.left" timestamp="1643521299163">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="381" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1643480294396" />
-    <state width="1874" height="381" key="GridCell.Tab.0.right" timestamp="1643480294400">
+    <state width="1874" height="168" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1643521299163" />
+    <state width="1874" height="168" key="GridCell.Tab.0.right" timestamp="1643521299165">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="381" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1643480294400" />
-    <state width="1874" height="381" key="GridCell.Tab.1.bottom" timestamp="1643480294405">
+    <state width="1874" height="168" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1643521299165" />
+    <state width="1874" height="168" key="GridCell.Tab.1.bottom" timestamp="1643521299172">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="381" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1643480294405" />
-    <state width="1874" height="381" key="GridCell.Tab.1.center" timestamp="1643480294403">
+    <state width="1874" height="168" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1643521299172" />
+    <state width="1874" height="168" key="GridCell.Tab.1.center" timestamp="1643521299170">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="381" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1643480294403" />
-    <state width="1874" height="381" key="GridCell.Tab.1.left" timestamp="1643480294402">
+    <state width="1874" height="168" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1643521299170" />
+    <state width="1874" height="168" key="GridCell.Tab.1.left" timestamp="1643521299168">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="381" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1643480294402" />
-    <state width="1874" height="381" key="GridCell.Tab.1.right" timestamp="1643480294404">
+    <state width="1874" height="168" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1643521299168" />
+    <state width="1874" height="168" key="GridCell.Tab.1.right" timestamp="1643521299171">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="381" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1643480294404" />
-    <state width="1874" height="381" key="GridCell.Tab.2.bottom" timestamp="1643480294408">
+    <state width="1874" height="168" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1643521299171" />
+    <state width="1874" height="168" key="GridCell.Tab.2.bottom" timestamp="1643521299174">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="381" key="GridCell.Tab.2.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1643480294408" />
-    <state width="1874" height="381" key="GridCell.Tab.2.center" timestamp="1643480294406">
+    <state width="1874" height="168" key="GridCell.Tab.2.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1643521299174" />
+    <state width="1874" height="168" key="GridCell.Tab.2.center" timestamp="1643521299173">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="381" key="GridCell.Tab.2.center/0.27.1920.1053@0.27.1920.1053" timestamp="1643480294406" />
-    <state width="1874" height="381" key="GridCell.Tab.2.left" timestamp="1643480294405">
+    <state width="1874" height="168" key="GridCell.Tab.2.center/0.27.1920.1053@0.27.1920.1053" timestamp="1643521299173" />
+    <state width="1874" height="168" key="GridCell.Tab.2.left" timestamp="1643521299173">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="381" key="GridCell.Tab.2.left/0.27.1920.1053@0.27.1920.1053" timestamp="1643480294405" />
-    <state width="1874" height="381" key="GridCell.Tab.2.right" timestamp="1643480294407">
+    <state width="1874" height="168" key="GridCell.Tab.2.left/0.27.1920.1053@0.27.1920.1053" timestamp="1643521299173" />
+    <state width="1874" height="168" key="GridCell.Tab.2.right" timestamp="1643521299174">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state width="1874" height="381" key="GridCell.Tab.2.right/0.27.1920.1053@0.27.1920.1053" timestamp="1643480294407" />
+    <state width="1874" height="168" key="GridCell.Tab.2.right/0.27.1920.1053@0.27.1920.1053" timestamp="1643521299174" />
     <state x="545" y="299" width="819" height="507" key="NewModule_or_Project.wizard" timestamp="1641993709238">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

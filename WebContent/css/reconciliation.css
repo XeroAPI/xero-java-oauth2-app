@@ -331,7 +331,11 @@ select option {
     font-size: 11px;
     float: left;
     padding: 0.1em;
-    color: gray;
+    color: black;
+}
+
+.selectedOption {
+    color: gray
 }
 
 .checkbox {

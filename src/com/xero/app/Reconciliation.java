@@ -35,7 +35,8 @@ public class Reconciliation extends HttpServlet {
         this.getServletContext().getRequestDispatcher("/reconciliation.jsp").forward(request, response);
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -43,18 +44,16 @@ public class Reconciliation extends HttpServlet {
         try {
             System.out.println("Je suis la! => " + request.getParameter("position"));
             Integer position = Integer.valueOf(request.getParameter("position"));
-            Map<String, String> entry = (Map<String, String>) session.getAttribute("currentEntry");
-            List<Map<String, String>> entries = (List<Map<String, String>>) session.getAttribute("entries");
+            List<Map<String, String>> entry;
+            List<List<Map<String, String>>> entries = (List<List<Map<String, String>>>) session.getAttribute("entries");
             if (entries != null) {
-                if (entry == null || position <= 0 || position > entries.size()) {
+                if (session.getAttribute("currentEntry") == null || position <= 0 || position > entries.size()) {
                     System.out.println("Position 1 => " + position + " Size => " + entries.size());
                     entry = entries.get(position >= entries.size() ? entries.size() - 1 : 0);
                 } else {
                     System.out.println("Position 2 => " + (position - 1) + " Size => " + entries.size());
                     entry = entries.get(position - 1);
-                    System.out.println(entries.get(1));
                 }
-
 
                 PrintWriter out = response.getWriter();
                 response.setContentType("application/json");
