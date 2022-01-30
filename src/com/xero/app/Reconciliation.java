@@ -42,16 +42,13 @@ public class Reconciliation extends HttpServlet {
 
         HttpSession session = request.getSession(false);
         try {
-            System.out.println("Je suis la! => " + request.getParameter("position"));
             Integer position = Integer.valueOf(request.getParameter("position"));
             List<Map<String, String>> entry;
             List<List<Map<String, String>>> entries = (List<List<Map<String, String>>>) session.getAttribute("entries");
             if (entries != null) {
                 if (session.getAttribute("currentEntry") == null || position <= 0 || position > entries.size()) {
-                    System.out.println("Position 1 => " + position + " Size => " + entries.size());
                     entry = entries.get(position >= entries.size() ? entries.size() - 1 : 0);
                 } else {
-                    System.out.println("Position 2 => " + (position - 1) + " Size => " + entries.size());
                     entry = entries.get(position - 1);
                 }
 

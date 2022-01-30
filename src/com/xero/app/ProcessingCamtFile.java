@@ -112,41 +112,41 @@ public class ProcessingCamtFile extends HttpServlet {
 					date.put("label", "Transaction Date");
 					date.put("fieldName", "transactinoDate");
 					date.put("value", ntry.getValDt().getDt().toString());
-					date.put("targetColumn", "transactionDate");
+					date.put("targetColumn", null);
 					item.add(date);
 
 					Map<String, String> amount = new HashMap<String, String>();
 					amount.put("label", "Amount");
 					amount.put("fieldName", "amount");
 					amount.put("value", ntry.getAmt().getValue().toString());
-					amount.put("targetColumn", "transactionAmount");
+					amount.put("targetColumn", null);
 					item.add(amount);
 
 					Map<String, String> payee = new HashMap<String, String>();
 					payee.put("label", "Payee");
 					payee.put("fieldName", "payee");
 					payee.put("value", "payee");
-					payee.put("targetColumn", "payee");
+					payee.put("targetColumn", null);
 					item.add(payee);
 
 					Map<String, String> description = new HashMap<String, String>();
 					description.put("label", "Description");
 					description.put("fieldName", "description");
 					description.put("value", ntry.getAddtlNtryInf());
-					description.put("targetColumn", "description");
+					description.put("targetColumn", null);
 					item.add(description);
 
 					Map<String, String> reference = new HashMap<String, String>();
 					reference.put("label", "Reference");
 					reference.put("fieldName", "reference");
-					reference.put("targetColumn", "reference");
+					reference.put("targetColumn", null);
 					reference.put("value", ntry.getAcctSvcrRef());
 					item.add(reference);
 
 					Map<String, String> code = new HashMap<String, String>();
 					code.put("label", "Analysis code");
 					code.put("fieldName", "AnalysisCode");
-					code.put("targetColumn", "analisysCode");
+					code.put("targetColumn", null);
 					code.put("value", ntry.getAmt().getValue().intValue() > 0 ? "CRT" : "DBT");
 					item.add(code);
 

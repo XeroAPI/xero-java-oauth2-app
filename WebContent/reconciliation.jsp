@@ -99,26 +99,26 @@
     function displayCurrentEntry(entry) {
         entry.shift();
         var tableBody = document.getElementById("entries");
-        entry.forEach(ntry => {
+        entry.forEach((ntry, index) => {
             console.log("NTRY => ", ntry);
             tableBody.innerHTML+=
-                    "<tr id='col_0'>"+
+                    "<tr id='col_"+index+"'>"+
                     "<td class='em columnName' title='Date'>"+ntry.label+"</td>"+
                     "<td class='dataValue'>"+ntry.value+"</td>"+
                     "<td class='no-border'>"+
-                        "<select id='col_0' class='mapping'>"+
+                        "<select id='col_"+index+"' class='mapping'>"+
                             "<option selected='selected'>Unassigned</option>"+
-                            "<option class='opt_0"+getOptionStatus(entry, "transactionDate")+"' value='TransactionDate'>Transaction Date</option>"+
-                            "<option class='opt_1"+getOptionStatus(entry, "transactionAmount")+"' value='Amount'>Transaction Amount </option>"+
-                            "<option class='opt_2"+getOptionStatus(entry, "payee")+"' value='Payee'>Payee</option>"+
-                            "<option class='opt_3"+getOptionStatus(entry, "description")+"' value='Notes'>Description</option>"+
-                            "<option class='opt_4"+getOptionStatus(entry, "reference")+"' value='Reference'>Reference</option>"+
-                            "<option class='opt_5"+getOptionStatus(entry, "analisysCode")+"' value='Type'>Transaction Type</option>"+
-                            "<option class='opt_6"+getOptionStatus(entry, "checqueNumber")+"' value='ChequeNo'>Cheque No.</option>"+
-                            "<option class='opt_7"+getOptionStatus(entry, "amountCode")+"' value='AccountCode'>Account Code</option>"+
-                            "<option class='opt_8"+getOptionStatus(entry, "taxType")+"' value='TaxType'>Tax Type</option>"+
-                            "<option class='opt_9"+getOptionStatus(entry, "analysisCode")+"' value='AnalysisCode'>Analysis Code</option>"+
-                            "<option class='opt_10"+getOptionStatus(entry, "trackingCategory")+"' value='TrackingCategory1'>Region</option>"+
+                            "<option class='opt_0"+getOptionStatus(entry, "transactionDate")+" value='TransactionDate'>Transaction Date</option>"+
+                            "<option class='opt_1"+getOptionStatus(entry, "transactionAmount")+" value='Amount'>Transaction Amount </option>"+
+                            "<option class='opt_2"+getOptionStatus(entry, "payee")+" value='Payee'>Payee</option>"+
+                            "<option class='opt_3"+getOptionStatus(entry, "description")+" value='Notes'>Description</option>"+
+                            "<option class='opt_4"+getOptionStatus(entry, "reference") +" value='Reference'>Reference</option>"+
+                            "<option class='opt_5"+getOptionStatus(entry, "analisysCode")+" value='Type'>Transaction Type</option>"+
+                            "<option class='opt_6"+getOptionStatus(entry, "checqueNumber")+" value='ChequeNo'>Cheque No.</option>"+
+                            "<option class='opt_7"+getOptionStatus(entry, "amountCode")+" value='AccountCode'>Account Code</option>"+
+                            "<option class='opt_8"+getOptionStatus(entry, "taxType")+" value='TaxType'>Tax Type</option>"+
+                            "<option class='opt_9"+getOptionStatus(entry, "analysisCode")+" value='AnalysisCode'>Analysis Code</option>"+
+                            "<option class='opt_10"+getOptionStatus(entry, "trackingCategory")+" value='TrackingCategory1'>Region</option>"+
                         "</select>"+
                     "</td>"+
                 "</tr>";
@@ -129,10 +129,10 @@
         for (let i = 0; i < entry.length; i++) {
             let attribute = entry[i];
             if(attribute.targetColumn === option) {
-                return ' selectedOption';
+                return " selectedOption' disabled";
             }
         }
-        return '';
+        return "";
     }
 </script>
 </body>
