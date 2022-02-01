@@ -9,6 +9,14 @@
     <form method="post">
         <div class="w-content">
             <div class="document">
+                <h2>
+                    Select account to feed
+                </h2>
+                <select class="accounts" id="accounts" onchange='changeAccount(this)'>
+                    <option></option>
+                    <option>Bank Main Accounts</option>
+                    <option>Bank Savings Accounts</option>
+                </select>
                 <div class="file">
                     <h2>
                         Statement lines imported from your file...
@@ -40,16 +48,18 @@
 
 
                             <div class="checkbox option">
-                                <div><input name="firstRowImport" id="firstRowImport" type="checkBox"></div>
+                                <div><input name="firstRowImport" id="firstRowImport" type="checkBox" checked></div>
                                 <label
                                         for="firstRowImport">Don't import the first line because they are column
                                     headings</label>
                             </div>
                         </fieldset>
                         <div class="actions">
-                            <div class="right">
-                                <a id="saveButton" class="successBtn" href="javascript:">Save</a>
-                                <a class="cancelBtn">Cancel</a>
+                            <div class="right" id="buttons">
+                                <a onclick="submitForm();" id="saveButton" class="successBtn" href="javascript:">
+                                    Save
+                                </a>
+                                <a onclick="window.location = './import-file'" class="cancelBtn">Cancel</a>
                             </div>
                         </div>
                     </div>
@@ -59,14 +69,7 @@
                         Based on the statement line options you have assigned...
                     </h2>
                     <div id="mapping">
-                        <table class="previews" id="previews">
-                            <tbody>
-                                <tr class="matched|unmatched">
-                                    <td class="item"><em class="icons">&nbsp;</em>Transaction Date</td>
-                                    <td>04 Jan 2022</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <table class="previews" id="previews"></table>
                     </div>
                 </div>
             </div>
@@ -77,8 +80,12 @@
 <script src="./js/reconciliation.js"></script>
 <script>
     var entries = ${ sessionScope.entries };
+    var accounts = ${ sessionScope.accounts };
     var currentEntry = entries[0];
+    var account = null;
+
     displayCurrentEntry(currentEntry);
+    displayAccounts(accounts);
 
     function changeEntryPosition(increment) {
         try {
@@ -92,8 +99,41 @@
 
         document.getElementById("entries").innerHTML = "";
         currentPage.innerHTML = currentPosition;
-        currentEntry = entries[currentPosition-1];
+        currentEntry = entries[currentPosition - 1];
         displayCurrentEntry(currentEntry);
+    }
+
+    function changeAccount(e) {
+        if (e.value === '-1')
+            account = null;
+        else
+            account = e.value;
+    }
+
+    function submitForm() {
+        if (!account) {
+            alert('Please select the account to feed');
+            return;
+        }
+        document.getElementById("buttons").innerHTML = "<a class='successBtn'><div class='loader'></div></a>";
+        var url = "reconciliation?accountID="+account;
+        $.ajax({
+            type: 'POST',
+            url: url,
+            type: "POST",
+            dataType: 'json',
+            data: JSON.stringify(entries),
+            success: function (data) {
+                document.getElementById("buttons").innerHTML =
+                    "<a onclick='submitForm();' id='saveButton' class='successBtn'>Save</a>" +
+                    "<a href='./import-file' class='cancelBtn'>Cancel</a>";
+            },
+            error: function (status) {
+                document.getElementById("buttons").innerHTML =
+                    "<a onclick='submitForm();' id='saveButton' class='successBtn'>Save</a>" +
+                    "<a href='./import-file' class='cancelBtn'>Cancel</a>"
+            }
+        });
     }
 </script>
 </body>

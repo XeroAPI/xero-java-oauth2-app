@@ -100,6 +100,14 @@ function getPreviewValue(entry, option) {
     return "Unassigned";
 }
 
+function displayAccounts(accounts) {
+    var accountSelect = document.getElementById("accounts");
+    accountSelect.innerHTML = "<option></option>";
+    accounts.forEach(account => {
+        accountSelect.innerHTML += "<option value='"+account.accountID+"'>"+account.name+"</option>";
+    })
+}
+
 function changeSelectedItem(e) {
     currentEntry[Number(e.getAttributeNode("id").value.split('_')[1])].targetColumn = e.value !== '-1' ? e.value : null ;
     entries[Number(document.getElementById("currentPage").innerHTML) - 1] = currentEntry;

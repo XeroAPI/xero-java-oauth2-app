@@ -28,9 +28,9 @@ import com.xero.models.identity.Connection;
 @WebServlet("/Callback")
 public class Callback extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    final String clientId = System.getenv("XERO_CLIENT_ID");
-    final String clientSecret = System.getenv("XERO_CLIENT_SECRET");
-    final String redirectURI = System.getenv("XERO_REDIRECT_URI");
+    final String clientId = "0E882129DFC746BF9C8291022B006B59"; //System.getenv("XERO_CLIENT_ID");
+    final String clientSecret = "Gt0BQNjHNYYNgnFnt0_4o2vVBovic4jNcmcGQ8yXIkVYVtik"; //System.getenv("XERO_CLIENT_SECRET");
+    final String redirectURI = "http://localhost:8081/xero_java_oauth2_app_0_0_1_war/Callback";//System.getenv("XERO_REDIRECT_URI");
     final String TOKEN_SERVER_URL = "https://identity.xero.com/connect/token";
     final String AUTHORIZATION_SERVER_URL = "https://login.xero.com/identity/connect/authorize";
     final NetHttpTransport HTTP_TRANSPORT = new NetHttpTransport();
@@ -92,6 +92,9 @@ public class Callback extends HttpServlet {
 
             HttpSession session = request.getSession();
 
+            System.out.println("Token => "+tokenResponse.getAccessToken());
+            System.out.println("xero_tenant_id => "+connection.get(0).getTenantId().toString());
+            
             session.setAttribute("jwt_token", tokenResponse.toPrettyString());
             session.setAttribute("access_token", tokenResponse.getAccessToken());
             session.setAttribute("refresh_token", tokenResponse.getRefreshToken());
@@ -103,7 +106,7 @@ public class Callback extends HttpServlet {
             //setting session to expiry in 30 mins
             session.setMaxInactiveInterval(30*60);
 
-            response.sendRedirect("./AuthenticatedResource");
+            response.sendRedirect("./import-file");
         } else {
             System.out.println("Invalid state - possible CSFR");
         }

@@ -29,9 +29,9 @@ public class Authorization extends HttpServlet {
     final NetHttpTransport HTTP_TRANSPORT = new NetHttpTransport();
     final JsonFactory JSON_FACTORY = new JacksonFactory();
     final String secretState = "secret" + new Random().nextInt(999_999);
-    final String clientId = System.getenv("XERO_CLIENT_ID");
-    final String clientSecret = System.getenv("XERO_CLIENT_SECRET");
-    final String redirectURI = System.getenv("XERO_REDIRECT_URI");
+    final String clientId = "0E882129DFC746BF9C8291022B006B59"; //System.getenv("XERO_CLIENT_ID");
+    final String clientSecret = "Gt0BQNjHNYYNgnFnt0_4o2vVBovic4jNcmcGQ8yXIkVYVtik"; //System.getenv("XERO_CLIENT_SECRET");
+    final String redirectURI = "http://localhost:8081/xero_java_oauth2_app_0_0_1_war/Callback";//System.getenv("XERO_REDIRECT_URI");
     /**
      * @see HttpServlet#HttpServlet()
      */

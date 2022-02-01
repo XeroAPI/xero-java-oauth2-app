@@ -78,6 +78,12 @@ form {
     margin: 0 auto;
 }
 
+.accounts {
+    width: 100%;
+    height: 34px;
+    margin-bottom: 5%;
+}
+
 .file {
     line-height: 1.3;
     color: #000;
@@ -90,7 +96,7 @@ form {
     width: 422px;
 }
 
-.file h2 {
+h2 {
     -webkit-font-smoothing: antialiased;
     border-bottom: 2px solid #444;
     color: #333;
@@ -415,7 +421,9 @@ select option {
     text-decoration: none;
     white-space: nowrap;
     border: 1px solid #e6e6e6;
-    display: inline-block!important;
+    display: flex!important;
+    align-items: center;
+    justify-content: center;
     width: 85px;
     padding: 6px 18px 5px;
     border-radius: 4px;
@@ -472,19 +480,6 @@ select option {
     width: 422px;
     float: right;
     clear: none;
-}
-
-.previews h2 {
-    -webkit-font-smoothing: antialiased;
-    vertical-align: baseline;
-    border-bottom: 2px solid #444;
-    color: #333;
-    padding: 0;
-    margin: 0;
-    float: left;
-    font: 700 14px Helvetica,Arial,sans-serif;
-    border-bottom-width: 0;
-    margin-bottom: 10px;
 }
 
 .mapping {
@@ -645,4 +640,18 @@ select option {
     height: 15px;
     background-position: -190px -120px;
     margin-right: 5px;
+}
+
+.loader {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    animation: spin 0.3s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
