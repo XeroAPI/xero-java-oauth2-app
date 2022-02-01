@@ -235,7 +235,7 @@ public class AuthenticatedResource extends HttpServlet {
 
         HttpSession session = request.getSession(false);
 
-        /*if (session != null) {
+        if (session != null) {
             if (session.getAttribute("xero_tenant_id") == null
                     || session.getAttribute("id_token") == null
                     || session.getAttribute("jwt_token") == null
@@ -251,12 +251,6 @@ public class AuthenticatedResource extends HttpServlet {
         } else {
             response.sendRedirect("./");
             return;
-        }*/
-
-        if (session.getAttribute("xero_tenant_id") == null || session.getAttribute("access_token") == null) {
-
-            session.setAttribute("access_token", "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE2NDM3MTQxMzIsImV4cCI6MTY0MzcxNTkzMiwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiMEU4ODIxMjlERkM3NDZCRjlDODI5MTAyMkIwMDZCNTkiLCJzdWIiOiJkMTFmMDI5YTlkNjA1ZmQ4YmE1ZTk0MThlMGYxYWMxMSIsImF1dGhfdGltZSI6MTY0MzcxMzMxNiwieGVyb191c2VyaWQiOiJmOThlMTY2OC0xZTczLTRiODQtYjU2OC1hNzkxYTVhOTE1ZDQiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjM5ODljMzk5ODlmYTQ0YzY5NzA5Njk5NDZiNmQ5YTYwIiwianRpIjoiOTkzMzUwZGNmNDRlNGU3Mjk0NDIwMDE3NWUyMGM0ODQiLCJhdXRoZW50aWNhdGlvbl9ldmVudF9pZCI6IjVkOGE0MTIyLTM5NjktNDQzNS1iYmUwLTM4YTQ3N2NhYTE4ZiIsInNjb3BlIjpbImVtYWlsIiwicHJvZmlsZSIsIm9wZW5pZCIsImFjY291bnRpbmcucmVwb3J0cy5yZWFkIiwicGF5cm9sbC5lbXBsb3llZXMiLCJwYXlyb2xsLnBheXJ1bnMiLCJwYXlyb2xsLnBheXNsaXAiLCJwYXlyb2xsLnRpbWVzaGVldHMiLCJwcm9qZWN0cyIsImFjY291bnRpbmcuc2V0dGluZ3MiLCJhY2NvdW50aW5nLmF0dGFjaG1lbnRzIiwiYWNjb3VudGluZy50cmFuc2FjdGlvbnMiLCJhY2NvdW50aW5nLmpvdXJuYWxzLnJlYWQiLCJhc3NldHMiLCJhY2NvdW50aW5nLmNvbnRhY3RzIiwicGF5cm9sbC5zZXR0aW5ncyIsImFjY291bnRpbmcuYnVkZ2V0cy5yZWFkIiwib2ZmbGluZV9hY2Nlc3MiXX0.AJWxF-71gkhmt5okw6WHfSdB0B3DzhhyEizu-cKelopTiHsJp4JSJMZ_qSfsDW2d2r0GwcxpzGy_c7qLNKMkjJnsAYjMP3jIJTlN6A3Yy0IBp5oQkATElHJU4g5c653ik03kNjXImF5GJj1_SrOzbNdh0jLx7TQk5oKOCjUPMQvra8L33P6sASnDdlw4QlfTV7lNksbcuzMWOl2af-TYogxaFj7gQ_4DXWxG6pMwFGu85wRh0eQprGBhV2BQn041Vg-sDZEEt6Alx-yQXPQrbG5PxoPIzQnwlNSkvfqIaQztQHVe2nL8dknCqnjzPPej5COoiBtTAZ5xY5Ms0ZniZw");
-            session.setAttribute("xero_tenant_id", "c40dee4f-adae-42ef-82dd-bfd48c58f330");
         }
 
         this.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);

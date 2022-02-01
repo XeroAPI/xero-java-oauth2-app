@@ -6,6 +6,7 @@
 </head>
 <body>
 <div class="container">
+    <h1 class="font-weight-bold">Xero Camt.053/054 Converter</h1>
     <form method="post">
         <div class="w-content">
             <div class="document">
@@ -124,14 +125,19 @@
             dataType: 'json',
             data: JSON.stringify(entries),
             success: function (data) {
+                console.log(data);
                 document.getElementById("buttons").innerHTML =
                     "<a onclick='submitForm();' id='saveButton' class='successBtn'>Save</a>" +
                     "<a href='./import-file' class='cancelBtn'>Cancel</a>";
+                alert('Success !');
+                window.location.href = 'import-file';
             },
             error: function (status) {
+                console.log(status);
                 document.getElementById("buttons").innerHTML =
                     "<a onclick='submitForm();' id='saveButton' class='successBtn'>Save</a>" +
-                    "<a href='./import-file' class='cancelBtn'>Cancel</a>"
+                    "<a href='./import-file' class='cancelBtn'>Cancel</a>";
+                alert('Error occured, please try later...');
             }
         });
     }

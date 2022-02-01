@@ -5,5 +5,8 @@
 // Generated on: 2015.04.08 at 10:37:47 AM CEST 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "urn:iso:std:iso:20022:tech:xsd:camt.053.001.04", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package com.xero.app.models;
+// @javax.xml.bind.annotation.XmlSchema(
+//     namespace = "urn:iso:std:iso:20022:tech:xsd:camt.053.001.04", 
+//     elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED
+// )
+// package com.xero.app.models;

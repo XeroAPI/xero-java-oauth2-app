@@ -25,7 +25,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="BkToCstmrStmt" type="{urn:iso:std:iso:20022:tech:xsd:camt.053.001.04}BankToCustomerStatementV02"/>
+ *         &lt;element name="BkToCstmrStmt" type="BankToCustomerStatementV02" minOccurs="0"/>
+ *         &lt;element name="BkToCstmrDbtCdtNtfctn" type="BankToCustomerNotification" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,13 +37,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Document", propOrder = {
-    "bkToCstmrStmt"
+    "bkToCstmrStmt",
+    "bkToCstmrDbtCdtNtfctn"
 })
 @XmlRootElement(name = "Document")
 public class Document {
+	
+	@XmlElement(name = "BkToCstmrStmt")
+	protected BankToCustomerStatementV02 bkToCstmrStmt;
 
-    @XmlElement(name = "BkToCstmrStmt", required = true)
-    protected BankToCustomerStatementV02 bkToCstmrStmt;
+    @XmlElement(name = "BkToCstmrDbtCdtNtfctn")
+    protected BankToCustomerNotification bkToCstmrDbtCdtNtfctn;
 
     /**
      * Gets the value of the bkToCstmrStmt property.
@@ -67,5 +72,15 @@ public class Document {
     public void setBkToCstmrStmt(BankToCustomerStatementV02 value) {
         this.bkToCstmrStmt = value;
     }
+
+	public BankToCustomerNotification getBkToCstmrDbtCdtNtfctn() {
+		return bkToCstmrDbtCdtNtfctn;
+	}
+
+	public void setBkToCstmrDbtCdtNtfctn(BankToCustomerNotification bkToCstmrDbtCdtNtfctn) {
+		this.bkToCstmrDbtCdtNtfctn = bkToCstmrDbtCdtNtfctn;
+	}
+    
+    
 
 }

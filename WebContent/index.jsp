@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="container" role="main">
-    <h1 class="font-weight-bold">Select your camt05x file</h1>
+    <h1 class="font-weight-bold">Select your Camt.053/054 file</h1>
     <form method="post" action="upload" enctype="multipart/form-data" class="box">
         <div class="box__input">
             <svg class="box__icon" xmlns="http://www.w3.org/2000/svg" width="50" height="43" viewBox="0 0 50 43">
@@ -27,7 +27,6 @@
         <div class="box__success">Done!</div>
         <div class="box__error">Error!.</div>
     </form>
-    <button type="button" onclick="window.location = './'" style="background-color: #d33939cf;padding: 15px;width: 150px;color: white;margin-top: 40px;">Logout</button>
 </div>
 <script src="js/main.js"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194"

@@ -1,7 +1,5 @@
 package com.xero.app;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,9 +17,11 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.transform.stream.StreamSource;
 
 import com.google.gson.Gson;
 import com.xero.api.ApiClient;
@@ -50,7 +50,7 @@ public class ProcessingCamtFile extends HttpServlet {
 		super();
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked" })
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -60,9 +60,6 @@ public class ProcessingCamtFile extends HttpServlet {
 			part = request.getParts().iterator().next();
 		else
 			return;
-		
-		String fileName = getFileName(part);
-		System.out.println("Filename => " + fileName);
 
 		try {
 
@@ -78,22 +75,28 @@ public class ProcessingCamtFile extends HttpServlet {
             session.setAttribute("accounts", this.gson.toJson(accountList));
             session.setAttribute("accountsUnparsed", accountList);
 
-            FileInputStream fileInputStream = (FileInputStream) part.getInputStream();
-            
-//			FileInputStream fileInputStream = new FileInputStream(new File(
-//					"/home/descartes/eclipse/workspace/xero-swiss-camt05x-converter-java/src/com/xero/converter/camt.053.xml"));
+			XMLInputFactory xif = XMLInputFactory.newFactory();
+			xif.setProperty(XMLInputFactory.IS_NAMESPACE_AWARE, false);
+
+			StreamSource source = new StreamSource(part.getInputStream());
+			XMLStreamReader xsr = xif.createXMLStreamReader(source);
 
 			JAXBContext jc = JAXBContext.newInstance(ObjectFactory.class);
 
 			Unmarshaller unmarshaller = jc.createUnmarshaller();
-			Document document = ((JAXBElement<Document>) unmarshaller.unmarshal(fileInputStream)).getValue();
+            
+			Document document = ((JAXBElement<Document>) unmarshaller.unmarshal(xsr)).getValue();
 
 			Marshaller marshaller = jc.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
 			List<List<Map<String, String>>> entries = new ArrayList<>();
 
-			List<ReportEntry2> list = document.getBkToCstmrStmt().getStmt().get(0).getNtry();
+			List<ReportEntry2> list;
+			if(document.getBkToCstmrStmt() != null)
+				list = document.getBkToCstmrStmt().getStmt().get(0).getNtry();
+			else
+				list = document.getBkToCstmrDbtCdtNtfctn().getNtfctn().get(0).getNtry();
 
 			Integer i = 1;
 			for (ReportEntry2 ntry : list) {
@@ -110,7 +113,7 @@ public class ProcessingCamtFile extends HttpServlet {
 				amount.put("label", "Amount");
 				amount.put("fieldName", "amount");
 				amount.put("value", ntry.getAmt().getValue().toString());
-				amount.put("targetColumn", null);
+				amount.put("targetColumn", "transactionAmount");
 				item.add(amount);
 
 				Map<String, String> payee = new HashMap<String, String>();
@@ -124,7 +127,7 @@ public class ProcessingCamtFile extends HttpServlet {
 				description.put("label", "Description");
 				description.put("fieldName", "description");
 				description.put("value", ntry.getAddtlNtryInf());
-				description.put("targetColumn", null);
+				description.put("targetColumn", "description");
 				item.add(description);
 
 				Map<String, String> reference = new HashMap<String, String>();
@@ -149,11 +152,12 @@ public class ProcessingCamtFile extends HttpServlet {
 			session.setAttribute("size", entries.size());
 			session.setMaxInactiveInterval(30 * 60);
 
-		} catch (JAXBException e) {
+			resp.sendRedirect("./reconciliation");
+		} catch (Exception e) {
 			e.printStackTrace();
+			resp.sendRedirect("./import-file");
 		}
 
-		resp.sendRedirect("./reconciliation");
 	}
 
 	@Override

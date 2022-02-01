@@ -73,9 +73,6 @@ public class Callback extends HttpServlet {
             scopeList.add("accounting.journals.read");
             scopeList.add("accounting.reports.read");
             scopeList.add("accounting.attachments");
-            //scopeList.add("finance.accountingactivity.read");
-            //scopeList.add("finance.cashvalidation.read");
-            //scopeList.add("finance.statements.read");
             
             DataStoreFactory DATA_STORE_FACTORY = new MemoryDataStoreFactory();
 
@@ -91,9 +88,6 @@ public class Callback extends HttpServlet {
             List<Connection> connection = idApi.getConnections(tokenResponse.getAccessToken(),null);
 
             HttpSession session = request.getSession();
-
-            System.out.println("Token => "+tokenResponse.getAccessToken());
-            System.out.println("xero_tenant_id => "+connection.get(0).getTenantId().toString());
             
             session.setAttribute("jwt_token", tokenResponse.toPrettyString());
             session.setAttribute("access_token", tokenResponse.getAccessToken());

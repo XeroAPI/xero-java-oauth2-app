@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.NoHttpResponseException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -77,7 +78,7 @@ public class Reconciliation extends HttpServlet {
 				out.flush();
 
 			} else {
-				System.out.println("Il y'a un gros null ici !");
+				System.out.println("Entries are null");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -88,6 +89,26 @@ public class Reconciliation extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		HttpSession session = request.getSession(false);
+
+		if (session != null) {
+			if (session.getAttribute("xero_tenant_id") == null
+					|| session.getAttribute("id_token") == null
+					|| session.getAttribute("jwt_token") == null
+					|| session.getAttribute("access_token") == null
+					|| session.getAttribute("refresh_token") == null
+					|| session.getAttribute("expires_in_seconds") == null
+					|| session.getAttribute("xero_tenant_id") == null
+					|| session.getAttribute("connection_tenant_id") == null
+			) {
+				response.sendRedirect("./");
+				return;
+			}
+		} else {
+			response.sendRedirect("./");
+			return;
+		}
 
 		StringBuilder buffer = new StringBuilder();
 		BufferedReader reader = request.getReader();
@@ -101,8 +122,6 @@ public class Reconciliation extends HttpServlet {
 		JSONArray entries = new JSONArray(data);
 
 		List<CustomEntry> customEntryList = new ArrayList<CustomEntry>();
-
-		HttpSession session = request.getSession(false);
 
 		if (entries.length() >= 1) {
 			for (int i = 0; i < entries.length(); ++i) {
@@ -127,20 +146,14 @@ public class Reconciliation extends HttpServlet {
 			}
 		}
 
-		for (CustomEntry customEntry : customEntryList) {
+/*		for (CustomEntry customEntry : customEntryList) {
 			for (CustomEntryItem customEntryItem : customEntry.getCustomEntryItems()) {
 				if (customEntryItem.getTargetColumn() != null) {
 					System.out.println("Le " + customEntryItem.getLabel() + " est définie à "
 							+ customEntryItem.getTargetColumn() + " et sa valeur est " + customEntryItem.getValue());
 				}
 			}
-		}
-
-		if (session.getAttribute("xero_tenant_id") == null || session.getAttribute("access_token") == null) {
-			session.setAttribute("access_token",
-					"eyJhbGciOiJSUzI1NiIsImtpZCI6IjFDQUY4RTY2NzcyRDZEQzAyOEQ2NzI2RkQwMjYxNTgxNTcwRUZDMTkiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJISy1PWm5jdGJjQW8xbkp2MENZVmdWY09fQmsifQ.eyJuYmYiOjE2NDM3MTQxMzIsImV4cCI6MTY0MzcxNTkzMiwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS54ZXJvLmNvbSIsImF1ZCI6Imh0dHBzOi8vaWRlbnRpdHkueGVyby5jb20vcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiMEU4ODIxMjlERkM3NDZCRjlDODI5MTAyMkIwMDZCNTkiLCJzdWIiOiJkMTFmMDI5YTlkNjA1ZmQ4YmE1ZTk0MThlMGYxYWMxMSIsImF1dGhfdGltZSI6MTY0MzcxMzMxNiwieGVyb191c2VyaWQiOiJmOThlMTY2OC0xZTczLTRiODQtYjU2OC1hNzkxYTVhOTE1ZDQiLCJnbG9iYWxfc2Vzc2lvbl9pZCI6IjM5ODljMzk5ODlmYTQ0YzY5NzA5Njk5NDZiNmQ5YTYwIiwianRpIjoiOTkzMzUwZGNmNDRlNGU3Mjk0NDIwMDE3NWUyMGM0ODQiLCJhdXRoZW50aWNhdGlvbl9ldmVudF9pZCI6IjVkOGE0MTIyLTM5NjktNDQzNS1iYmUwLTM4YTQ3N2NhYTE4ZiIsInNjb3BlIjpbImVtYWlsIiwicHJvZmlsZSIsIm9wZW5pZCIsImFjY291bnRpbmcucmVwb3J0cy5yZWFkIiwicGF5cm9sbC5lbXBsb3llZXMiLCJwYXlyb2xsLnBheXJ1bnMiLCJwYXlyb2xsLnBheXNsaXAiLCJwYXlyb2xsLnRpbWVzaGVldHMiLCJwcm9qZWN0cyIsImFjY291bnRpbmcuc2V0dGluZ3MiLCJhY2NvdW50aW5nLmF0dGFjaG1lbnRzIiwiYWNjb3VudGluZy50cmFuc2FjdGlvbnMiLCJhY2NvdW50aW5nLmpvdXJuYWxzLnJlYWQiLCJhc3NldHMiLCJhY2NvdW50aW5nLmNvbnRhY3RzIiwicGF5cm9sbC5zZXR0aW5ncyIsImFjY291bnRpbmcuYnVkZ2V0cy5yZWFkIiwib2ZmbGluZV9hY2Nlc3MiXX0.AJWxF-71gkhmt5okw6WHfSdB0B3DzhhyEizu-cKelopTiHsJp4JSJMZ_qSfsDW2d2r0GwcxpzGy_c7qLNKMkjJnsAYjMP3jIJTlN6A3Yy0IBp5oQkATElHJU4g5c653ik03kNjXImF5GJj1_SrOzbNdh0jLx7TQk5oKOCjUPMQvra8L33P6sASnDdlw4QlfTV7lNksbcuzMWOl2af-TYogxaFj7gQ_4DXWxG6pMwFGu85wRh0eQprGBhV2BQn041Vg-sDZEEt6Alx-yQXPQrbG5PxoPIzQnwlNSkvfqIaQztQHVe2nL8dknCqnjzPPej5COoiBtTAZ5xY5Ms0ZniZw");
-			session.setAttribute("xero_tenant_id", "c40dee4f-adae-42ef-82dd-bfd48c58f330");
-		}
+		}*/
 
 		List<Account> accountList = (List<Account>) session.getAttribute("accountsUnparsed");
 
@@ -202,17 +215,23 @@ public class Reconciliation extends HttpServlet {
 
 //				System.out.println("Create new BankTransactions: count: " + newBankTransactions.getBankTransactions().size());
 				System.out.println(bts.getBankTransactions().size() + " transactions viables trouvées !");
+				session.setAttribute("entries", null);
+				session.setAttribute("accounts", null);
+				session.setAttribute("accountsUnparsed", null);
 			} else {
-				System.out.println("Aucune transaction viable trouvée !");
+				System.out.println("Exception: no transaction to send");
+				throw new NoHttpResponseException("Account was not found");
 			}
 
+			PrintWriter out = response.getWriter();
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			out.print(this.gson.toJson(bts));
+			out.flush();
+			return;
 		}
-
-		PrintWriter out = response.getWriter();
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-		out.print(this.gson.toJson(customEntryList));
-		out.flush();
+		System.out.println("Exception");
+		throw new NoHttpResponseException("Account was not found");
 	}
 
 }

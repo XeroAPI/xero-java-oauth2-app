@@ -7,19 +7,8 @@
 <div class="container">
     <div class="row d-flex justify-content-center align-items-center">
         <div class="col-md-8 col-lg-6 col-xl-6 offset-xl-">
-            <h1 class="font-weight-bold">Xero Camt05X Converter</h1>
+            <h1 class="font-weight-bold">Xero Camt.053/054 Converter</h1>
             <form>
-                <!-- Email input
-                <div class="form-outline mb-4">
-                    <input type="email" id="email" class="form-control form-control-lg"
-                           placeholder="Email address"/>
-                </div>
-
-                <div class="form-outline mb-3">
-                    <input type="password" id="password" class="form-control form-control-lg"
-                           placeholder="Enter password"/>
-                </div>-->
-
                 <div class="text-center text-lg-start mt-4 pt-2">
                     <a class="col-md-12" href="./Authorization"><img src="<%=request.getContextPath()%>/images/connect-blue.svg"></a>
                 </div>
