@@ -16,7 +16,7 @@
                     <div class="form">
                         <div class="entries">
                             <span>Statement line <i
-                                    id="currentPage">1</i> of <i>${ sessionScope.entries.size() }</i> </span>
+                                    id="currentPage">1</i> of <i>${ sessionScope.size }</i> </span>
                             <a href="#" onclick="changeEntryPosition(-1)">&#8592;
                                 Previous</a>
                             <a href="#" onclick="changeEntryPosition(1)">Next
@@ -54,85 +54,46 @@
                         </div>
                     </div>
                 </div>
+                <div class="previews">
+                    <h2>
+                        Based on the statement line options you have assigned...
+                    </h2>
+                    <div id="mapping">
+                        <table class="previews" id="previews">
+                            <tbody>
+                                <tr class="matched|unmatched">
+                                    <td class="item"><em class="icons">&nbsp;</em>Transaction Date</td>
+                                    <td>04 Jan 2022</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="./js/reconciliation.js"></script>
 <script>
-    var entries = [];
-    entries.push(${ sessionScope.currentEntry });
-    displayCurrentEntry(entries[0]);
+    var entries = ${ sessionScope.entries };
+    var currentEntry = entries[0];
+    displayCurrentEntry(currentEntry);
 
     function changeEntryPosition(increment) {
         try {
             var currentPage = document.getElementById("currentPage");
             var currentPosition = Number(currentPage.innerHTML) + increment;
-            if(currentPosition <= 0 || currentPosition > ${ sessionScope.entries.size() })
+            if (currentPosition <= 0 || currentPosition > ${ sessionScope.size })
                 return;
         } catch (e) {
             return;
         }
-        var url = "reconciliation?position=" + currentPosition;
-        $.ajax({
-            type: 'PUT',
-            url: url,
-            cache: false,
-            type: "PUT",
-            dataType: 'json',
-            success: function (data) {
-                document.getElementById("entries").innerHTML = "";
-                var currentPage = document.getElementById("currentPage");
-                currentPage.innerHTML = data[0].value;
-                if (!entries.map(entry => entry[0].value).includes(data[0].value))
-                    entries.push(data);
-                displayCurrentEntry(data);
-                console.log("Je suis le tableau magique => ", entries);
-            },
-            error: function (status) {
-                console.log("Je suis erreur", status);
-            }
 
-        });
-    }
-
-    function displayCurrentEntry(entry) {
-        entry.shift();
-        var tableBody = document.getElementById("entries");
-        entry.forEach((ntry, index) => {
-            console.log("NTRY => ", ntry);
-            tableBody.innerHTML+=
-                    "<tr id='col_"+index+"'>"+
-                    "<td class='em columnName' title='Date'>"+ntry.label+"</td>"+
-                    "<td class='dataValue'>"+ntry.value+"</td>"+
-                    "<td class='no-border'>"+
-                        "<select id='col_"+index+"' class='mapping'>"+
-                            "<option selected='selected'>Unassigned</option>"+
-                            "<option class='opt_0"+getOptionStatus(entry, "transactionDate")+" value='TransactionDate'>Transaction Date</option>"+
-                            "<option class='opt_1"+getOptionStatus(entry, "transactionAmount")+" value='Amount'>Transaction Amount </option>"+
-                            "<option class='opt_2"+getOptionStatus(entry, "payee")+" value='Payee'>Payee</option>"+
-                            "<option class='opt_3"+getOptionStatus(entry, "description")+" value='Notes'>Description</option>"+
-                            "<option class='opt_4"+getOptionStatus(entry, "reference") +" value='Reference'>Reference</option>"+
-                            "<option class='opt_5"+getOptionStatus(entry, "analisysCode")+" value='Type'>Transaction Type</option>"+
-                            "<option class='opt_6"+getOptionStatus(entry, "checqueNumber")+" value='ChequeNo'>Cheque No.</option>"+
-                            "<option class='opt_7"+getOptionStatus(entry, "amountCode")+" value='AccountCode'>Account Code</option>"+
-                            "<option class='opt_8"+getOptionStatus(entry, "taxType")+" value='TaxType'>Tax Type</option>"+
-                            "<option class='opt_9"+getOptionStatus(entry, "analysisCode")+" value='AnalysisCode'>Analysis Code</option>"+
-                            "<option class='opt_10"+getOptionStatus(entry, "trackingCategory")+" value='TrackingCategory1'>Region</option>"+
-                        "</select>"+
-                    "</td>"+
-                "</tr>";
-        });
-    }
-
-    function getOptionStatus(entry, option) {
-        for (let i = 0; i < entry.length; i++) {
-            let attribute = entry[i];
-            if(attribute.targetColumn === option) {
-                return " selectedOption' disabled";
-            }
-        }
-        return "";
+        document.getElementById("entries").innerHTML = "";
+        currentPage.innerHTML = currentPosition;
+        currentEntry = entries[currentPosition-1];
+        displayCurrentEntry(currentEntry);
     }
 </script>
 </body>

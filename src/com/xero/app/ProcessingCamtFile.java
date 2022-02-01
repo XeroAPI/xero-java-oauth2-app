@@ -101,16 +101,16 @@ public class ProcessingCamtFile extends HttpServlet {
 				for (ReportEntry2 ntry : list) {
 					List<Map<String, String>> item = new ArrayList<>();
 
-					Map<String, String> position = new HashMap<String, String>();
+					/*Map<String, String> position = new HashMap<String, String>();
 					position.put("label", "postion");
 					position.put("fieldName", "postion");
 					position.put("value", i.toString());
 					position.put("targetColumn", "position");
-					item.add(position);
+					item.add(position);*/
 
 					Map<String, String> date = new HashMap<String, String>();
 					date.put("label", "Transaction Date");
-					date.put("fieldName", "transactinoDate");
+					date.put("fieldName", "transactionDate");
 					date.put("value", ntry.getValDt().getDt().toString());
 					date.put("targetColumn", null);
 					item.add(date);
@@ -156,14 +156,9 @@ public class ProcessingCamtFile extends HttpServlet {
 				
 				HttpSession session = request.getSession();
 
-	            session.setAttribute("entries", entries);
-	            
-	            if(entries.size() > 0) {
-	            	session.setAttribute("currentEntry", this.gson.toJson(entries.get(0)));
-	            }
-	            
+	            session.setAttribute("entries", this.gson.toJson(entries));
+	            session.setAttribute("size", entries.size());
 	            session.setMaxInactiveInterval(30*60);
-	            
 
 			} catch (JAXBException e) {
 				e.printStackTrace();
