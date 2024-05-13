@@ -4,19 +4,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.BearerToken;
 import com.google.api.client.auth.oauth2.ClientParametersAuthentication;
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.store.DataStoreFactory;
 import com.google.api.client.util.store.MemoryDataStoreFactory;
 
@@ -27,7 +26,7 @@ public class Authorization extends HttpServlet {
     final String TOKEN_SERVER_URL = "https://identity.xero.com/connect/token";
     final String AUTHORIZATION_SERVER_URL = "https://login.xero.com/identity/connect/authorize";
     final NetHttpTransport HTTP_TRANSPORT = new NetHttpTransport();
-    final JsonFactory JSON_FACTORY = new JacksonFactory();
+    final GsonFactory JSON_FACTORY = new GsonFactory();
     final String secretState = "secret" + new Random().nextInt(999_999);
     final String clientId = System.getenv("XERO_CLIENT_ID");
     final String clientSecret = System.getenv("XERO_CLIENT_SECRET");
@@ -47,6 +46,18 @@ public class Authorization extends HttpServlet {
             throws ServletException, IOException {
 
         ArrayList<String> scopeList = new ArrayList<String>();
+        scopeList.add("openid");
+        scopeList.add("email");
+        scopeList.add("profile");
+        scopeList.add("offline_access");
+        scopeList.add("accounting.settings");
+        scopeList.add("accounting.transactions");
+        scopeList.add("accounting.contacts");
+        scopeList.add("accounting.journals.read");
+        scopeList.add("accounting.reports.read");
+        scopeList.add("accounting.attachments");
+
+
         scopeList.add("openid");
         scopeList.add("email");
         scopeList.add("profile");

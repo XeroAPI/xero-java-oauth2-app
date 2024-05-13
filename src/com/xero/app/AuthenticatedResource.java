@@ -14,15 +14,12 @@ import java.util.Random;
 import java.util.UUID;
 
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import com.google.api.client.http.HttpRequestInitializer;
-import com.google.api.client.http.HttpTransport;
-import com.google.api.client.http.javanet.NetHttpTransport;
 import com.xero.api.*;
 import com.xero.models.accounting.*;
 import com.xero.models.accounting.Phone.PhoneTypeEnum;
@@ -60,8 +57,6 @@ import com.xero.models.assets.FieldValidationErrorsElement;
 import com.xero.models.identity.Connection;
 import com.xero.models.payrollau.CalendarType;
 import com.xero.models.payrollau.DeductionLine;
-import com.xero.models.payrollau.DeductionType;
-import com.xero.models.payrollau.DeductionTypeCalculationType;
 import com.xero.models.payrollau.EarningsRate;
 import com.xero.models.payrollau.EarningsType;
 import com.xero.models.payrollau.EmploymentTerminationPaymentType;
@@ -75,11 +70,9 @@ import com.xero.models.payrollau.PayRunStatus;
 import com.xero.models.payrollau.PayRuns;
 import com.xero.models.payrollau.PayrollCalendar;
 import com.xero.models.payrollau.PayrollCalendars;
-import com.xero.models.payrollau.Payslip;
 import com.xero.models.payrollau.PayslipLines;
 import com.xero.models.payrollau.PayslipObject;
 import com.xero.models.payrollau.RateType;
-import com.xero.models.payrollau.Settings;
 import com.xero.models.payrollau.SettingsObject;
 import com.xero.models.payrollau.SuperFund;
 import com.xero.models.payrollau.SuperFundProducts;
@@ -90,19 +83,12 @@ import com.xero.models.payrollau.TimesheetLine;
 import com.xero.models.payrollau.TimesheetObject;
 import com.xero.models.payrollau.TimesheetStatus;
 import com.xero.models.payrollau.Timesheets;
-import com.xero.models.payrolluk.PayRunCalendar;
 import com.xero.models.payrolluk.PayRunCalendars;
-import com.xero.models.project.Amount;
-import com.xero.models.project.ChargeType;
-import com.xero.models.project.CurrencyCode;
 import com.xero.models.project.Project;
 import com.xero.models.project.ProjectCreateOrUpdate;
-import com.xero.models.project.ProjectPatch;
-import com.xero.models.project.ProjectStatus;
 import com.xero.models.project.ProjectUsers;
 import com.xero.models.project.Projects;
 import com.xero.models.project.Task;
-import com.xero.models.project.TaskCreateOrUpdate;
 import com.xero.models.project.Tasks;
 import com.xero.models.project.TimeEntries;
 import com.xero.models.project.TimeEntry;
@@ -119,7 +105,6 @@ import com.xero.api.client.ProjectApi;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.threeten.bp.*;
-import org.threeten.bp.format.DateTimeFormatter;
 
 @WebServlet("/AuthenticatedResource")
 public class AuthenticatedResource extends HttpServlet {
@@ -370,7 +355,7 @@ public class AuthenticatedResource extends HttpServlet {
                 FeedConnections feedConnections = new FeedConnections();
                 feedConnections.addItemsItem(newBank);
                 
-                FeedConnections fc1 = bankFeedsApi.createFeedConnections(accessToken,xeroTenantId,feedConnections);
+                FeedConnections fc1 = bankFeedsApi.createFeedConnections(accessToken,xeroTenantId,feedConnections,null);
                 messages.add("CREATE Bank with status: " + fc1.getItems().get(0).getStatus());
                 feedConnectionId = fc1.getItems().get(0).getId();
                 messages.add("CREATED Bank feed ID: " + feedConnectionId);
@@ -429,7 +414,7 @@ public class AuthenticatedResource extends HttpServlet {
                 feedConnectionOne.setId(feedConnectionId);
                 deleteFeedConnections.addItemsItem(feedConnectionOne);
                 
-                FeedConnections deletedFeedConnection = bankFeedsApi.deleteFeedConnections(accessToken,xeroTenantId,deleteFeedConnections);              
+                FeedConnections deletedFeedConnection = bankFeedsApi.deleteFeedConnections(accessToken,xeroTenantId,deleteFeedConnections,null);              
                 messages.add("Deleted Bank status: " + deletedFeedConnection.getItems().get(0).getStatus());
             } catch (XeroBadRequestException e) {
                 this.addBadRequest(e, messages); 
@@ -491,7 +476,7 @@ public class AuthenticatedResource extends HttpServlet {
                 FeedConnections feedConnections = new FeedConnections();
                 feedConnections.addItemsItem(newBank);
                 
-                FeedConnections fc1 = bankFeedsApi.createFeedConnections(accessToken,xeroTenantId,feedConnections);
+                FeedConnections fc1 = bankFeedsApi.createFeedConnections(accessToken,xeroTenantId,feedConnections, null);
                 feedConnectionId = fc1.getItems().get(0).getId();
                 //INVALID ID
                 //feedConnectionId = UUID.fromString("ae3a8ef3-005a-4946-b311-95f76afa8553");
@@ -583,7 +568,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newStatement2.setStatementLines(statementLines2);
                 newStatements.addItemsItem(newStatement2);
 
-                Statements rStatements = bankFeedsApi.createStatements(accessToken,xeroTenantId,newStatements);
+                Statements rStatements = bankFeedsApi.createStatements(accessToken,xeroTenantId,newStatements,null);
                 messages.add("New Bank Statement Status: " + rStatements.getItems().get(0).getStatus());
                 statementId = rStatements.getItems().get(0).getId();
            
@@ -674,11 +659,11 @@ public class AuthenticatedResource extends HttpServlet {
                 newStatement.setStatementLines(arrayStatementLines);
                 
                 newStatements.addItemsItem(newStatement);
-                Statements rStatements2 = bankFeedsApi.createStatements(accessToken, xeroTenantId, newStatements);
+                Statements rStatements2 = bankFeedsApi.createStatements(accessToken, xeroTenantId, newStatements,null);
                 messages.add("New Bank Statement Status: " + rStatements2.getItems().get(0).getStatus());
                 
                 //DUPLICATE
-                Statements rStatements3 = bankFeedsApi.createStatements(accessToken, xeroTenantId, newStatements);
+                Statements rStatements3 = bankFeedsApi.createStatements(accessToken, xeroTenantId, newStatements,null);
                 messages.add("New Bank Statement Status: " + rStatements3.getItems().get(0).getStatus());
                 messages.add("New Bank Statement Error: " + rStatements3.getItems().get(0).getErrors().get(0).getDetail());
                 
@@ -797,7 +782,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newStatement.setStatementLines(arrayStatementLines2);
                 arrayOfStatements.addItemsItem(newStatement);
                 
-                Statements rStatements = bankFeedsApi.createStatements(accessToken, xeroTenantId, arrayOfStatements);
+                Statements rStatements = bankFeedsApi.createStatements(accessToken, xeroTenantId, arrayOfStatements, null);
                 
                 messages.add("Statement Status: " + rStatements.getItems().get(0).getStatus());
            
@@ -842,7 +827,7 @@ public class AuthenticatedResource extends HttpServlet {
                     project.setDeadlineUtc(deadlineUtc);
                     project.setEstimateAmount(199.99);
                     
-                    projectApi.updateProject(accessToken, xeroTenantId, projectId, project);
+                    projectApi.updateProject(accessToken, xeroTenantId, projectId, project, null);
                     messages.add("Update Project complete: ");
                     
                     // Patch a Project
@@ -893,7 +878,7 @@ public class AuthenticatedResource extends HttpServlet {
                     project.setDeadlineUtc(deadlineUtc);
                     project.setEstimateAmount(99.99);
                     
-                    Project newProject = projectApi.createProject(accessToken, xeroTenantId, project);
+                    Project newProject = projectApi.createProject(accessToken, xeroTenantId, project, null);
                     messages.add("New Project created Name: " + newProject.getName());
                 } else {
                     messages.add("No contacts found - can not create new project");                    
@@ -1091,7 +1076,7 @@ public class AuthenticatedResource extends HttpServlet {
                     OffsetDateTime dateUtc = OffsetDateTime.of(LocalDateTime.of(2020, 02, 26, 15, 00), ZoneOffset.UTC);
                     
                     createTimeEntry.setDateUtc(dateUtc);
-                    TimeEntry timeEntry = projectApi.createTimeEntry(accessToken, xeroTenantId, projectId, createTimeEntry);
+                    TimeEntry timeEntry = projectApi.createTimeEntry(accessToken, xeroTenantId, projectId, createTimeEntry, null);
                     messages.add("CREATE single Time Entry ID: " + timeEntry.getTimeEntryId());
                 } catch (XeroBadRequestException e) {
                     this.addBadRequest(e, messages); 
@@ -1120,7 +1105,7 @@ public class AuthenticatedResource extends HttpServlet {
                     OffsetDateTime dateUtc = OffsetDateTime.of(LocalDateTime.of(2020, 02, 27, 15, 00), ZoneOffset.UTC);
                     updateTimeEntry.setDateUtc(dateUtc);
                     
-                    projectApi.updateTimeEntry(accessToken, xeroTenantId, projectId, timeEntryId, updateTimeEntry);
+                    projectApi.updateTimeEntry(accessToken, xeroTenantId, projectId, timeEntryId, updateTimeEntry, null);
                     messages.add("UPDATE single Time Entry SUCCESS");
                 } catch (XeroBadRequestException e) {
                     this.addBadRequest(e, messages); 
@@ -1189,7 +1174,7 @@ public class AuthenticatedResource extends HttpServlet {
                 bookDepreciationSetting.setDepreciationRate(0.5);
                 asset.setBookDepreciationSetting(bookDepreciationSetting);
                 
-                Asset newAsset = assetApi.createAsset(accessToken, xeroTenantId, asset);
+                Asset newAsset = assetApi.createAsset(accessToken, xeroTenantId, asset, null);
                 messages.add("New Asset created: " + newAsset.getAssetName());  
             
             } catch (XeroBadRequestException e) {
@@ -1289,7 +1274,7 @@ public class AuthenticatedResource extends HttpServlet {
                 bookDepreciationSetting.setDepreciationMethod(DepreciationMethodEnum.DIMINISHINGVALUE100);
                 assetType.setBookDepreciationSetting(bookDepreciationSetting);
                 
-                AssetType newAssetType = assetApi.createAssetType(accessToken, xeroTenantId, assetType);   
+                AssetType newAssetType = assetApi.createAssetType(accessToken, xeroTenantId, assetType, null);   
                 messages.add("Asset Type Created: " + newAssetType.getAssetTypeName());
             } catch (XeroBadRequestException e) {
                 this.addBadRequest(e, messages); 
@@ -1490,7 +1475,7 @@ public class AuthenticatedResource extends HttpServlet {
                 employee.setAddress(address);
                 LocalDate dateOfBirth = LocalDate.of(1999, Month.JANUARY, 1);
                 employee.setDateOfBirth(dateOfBirth);
-                com.xero.models.payrolluk.EmployeeObject upEmployee = payrollUkApi.updateEmployee(accessToken, xeroTenantId, employeeId, employee);
+                com.xero.models.payrolluk.EmployeeObject upEmployee = payrollUkApi.updateEmployee(accessToken, xeroTenantId, employeeId, employee, null);
             
                 messages.add("Update employee First Name: " + upEmployee.getEmployee().getFirstName() );
             
@@ -1515,7 +1500,7 @@ public class AuthenticatedResource extends HttpServlet {
                 employee2.setAddress(address2);
                 LocalDate dateOfBirth2 = LocalDate.of(2022, Month.JANUARY, 1);
                 employee2.setDateOfBirth(dateOfBirth2);
-                com.xero.models.payrolluk.EmployeeObject newEmployee = payrollUkApi.createEmployee(accessToken, xeroTenantId, employee2);
+                com.xero.models.payrolluk.EmployeeObject newEmployee = payrollUkApi.createEmployee(accessToken, xeroTenantId, employee2, null);
            
                 messages.add("New employee First Name: " + newEmployee.getEmployee().getFirstName() );
             } catch (XeroBadRequestException e) {
@@ -1551,7 +1536,7 @@ public class AuthenticatedResource extends HttpServlet {
                 LocalDate startDate = LocalDate.of(2020, Month.APRIL, 1);
                 employment.setStartDate(startDate);
               
-                com.xero.models.payrolluk.EmploymentObject newEmployment = payrollUkApi.createEmployment(accessToken, xeroTenantId, employeeId, employment);
+                com.xero.models.payrolluk.EmploymentObject newEmployment = payrollUkApi.createEmployment(accessToken, xeroTenantId, employeeId, employment, null);
                 messages.add("Create Employment Number: " + newEmployment.getEmployment().getEmployeeNumber() );
             } catch (XeroBadRequestException e) {
                 this.addBadRequest(e, messages); 
@@ -1607,7 +1592,7 @@ public class AuthenticatedResource extends HttpServlet {
                 employeeOpeningBalances.setStatutorySharedParentalPay(10.0);
                 employeeOpeningBalances.setStatutorySickPay(10.0);
                
-                com.xero.models.payrolluk.EmployeeOpeningBalancesObject newEmployeeOpeningBalances = payrollUkApi.createEmployeeOpeningBalances(accessToken, xeroTenantId, employeeId, employeeOpeningBalances);
+                com.xero.models.payrolluk.EmployeeOpeningBalancesObject newEmployeeOpeningBalances = payrollUkApi.createEmployeeOpeningBalances(accessToken, xeroTenantId, employeeId, employeeOpeningBalances, null);
                 
                 if(newEmployeeOpeningBalances.getOpeningBalances() != null) {
                     messages.add("Create Open Balances - Number: " + newEmployeeOpeningBalances.getOpeningBalances().getPriorEmployeeNumber() );
@@ -1624,7 +1609,7 @@ public class AuthenticatedResource extends HttpServlet {
                 toUpdateEmployeeOpeningBalances.setStatutorySharedParentalPay(20.0);
                 toUpdateEmployeeOpeningBalances.setStatutorySickPay(20.0);
                  
-                com.xero.models.payrolluk.EmployeeOpeningBalancesObject upEmployeeOpeningBalances = payrollUkApi.updateEmployeeOpeningBalances(accessToken, xeroTenantId, employeeId, toUpdateEmployeeOpeningBalances);
+                com.xero.models.payrolluk.EmployeeOpeningBalancesObject upEmployeeOpeningBalances = payrollUkApi.updateEmployeeOpeningBalances(accessToken, xeroTenantId, employeeId, toUpdateEmployeeOpeningBalances, null);
                 messages.add("Update Open Balances - Number: " + upEmployeeOpeningBalances.getOpeningBalances().getPriorEmployeeNumber() );
             
             
@@ -1675,7 +1660,7 @@ public class AuthenticatedResource extends HttpServlet {
                     LocalDate endDate = LocalDate.of(2020, Month.APRIL, 26);
                     newEmployeeLeave.endDate(endDate);
                     newEmployeeLeave.setLeaveTypeID(employeeLeave.getLeave().getLeaveTypeID());
-                    com.xero.models.payrolluk.EmployeeLeaveObject createdEmployeeLeave = payrollUkApi.createEmployeeLeave(accessToken, xeroTenantId,employeeId, newEmployeeLeave);
+                    com.xero.models.payrolluk.EmployeeLeaveObject createdEmployeeLeave = payrollUkApi.createEmployeeLeave(accessToken, xeroTenantId,employeeId, newEmployeeLeave, null);
                     messages.add("Create Employee Leave - Description: " + createdEmployeeLeave.getLeave().getDescription() );
                     newLeaveID = createdEmployeeLeave.getLeave().getLeaveID();
                 
@@ -1698,7 +1683,7 @@ public class AuthenticatedResource extends HttpServlet {
                         period.setPeriodEndDate(periodEndDate);
                         period.setPeriodStatus(com.xero.models.payrolluk.LeavePeriod.PeriodStatusEnum.APPROVED);
                         upEmployeeLeave.addPeriodsItem(period);
-                        com.xero.models.payrolluk.EmployeeLeaveObject updatedEmployeeLeave = payrollUkApi.updateEmployeeLeave(accessToken, xeroTenantId,employeeId,newLeaveID,upEmployeeLeave);
+                        com.xero.models.payrolluk.EmployeeLeaveObject updatedEmployeeLeave = payrollUkApi.updateEmployeeLeave(accessToken, xeroTenantId,employeeId,newLeaveID,upEmployeeLeave, null);
                     }                  
                 }
                 
@@ -1842,7 +1827,7 @@ public class AuthenticatedResource extends HttpServlet {
                 employeeStatutorySickLeave.setWorkPattern(workPattern);
                 employeeStatutorySickLeave.setIsPregnancyRelated(false);
                 employeeStatutorySickLeave.setSufficientNotice(true);                
-                com.xero.models.payrolluk.EmployeeStatutorySickLeaveObject createdEmployeeStatutoryLeaveSickLeaves = payrollUkApi.createEmployeeStatutorySickLeave(accessToken, xeroTenantId, employeeStatutorySickLeave);
+                com.xero.models.payrolluk.EmployeeStatutorySickLeaveObject createdEmployeeStatutoryLeaveSickLeaves = payrollUkApi.createEmployeeStatutorySickLeave(accessToken, xeroTenantId, employeeStatutorySickLeave, null);
                 messages.add("CREATED Statutory Leave Sick Leaves - Start Date: " + createdEmployeeStatutoryLeaveSickLeaves.getStatutorySickLeave().getStartDate() );
                 
             } catch (XeroBadRequestException e) {
@@ -1907,7 +1892,7 @@ public class AuthenticatedResource extends HttpServlet {
                 leaveType.setRateAccruedHourly(3.5);
                 leaveType.setScheduleOfAccrual(com.xero.models.payrolluk.EmployeeLeaveType.ScheduleOfAccrualEnum.BEGINNINGOFCALENDARYEAR);
                 leaveType.setLeaveTypeID(leaveTypeID);
-                com.xero.models.payrolluk.EmployeeLeaveTypeObject newEmployeeLeaveType = payrollUkApi.createEmployeeLeaveType(accessToken, xeroTenantId, employeeId, leaveType);
+                com.xero.models.payrolluk.EmployeeLeaveTypeObject newEmployeeLeaveType = payrollUkApi.createEmployeeLeaveType(accessToken, xeroTenantId, employeeId, leaveType, null);
                 messages.add("CREATED Employee Leave Type ID: " + newEmployeeLeaveType.getLeaveType().getLeaveTypeID() );
             
             } catch (XeroBadRequestException e) {
@@ -2008,7 +1993,7 @@ public class AuthenticatedResource extends HttpServlet {
                 earningsTemplate.setNumberOfUnits(8.0);
                 earningsTemplate.setRatePerUnit(20.0);
                 earningsTemplate.setEarningsRateID(earningsRateID);           
-                com.xero.models.payrolluk.EarningsTemplateObject createdEmployeePayTemplate = payrollUkApi.createEmployeeEarningsTemplate(accessToken, xeroTenantId, employeeId, earningsTemplate);
+                com.xero.models.payrolluk.EarningsTemplateObject createdEmployeePayTemplate = payrollUkApi.createEmployeeEarningsTemplate(accessToken, xeroTenantId, employeeId, earningsTemplate, null);
                 System.out.println(createdEmployeePayTemplate.toString());
             } catch (XeroBadRequestException e) {
                 this.addBadRequest(e, messages); 
@@ -2051,7 +2036,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newBenefit.setPercentage(25.0);
                 newBenefit.setStandardAmount(50.0);
                 
-                com.xero.models.payrolluk.BenefitObject createdBenefit = payrollUkApi.createBenefit(accessToken, xeroTenantId, newBenefit);
+                com.xero.models.payrolluk.BenefitObject createdBenefit = payrollUkApi.createBenefit(accessToken, xeroTenantId, newBenefit, null);
                 messages.add("CREATE Benefits (Employer Pensions) found Name: " + benefits.getBenefits().get(0).getName() );
                 
                 // GET Single Benefits (EmployerPensions)
@@ -2093,7 +2078,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newDeduction.setDeductionCategory(com.xero.models.payrolluk.Deduction.DeductionCategoryEnum.SALARYSACRIFICE);
                 newDeduction.setLiabilityAccountId(liabilityAccountID);
                 newDeduction.setCalculationType(com.xero.models.payrolluk.Deduction.CalculationTypeEnum.FIXEDAMOUNT);
-                com.xero.models.payrolluk.DeductionObject createdDeduction = payrollUkApi.createDeduction(accessToken, xeroTenantId, newDeduction);
+                com.xero.models.payrolluk.DeductionObject createdDeduction = payrollUkApi.createDeduction(accessToken, xeroTenantId, newDeduction, null);
                 messages.add("GET Single Deduction Name: " + createdDeduction.getDeduction().getDeductionName() );
            
             } catch (XeroBadRequestException e) {
@@ -2158,7 +2143,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newEarningsRate.setRateType(com.xero.models.payrolluk.EarningsRate.RateTypeEnum.RATEPERUNIT);
                 newEarningsRate.setTypeOfUnits("hours");
                 
-                com.xero.models.payrolluk.EarningsRateObject createdEarningRates = payrollUkApi.createEarningsRate(accessToken, xeroTenantId, newEarningsRate);
+                com.xero.models.payrolluk.EarningsRateObject createdEarningRates = payrollUkApi.createEarningsRate(accessToken, xeroTenantId, newEarningsRate, null);
                 messages.add("CREATE Earnings Rates found Name: " + createdEarningRates.getEarningsRate().getName() );
             } catch (XeroBadRequestException e) {
                 this.addBadRequest(e, messages); 
@@ -2193,7 +2178,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newLeaveType.setName("My " + this.loadRandChar() + " Leave");
                 newLeaveType.setIsPaidLeave(false);
                 newLeaveType.setShowOnPayslip(true);
-                com.xero.models.payrolluk.LeaveTypeObject createdLeaveType = payrollUkApi.createLeaveType(accessToken, xeroTenantId, newLeaveType);
+                com.xero.models.payrolluk.LeaveTypeObject createdLeaveType = payrollUkApi.createLeaveType(accessToken, xeroTenantId, newLeaveType, null);
                 messages.add("CREATED Leave Type found Name: " + createdLeaveType.getLeaveType().getName() );
                 
             } catch (XeroBadRequestException e) {
@@ -2230,7 +2215,7 @@ public class AuthenticatedResource extends HttpServlet {
                 com.xero.models.payrolluk.Reimbursement newReimbursement = new com.xero.models.payrolluk.Reimbursement();
                 newReimbursement.setAccountID(accountID);
                 newReimbursement.setName("My new Reimburse");
-                com.xero.models.payrolluk.ReimbursementObject createdReimbursement = payrollUkApi.createReimbursement(accessToken, xeroTenantId, newReimbursement);
+                com.xero.models.payrolluk.ReimbursementObject createdReimbursement = payrollUkApi.createReimbursement(accessToken, xeroTenantId, newReimbursement, null);
                 messages.add("CREATED Reimbursement found Name: " + createdReimbursement.getReimbursement().getName() );
                 
             } catch (XeroBadRequestException e) {
@@ -2279,7 +2264,7 @@ public class AuthenticatedResource extends HttpServlet {
                 timesheetLine.setDate(date03);
                 timesheetLine.setEarningsRateID(earningsRateID);
                 timesheetLine.setNumberOfUnits(1.0);
-                com.xero.models.payrolluk.TimesheetLineObject newTimesheetLine = payrollUkApi.createTimesheetLine(accessToken, xeroTenantId, timesheetID, timesheetLine);
+                com.xero.models.payrolluk.TimesheetLineObject newTimesheetLine = payrollUkApi.createTimesheetLine(accessToken, xeroTenantId, timesheetID, timesheetLine, null);
                 messages.add("CREATED new Timesheet Line found Units: " + newTimesheetLine.getTimesheetLine().getNumberOfUnits() );
                 
                 UUID timesheetLineID = oneTimesheet.getTimesheet().getTimesheetLines().get(0).getTimesheetLineID();
@@ -2290,17 +2275,17 @@ public class AuthenticatedResource extends HttpServlet {
                 uptimesheetLine.setDate(date04);
                 uptimesheetLine.setEarningsRateID(earningsRateID);
                 uptimesheetLine.setNumberOfUnits(2.0);
-                com.xero.models.payrolluk.TimesheetLineObject updatedTimesheetLine = payrollUkApi.updateTimesheetLine(accessToken, xeroTenantId, timesheetID, timesheetLineID, uptimesheetLine);
+                com.xero.models.payrolluk.TimesheetLineObject updatedTimesheetLine = payrollUkApi.updateTimesheetLine(accessToken, xeroTenantId, timesheetID, timesheetLineID, uptimesheetLine, null);
                 messages.add("UPDATED existing Timesheet Line found Units: " + updatedTimesheetLine.getTimesheetLine().getNumberOfUnits() );
                 //System.out.println(updatedTimesheetLine.toString());
                 
                 // APPROVE Timesheet for UK Payroll
-                com.xero.models.payrolluk.TimesheetObject approvedTimesheet = payrollUkApi.approveTimesheet(accessToken, xeroTenantId, timesheetID);
+                com.xero.models.payrolluk.TimesheetObject approvedTimesheet = payrollUkApi.approveTimesheet(accessToken, xeroTenantId, timesheetID, null);
                 messages.add("APPROVE Timesheet found Status: " + approvedTimesheet.getTimesheet().getStatus() );
                 //System.out.println(approvedTimesheet.toString());
                 
                 // REVERT TO DRAFT Timesheet for UK Payroll
-                com.xero.models.payrolluk.TimesheetObject revertedTimesheet = payrollUkApi.revertTimesheet(accessToken, xeroTenantId, timesheetID);
+                com.xero.models.payrolluk.TimesheetObject revertedTimesheet = payrollUkApi.revertTimesheet(accessToken, xeroTenantId, timesheetID, null);
                 messages.add("REVERTED Timesheet found Status: " + revertedTimesheet.getTimesheet().getStatus() );
                 //System.out.println(revertedTimesheet.toString());
                 
@@ -2333,7 +2318,7 @@ public class AuthenticatedResource extends HttpServlet {
                 timesheetLines.add(timesheetLine02);
                 newTimesheet.setTimesheetLines(timesheetLines);
                 
-                com.xero.models.payrolluk.TimesheetObject createdTimesheets = payrollUkApi.createTimesheet(accessToken, xeroTenantId, newTimesheet);
+                com.xero.models.payrolluk.TimesheetObject createdTimesheets = payrollUkApi.createTimesheet(accessToken, xeroTenantId, newTimesheet, null);
                 messages.add("CREATED Timesheet found Status: " + createdTimesheets.getTimesheet().getStatus() );
             
             } catch (XeroBadRequestException e) {
@@ -2369,7 +2354,7 @@ public class AuthenticatedResource extends HttpServlet {
                 bankAccount.setSortCode("287654");
                 bankAccounts.add(bankAccount);
                 newPaymentMethod.setBankAccounts(bankAccounts);
-                com.xero.models.payrolluk.PaymentMethodObject createdPaymentMethodObject = payrollUkApi.createEmployeePaymentMethod(accessToken, xeroTenantId, employeeID, newPaymentMethod);
+                com.xero.models.payrolluk.PaymentMethodObject createdPaymentMethodObject = payrollUkApi.createEmployeePaymentMethod(accessToken, xeroTenantId, employeeID, newPaymentMethod, null);
                 messages.add("CREATED Employee Payment Methods found Account Name: " + paymentMethodObject.getPaymentMethod().getBankAccounts().get(0).getAccountName() );
                 
             } catch (XeroBadRequestException e) {
@@ -2405,7 +2390,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newPayRunCalendar.setPeriodStartDate(periodStartDate);
                 LocalDate paymentDate = LocalDate.of(2020, Month.MAY, 15);
                 newPayRunCalendar.setPaymentDate(paymentDate);
-                com.xero.models.payrolluk.PayRunCalendarObject createdPayRunCalendar = payrollUkApi.createPayRunCalendar(accessToken, xeroTenantId, newPayRunCalendar);
+                com.xero.models.payrolluk.PayRunCalendarObject createdPayRunCalendar = payrollUkApi.createPayRunCalendar(accessToken, xeroTenantId, newPayRunCalendar, null);
                 messages.add("Payrun Calendar found name: " + payRunCalendarObject.getPayRunCalendar().getName() );
                 
             } catch (XeroBadRequestException e) {
@@ -2457,7 +2442,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newSalaryAndWage.setStatus(com.xero.models.payrolluk.SalaryAndWage.StatusEnum.ACTIVE);
                 newSalaryAndWage.setPaymentType(com.xero.models.payrolluk.SalaryAndWage.PaymentTypeEnum.SALARY);
                 
-                com.xero.models.payrolluk.SalaryAndWageObject createdSalaryAndWages = payrollUkApi.createEmployeeSalaryAndWage(accessToken, xeroTenantId, employeeID, newSalaryAndWage);
+                com.xero.models.payrolluk.SalaryAndWageObject createdSalaryAndWages = payrollUkApi.createEmployeeSalaryAndWage(accessToken, xeroTenantId, employeeID, newSalaryAndWage, null);
                 messages.add("CREATED Salary and Wages found Status: " + createdSalaryAndWages.getSalaryAndWages().getStatus() );
                 
                 // GET Create Salary And Wages for UK Payroll
@@ -2473,7 +2458,7 @@ public class AuthenticatedResource extends HttpServlet {
                 upSalaryAndWage.setStatus(com.xero.models.payrolluk.SalaryAndWage.StatusEnum.ACTIVE);
                 upSalaryAndWage.setPaymentType(com.xero.models.payrolluk.SalaryAndWage.PaymentTypeEnum.SALARY);
                 
-                com.xero.models.payrolluk.SalaryAndWageObject updatedSalaryAndWages = payrollUkApi.updateEmployeeSalaryAndWage(accessToken, xeroTenantId, employeeID, salaryAndWagesId, upSalaryAndWage);
+                com.xero.models.payrolluk.SalaryAndWageObject updatedSalaryAndWages = payrollUkApi.updateEmployeeSalaryAndWage(accessToken, xeroTenantId, employeeID, salaryAndWagesId, upSalaryAndWage, null);
                 messages.add("UPDATED Salary and Wages found Status: " + updatedSalaryAndWages.getSalaryAndWages().getStatus() );
                 
                 payrollUkApi.deleteEmployeeSalaryAndWage(accessToken, xeroTenantId, employeeID, salaryAndWagesId);
@@ -2509,7 +2494,7 @@ public class AuthenticatedResource extends HttpServlet {
                 com.xero.models.payrolluk.PayRun payRun = new com.xero.models.payrolluk.PayRun();
                 LocalDate paymentDate = LocalDate.of(2020, Month.MAY, 01);
                 payRun.setPaymentDate(paymentDate);
-                com.xero.models.payrolluk.PayRunObject upPayRuns = payrollUkApi.updatePayRun(accessToken, xeroTenantId, payRunID, payRun);
+                com.xero.models.payrolluk.PayRunObject upPayRuns = payrollUkApi.updatePayRun(accessToken, xeroTenantId, payRunID, payRun, null);
                 messages.add("UPDATE PayRun found Status: " + payRuns.getPayRuns().get(0).getPayRunStatus() );            
                 
             } catch (XeroBadRequestException e) {
@@ -2668,7 +2653,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newEmployees.add(newEmployee);
                 
                    
-                com.xero.models.payrollau.Employees empCreated = payrollAuApi.createEmployee(accessToken, xeroTenantId, newEmployees);
+                com.xero.models.payrollau.Employees empCreated = payrollAuApi.createEmployee(accessToken, xeroTenantId, newEmployees, null);
                 messages.add("Employee created with Date of Birth: " + empCreated.getEmployees().get(0).getDateOfBirthAsDate());
                 
                 
@@ -2738,7 +2723,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newLeaveApplications.add(newLeaveApplication2);
                 */
                 
-                LeaveApplications createdLeaveApplications = payrollAuApi.createLeaveApplication(accessToken, xeroTenantId, newLeaveApplications);
+                LeaveApplications createdLeaveApplications = payrollAuApi.createLeaveApplication(accessToken, xeroTenantId, newLeaveApplications, null);
                
                 // UPDATE Leave Application
                 /*
@@ -2808,7 +2793,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newEarningsRates.add(newEarningsRate);
                 newPayItem.setEarningsRates(newEarningsRates);
            
-                PayItems createdPayItems = payrollAuApi.createPayItem(accessToken, xeroTenantId, newPayItem);
+                PayItems createdPayItems = payrollAuApi.createPayItem(accessToken, xeroTenantId, newPayItem, null);
                 //messages.add("CREATED PayItems rate:"      + createdPayItems.getPayItems().getEarningsRates().get(0).getRatePerUnit()  );
                 
              } catch (XeroBadRequestException e) {
@@ -2859,7 +2844,7 @@ public class AuthenticatedResource extends HttpServlet {
 //                
                 List<PayrollCalendar> prCalendars= new ArrayList<>();
                 prCalendars.add(prCalendar);
-                PayrollCalendars createdPayrollCalendar = payrollAuApi.createPayrollCalendar(accessToken, xeroTenantId, prCalendars);
+                PayrollCalendars createdPayrollCalendar = payrollAuApi.createPayrollCalendar(accessToken, xeroTenantId, prCalendars, null);
            
             } catch (XeroBadRequestException e) {
                 this.addBadRequest(e, messages); 
@@ -2903,7 +2888,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newPayRun.setPayrollCalendarID(payRunPayrollCalendarId);
                 newPayRun.setPayRunStatus(PayRunStatus.DRAFT);
                 newPayRuns.add(newPayRun);
-                PayRuns createdPayRun = payrollAuApi.createPayRun(accessToken, xeroTenantId, newPayRuns);
+                PayRuns createdPayRun = payrollAuApi.createPayRun(accessToken, xeroTenantId, newPayRuns, null);
                 payRunId = createdPayRun.getPayRuns().get(0).getPayRunID();
                 messages.add("CREATE PayRuns - ID:" + createdPayRun.getPayRuns().get(0).getPayRunID() );
                 
@@ -2914,7 +2899,7 @@ public class AuthenticatedResource extends HttpServlet {
                
                 upPayRun.setPayRunStatus(PayRunStatus.POSTED);
                 upPayRuns.add(upPayRun);
-                PayRuns updatedPayRun = payrollAuApi.updatePayRun(accessToken, xeroTenantId, payRunId, upPayRuns);
+                PayRuns updatedPayRun = payrollAuApi.updatePayRun(accessToken, xeroTenantId, payRunId, upPayRuns, null);
              
             } catch (XeroBadRequestException e) {
                 this.addBadRequest(e, messages); 
@@ -2966,7 +2951,7 @@ public class AuthenticatedResource extends HttpServlet {
                  payslipLines.addDeductionLinesItem(deductionLine);
                  payslipObjectArray.add(payslipLines);
                 
-                 com.xero.models.payrollau.Payslips updatedPaySlip = payrollAuApi.updatePayslip(accessToken, xeroTenantId, paySlipId, payslipObjectArray);
+                 com.xero.models.payrollau.Payslips updatedPaySlip = payrollAuApi.updatePayslip(accessToken, xeroTenantId, paySlipId, payslipObjectArray, null);
                  messages.add("UPDATED PaySlip - Name:" + updatedPaySlip.getPayslips().get(0).getLastName() );
                  
              } catch (XeroBadRequestException e) {
@@ -3018,7 +3003,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newSuperFund.setType(SuperFundType.REGULATED);
                 newSuperFund.setUSI("PTC0133AU");
                 newSuperFunds.add(newSuperFund);
-                SuperFunds createdSuperfunds = payrollAuApi.createSuperfund(accessToken, xeroTenantId, newSuperFunds);  
+                SuperFunds createdSuperfunds = payrollAuApi.createSuperfund(accessToken, xeroTenantId, newSuperFunds, null);  
                 messages.add("CREATE SuperFunds - Account Name:" + createdSuperfunds.getSuperFunds().get(0).getAccountName() );
           
                 // UDPATE SuperFunds     
@@ -3027,7 +3012,7 @@ public class AuthenticatedResource extends HttpServlet {
                 upSuperFund.setName("Nice" + this.loadRandomNum());
                 upSuperFund.setType(SuperFundType.REGULATED);
                 upSuperFunds.add(upSuperFund);
-                SuperFunds updatedSuperfunds = payrollAuApi.updateSuperfund(accessToken, xeroTenantId, superfundID, upSuperFunds);                    
+                SuperFunds updatedSuperfunds = payrollAuApi.updateSuperfund(accessToken, xeroTenantId, superfundID, upSuperFunds, null);                    
                 messages.add("UPDATED SuperFunds - Account Name:" + updatedSuperfunds.getSuperFunds().get(0).getAccountName() );
             
                 // GET one SuperFund
@@ -3118,7 +3103,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newTimesheet.setTimesheetLines(timesheetLines);
                 newTimesheets.add(newTimesheet);
                 
-                Timesheets createdTimesheets = payrollAuApi.createTimesheet(accessToken, xeroTenantId, newTimesheets);
+                Timesheets createdTimesheets = payrollAuApi.createTimesheet(accessToken, xeroTenantId, newTimesheets, null);
                 messages.add("CREATED  Timesheets - ID:" + createdTimesheets.getTimesheets().get(0).getTimesheetID() );                
                 UUID timesheetId = createdTimesheets.getTimesheets().get(0).getTimesheetID();
                 
@@ -3129,7 +3114,7 @@ public class AuthenticatedResource extends HttpServlet {
                 upTimesheet = createdTimesheets.getTimesheets().get(0);    
                 upTimesheet.setStatus(TimesheetStatus.APPROVED);
                 upTimesheets.add(upTimesheet);
-                Timesheets updatedTimesheets = payrollAuApi.updateTimesheet(accessToken, xeroTenantId, timesheetId, upTimesheets);
+                Timesheets updatedTimesheets = payrollAuApi.updateTimesheet(accessToken, xeroTenantId, timesheetId, upTimesheets, null);
                 System.out.println(updatedTimesheets.toString());
             
             } catch (XeroBadRequestException e) {
@@ -3193,7 +3178,7 @@ public class AuthenticatedResource extends HttpServlet {
             newInvoices.addInvoicesItem(myInvoice);
             newInvoices.addInvoicesItem(myInvoice);
 
-            Invoices newInvoice = accountingApi.createInvoices(accessToken, xeroTenantId, newInvoices,null,4);
+            Invoices newInvoice = accountingApi.createInvoices(accessToken, xeroTenantId, newInvoices,null,4, null);
             System.out.println(newInvoice.toString());
 
             /*
@@ -3266,7 +3251,7 @@ public class AuthenticatedResource extends HttpServlet {
                 //acct.setCode("Hello" + loadRandomNum());
                 acct.setDescription("Foo boo");
                 acct.setType(com.xero.models.accounting.AccountType.EXPENSE);
-                Accounts newAccount = accountingApi.createAccount(accessToken, xeroTenantId, acct);
+                Accounts newAccount = accountingApi.createAccount(accessToken, xeroTenantId, acct, null);
                 messages.add("Create a new Account - Name : " + newAccount.getAccounts().get(0).getName()  + " Description : " + newAccount.getAccounts().get(0).getDescription() + "");
                 //UUID accountID = newAccount.getAccounts().get(0).getAccountID();
 
@@ -3276,7 +3261,7 @@ public class AuthenticatedResource extends HttpServlet {
                 bankAcct.setCode("12" + loadRandomNum());
                 bankAcct.setType(com.xero.models.accounting.AccountType.BANK);
                 bankAcct.setBankAccountNumber("1234" + loadRandomNum());
-                Accounts newBankAccount = accountingApi.createAccount(accessToken, xeroTenantId, bankAcct);
+                Accounts newBankAccount = accountingApi.createAccount(accessToken, xeroTenantId, bankAcct, null);
                 messages.add("Create Bank Account - Name : " + newBankAccount.getAccounts().get(0).getName());
 
                 // GET BANK account
@@ -3294,7 +3279,7 @@ public class AuthenticatedResource extends HttpServlet {
                 upAcct.setCode("123");
                 upAccts.addAccountsItem(upAcct);
                 
-                Accounts updateAccount = accountingApi.updateAccount(accessToken, xeroTenantId, accountID, upAccts);
+                Accounts updateAccount = accountingApi.updateAccount(accessToken, xeroTenantId, accountID, upAccts, null);
                 messages.add("Update Account - Name : " + updateAccount.getAccounts().get(0).getName()
                         + " Description : " + updateAccount.getAccounts().get(0).getDescription() + "");
 
@@ -3562,7 +3547,7 @@ public class AuthenticatedResource extends HttpServlet {
                     UUID accountID = myAccounts.getAccounts().get(0).getAccountID();
                     String accountName = myAccounts.getAccounts().get(0).getName();
                     Attachments createdAttachments = accountingApi.createAccountAttachmentByFileName(accessToken,
-                            xeroTenantId, accountID, newFileName, bytes);
+                            xeroTenantId, accountID, newFileName, bytes, null);
                     messages.add("Attachment to Name: " + accountName + " Account ID: " + accountID
                             + " attachment - ID: " + createdAttachments.getAttachments().get(0).getAttachmentID());
                 }
@@ -3587,7 +3572,7 @@ public class AuthenticatedResource extends HttpServlet {
                     UUID banktransactionID = myBanktransactions.getBankTransactions().get(0).getBankTransactionID();
                     Attachments createdBanktransationAttachments = accountingApi
                             .createBankTransactionAttachmentByFileName(accessToken, xeroTenantId, banktransactionID,
-                                    newFileName, bytes);
+                                    newFileName, bytes, null);
                     messages.add("Attachment to BankTransaction ID: " + banktransactionID + " attachment - ID: "
                             + createdBanktransationAttachments.getAttachments().get(0).getAttachmentID());
                 }
@@ -3610,7 +3595,7 @@ public class AuthenticatedResource extends HttpServlet {
                 if (myBankTransfer.getBankTransfers().size() > 0) {
                     UUID bankTransferID = myBankTransfer.getBankTransfers().get(0).getBankTransferID();
                     Attachments createdBankTransferAttachments = accountingApi.createBankTransferAttachmentByFileName(
-                            accessToken, xeroTenantId, bankTransferID, newFileName, bytes);
+                            accessToken, xeroTenantId, bankTransferID, newFileName, bytes, null);
                     messages.add("Attachment to BankTransfer ID: " + bankTransferID + " attachment - ID: "
                             + createdBankTransferAttachments.getAttachments().get(0).getAttachmentID());
                 }
@@ -3633,7 +3618,7 @@ public class AuthenticatedResource extends HttpServlet {
                 if (contactsWhere.getContacts().size() > 0) {
                     UUID contactID = contactsWhere.getContacts().get(0).getContactID();
                     Attachments createdContactAttachments = accountingApi.createContactAttachmentByFileName(accessToken,
-                            xeroTenantId, contactID, newFileName, bytes);
+                            xeroTenantId, contactID, newFileName, bytes, null);
                     messages.add("Attachment to Contact ID: " + contactID + " attachment - ID: "
                             + createdContactAttachments.getAttachments().get(0).getAttachmentID());
                 }
@@ -3657,7 +3642,7 @@ public class AuthenticatedResource extends HttpServlet {
                 if (myCreditNotes.getCreditNotes().size() > 0) {
                     UUID creditNoteID = myCreditNotes.getCreditNotes().get(0).getCreditNoteID();
                     Attachments createdCreditNoteAttachments = accountingApi.createCreditNoteAttachmentByFileName(
-                            accessToken, xeroTenantId, creditNoteID, newFileName, bytes,false);
+                            accessToken, xeroTenantId, creditNoteID, newFileName, bytes,false, null);
                     messages.add("Attachment to Credit Notes ID: " + creditNoteID + " attachment - ID: "
                             + createdCreditNoteAttachments.getAttachments().get(0).getAttachmentID());
                 }
@@ -3679,7 +3664,7 @@ public class AuthenticatedResource extends HttpServlet {
                 if (myInvoices.getInvoices().size() > 0) {
                     UUID invoiceID = myInvoices.getInvoices().get(0).getInvoiceID();
                     Attachments createdInvoiceAttachments = accountingApi.createInvoiceAttachmentByFileName(accessToken,
-                            xeroTenantId, invoiceID, newFileName, bytes,false);
+                            xeroTenantId, invoiceID, newFileName, bytes,false, null);
                     messages.add("Attachment to Invoice ID: " + invoiceID + " attachment - ID: "
                             + createdInvoiceAttachments.getAttachments().get(0).getAttachmentID());
                 }
@@ -3705,7 +3690,7 @@ public class AuthenticatedResource extends HttpServlet {
                 if (myManualJournals.getManualJournals().size() > 0) {
                     UUID manualJournalID = myManualJournals.getManualJournals().get(0).getManualJournalID();
                     Attachments createdManualJournalAttachments = accountingApi.createManualJournalAttachmentByFileName(
-                            accessToken, xeroTenantId, manualJournalID, newFileName, bytes);
+                            accessToken, xeroTenantId, manualJournalID, newFileName, bytes, null);
                     messages.add("Attachment to Manual Journal ID: " + manualJournalID + " attachment - ID: "
                             + createdManualJournalAttachments.getAttachments().get(0).getAttachmentID());
                 }
@@ -3738,7 +3723,7 @@ public class AuthenticatedResource extends HttpServlet {
                     UUID quoteID = quotes.getQuotes().get(0).getQuoteID();
                     Attachments createdQuoteAttachments = accountingApi
                             .createQuoteAttachmentByFileName(accessToken, xeroTenantId, quoteID,
-                                    newFileName, bytes);
+                                    newFileName, bytes, null);
                     messages.add("Attachment to Quote ID: " + quoteID + " attachment - ID: "
                             + createdQuoteAttachments.getAttachments().get(0).getAttachmentID());
                 }
@@ -3761,7 +3746,7 @@ public class AuthenticatedResource extends HttpServlet {
                 if (myReceipts.getReceipts().size() > 0) {
                     UUID receiptID = myReceipts.getReceipts().get(0).getReceiptID();
                     Attachments createdReceiptsAttachments = accountingApi.createReceiptAttachmentByFileName(
-                            accessToken, xeroTenantId, receiptID, newFileName, bytes);
+                            accessToken, xeroTenantId, receiptID, newFileName, bytes, null);
                     messages.add("Attachment to Receipt ID: " + receiptID + " attachment - ID: "
                             + createdReceiptsAttachments.getAttachments().get(0).getAttachmentID());
                 }
@@ -3785,7 +3770,7 @@ public class AuthenticatedResource extends HttpServlet {
                     UUID repeatingInvoiceID = myRepeatingInvoices.getRepeatingInvoices().get(0).getRepeatingInvoiceID();
                     Attachments createdRepeatingInvoiceAttachments = accountingApi
                             .createRepeatingInvoiceAttachmentByFileName(accessToken, xeroTenantId, repeatingInvoiceID,
-                                    newFileName, bytes);
+                                    newFileName, bytes, null);
                     messages.add("Attachment to Repeating Invoices ID: " + repeatingInvoiceID + " attachment - ID: "
                             + createdRepeatingInvoiceAttachments.getAttachments().get(0).getAttachmentID());
                 }
@@ -3817,7 +3802,7 @@ public class AuthenticatedResource extends HttpServlet {
                     bankTransfer.setAmount(50.00);
                     BankTransfers newBTs = new BankTransfers();
                     newBTs.addBankTransfersItem(bankTransfer);
-                    BankTransfers newBankTranfer = accountingApi.createBankTransfer(accessToken, xeroTenantId, newBTs);
+                    BankTransfers newBankTranfer = accountingApi.createBankTransfer(accessToken, xeroTenantId, newBTs, null);
                     messages.add("Get a one Bank Transfer - amount : "
                             + newBankTranfer.getBankTransfers().get(0).getAmount());
 
@@ -3845,7 +3830,7 @@ public class AuthenticatedResource extends HttpServlet {
                     historyRecord = new HistoryRecord();
                     historyRecord.setDetails("This is a sample history note");
                     historyRecords.addHistoryRecordsItem(historyRecord); HistoryRecords newHr =
-                    accountingApi.createBankTransferHistoryRecord(accessToken, xeroTenantId, bankTransferId,historyRecords);
+                    accountingApi.createBankTransferHistoryRecord(accessToken, xeroTenantId, bankTransferId,historyRecords, null);
                     messages.add("Get a one Bank Transfer History Record - details :" +
                     newHr.getHistoryRecords().get(0).getDetails());
                     
@@ -3900,14 +3885,14 @@ public class AuthenticatedResource extends HttpServlet {
                     bts.addBankTransactionsItem(bt);
                     
                     // CREATE MULTIPLE TRANSACTIONS
-                    BankTransactions newBankTransactions = accountingApi.createBankTransactions(accessToken, xeroTenantId, bts, summarizeErrors, unitdp);
+                    BankTransactions newBankTransactions = accountingApi.createBankTransactions(accessToken, xeroTenantId, bts, summarizeErrors, unitdp, null);
                     messages.add("Create new BankTransactions: count: " + newBankTransactions.getBankTransactions().size());
                     
                     // MODIFY on Transaction to force and ERROR to summarizeErrors
                     newBankTransactions.getBankTransactions().get(0).getLineItems().get(0).setAccountCode("999999");
                     
                     // UPDATE MULTIPLE TRANSACTIONS
-                    BankTransactions updatedBankTransaction = accountingApi.updateOrCreateBankTransactions(accessToken, xeroTenantId,  newBankTransactions, false, null);
+                    BankTransactions updatedBankTransaction = accountingApi.updateOrCreateBankTransactions(accessToken, xeroTenantId,  newBankTransactions, false, null, null);
                     messages.add("Update multiple BankTransaction : amount:" + updatedBankTransaction.getBankTransactions().get(0).getTotal());
 
                     // GET all Bank Transaction
@@ -3926,7 +3911,7 @@ public class AuthenticatedResource extends HttpServlet {
                         newBankTransactions.getBankTransactions().get(0).setSubTotal(null);
                         newBankTransactions.getBankTransactions().get(0).setTotal(null);
                         newBankTransactions.getBankTransactions().get(0).setReference("You just updated");
-                        BankTransactions updateBankTransaction = accountingApi.updateBankTransaction(accessToken, xeroTenantId, newBankTransactions.getBankTransactions().get(0).getBankTransactionID(), newBankTransactions,unitdp);
+                        BankTransactions updateBankTransaction = accountingApi.updateBankTransaction(accessToken, xeroTenantId, newBankTransactions.getBankTransactions().get(0).getBankTransactionID(), newBankTransactions,unitdp, null);
                         messages.add("Update new BankTransaction : reference:"
                                 + updateBankTransaction.getBankTransactions().get(0).getReference());
     
@@ -3935,7 +3920,7 @@ public class AuthenticatedResource extends HttpServlet {
                         .setStatus(com.xero.models.accounting.BankTransaction.StatusEnum.DELETED);
                         BankTransactions deletedBankTransaction = accountingApi.updateBankTransaction(accessToken,
                                 xeroTenantId, newBankTransactions.getBankTransactions().get(0).getBankTransactionID(),
-                                newBankTransactions,unitdp);
+                                newBankTransactions,unitdp, null);
                         messages.add("Deleted new Bank Transaction : Status:"+ deletedBankTransaction.getBankTransactions().get(0).getStatus());
     
                         // GET Bank Transaction History
@@ -4033,7 +4018,7 @@ public class AuthenticatedResource extends HttpServlet {
                         createBatchPayments.addBatchPaymentsItem(createBatchPayment);
         
                         BatchPayments newBatchPayments = accountingApi.createBatchPayment(accessToken, xeroTenantId,
-                                createBatchPayments, false);
+                                createBatchPayments, false, null);
                         messages.add(
                                 "Create BatchPayments - ID : " + newBatchPayments.getBatchPayments().get(0).getTotalAmount());
         
@@ -4081,7 +4066,7 @@ public class AuthenticatedResource extends HttpServlet {
                 PaymentService btPaymentService = new PaymentService();
                 btPaymentService.setPaymentServiceType("Custom");
                 btPaymentService.setPaymentServiceID(paymentServiceID); PaymentServices
-                createdPaymentService = accountingApi.createBrandingThemePaymentServices(accessToken, xeroTenantId, btID, btPaymentService);
+                createdPaymentService = accountingApi.createBrandingThemePaymentServices(accessToken, xeroTenantId, btID, paymentServices, null);
                 messages.add("Created payment services for Branding Themes - name : " + createdPaymentService.getPaymentServices().get(0).getPaymentServiceName());
                 
                 // GET Payment Services for a single Branding Theme
@@ -4159,13 +4144,13 @@ public class AuthenticatedResource extends HttpServlet {
                 contacts.addContactsItem(contact3);
 
                 //CREATE MULTIPLE CONTACTS
-                Contacts newContacts = accountingApi.createContacts(accessToken, xeroTenantId, contacts, true);
+                Contacts newContacts = accountingApi.createContacts(accessToken, xeroTenantId, contacts, true, null);
                 messages.add("Create multiple Contacts - count : " + newContacts.getContacts().size());
 
                 // MODIFY One contact to force error and test SummarizeErrors
                 newContacts.getContacts().get(0).setSalesDefaultAccountCode("001");                
                 // UPDATE MULTIPLE CONTACTS                
-                Contacts updatedContacts = accountingApi.updateOrCreateContacts(accessToken, xeroTenantId, newContacts, false);
+                Contacts updatedContacts = accountingApi.updateOrCreateContacts(accessToken, xeroTenantId, newContacts, false, null);
                 messages.add("Update multiple Contact - Name : " + updatedContacts.getContacts().get(0).getName());
 
                 // GET all contact
@@ -4205,7 +4190,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newHistoryRecords.addHistoryRecordsItem(newHistoryRecord);
 
                 HistoryRecords newInvoiceHistory = accountingApi.createContactHistory(accessToken, xeroTenantId,
-                        oneContactID, newHistoryRecords);
+                        oneContactID, newHistoryRecords, null);
                 messages.add("Contact History - note added to  : "
                         + newInvoiceHistory.getHistoryRecords().get(0).getDetails());
                  
@@ -4233,14 +4218,14 @@ public class AuthenticatedResource extends HttpServlet {
                 cg.setName("NewGroup" + loadRandomNum());
                 newCGs.addContactGroupsItem(cg);
                 
-                ContactGroups newContactGroup = accountingApi.createContactGroup(accessToken, xeroTenantId, newCGs);
+                ContactGroups newContactGroup = accountingApi.createContactGroup(accessToken, xeroTenantId, newCGs, null);
                 messages.add("Create a ContactGroup - Name : " + newContactGroup.getContactGroups().get(0).getName());
 
                 // UPDATE Contact group
                 newCGs.getContactGroups().get(0).setName("Old Group" + loadRandomNum());
                 UUID newContactGroupID = newContactGroup.getContactGroups().get(0).getContactGroupID();
                 ContactGroups updateContactGroup = accountingApi.updateContactGroup(accessToken, xeroTenantId,
-                        newContactGroupID, newCGs);
+                        newContactGroupID, newCGs, null);
                 messages.add(
                         "Update a ContactGroup - Name : " + updateContactGroup.getContactGroups().get(0).getName());
 
@@ -4257,7 +4242,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newCGs.getContactGroups().get(0).setStatus(com.xero.models.accounting.ContactGroup.StatusEnum.DELETED);
                 UUID contactGroupID = newContactGroup.getContactGroups().get(0).getContactGroupID();
                 ContactGroups deletedContactGroup = accountingApi.updateContactGroup(accessToken, xeroTenantId,
-                        contactGroupID, contactGroups);
+                        contactGroupID, contactGroups, null);
                 messages.add(
                         "Delete a ContactGroup - Name : " + deletedContactGroup.getContactGroups().get(0).getName());
 
@@ -4283,7 +4268,7 @@ public class AuthenticatedResource extends HttpServlet {
                 ContactGroup cg = new ContactGroup();
                 cg.setName("NewGroup" + loadRandomNum());
                 newCGs.addContactGroupsItem(cg);
-                ContactGroups newContactGroup = accountingApi.createContactGroup(accessToken, xeroTenantId, newCGs);
+                ContactGroups newContactGroup = accountingApi.createContactGroup(accessToken, xeroTenantId, newCGs, null);
 
                 Contacts allContacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
 
@@ -4293,7 +4278,7 @@ public class AuthenticatedResource extends HttpServlet {
                 contactList.addContactsItem(allContacts.getContacts().get(1));
                 UUID contactGroupID = newContactGroup.getContactGroups().get(0).getContactGroupID();
                 Contacts addContacts = accountingApi.createContactGroupContacts(accessToken, xeroTenantId,
-                        contactGroupID, contactList);
+                        contactGroupID, contactList, null);
                 messages.add("Add 2 Contacts to Contact Group - Total : " + addContacts.getContacts().size());
 
                 // DELETE all Contacts in Group
@@ -4314,7 +4299,7 @@ public class AuthenticatedResource extends HttpServlet {
     
                     UUID newContactGroupID = newContactGroup.getContactGroups().get(0).getContactGroupID();
                     Contacts addContacts2 = accountingApi.createContactGroupContacts(accessToken, xeroTenantId,
-                            newContactGroupID, contactList2);
+                            newContactGroupID, contactList2, null);
                     messages.add("Add 2 Contacts to Contact Group - Total : " + addContacts2.getContacts().size());
     
                     // DELETE Single CONACTS
@@ -4392,14 +4377,14 @@ public class AuthenticatedResource extends HttpServlet {
                 newCNs.addCreditNotesItem(cn);
                 
                 // CREATE MULTIPLE CREDIT NOTES
-                CreditNotes newCreditNotes = accountingApi.createCreditNotes(accessToken, xeroTenantId, newCNs,summarizeErrors,unitdp);
+                CreditNotes newCreditNotes = accountingApi.createCreditNotes(accessToken, xeroTenantId, newCNs,summarizeErrors,unitdp, null);
                 messages.add("Create multiple CreditNotes - count : " + newCreditNotes.getCreditNotes().size());
 
                 // MODIFY credit note and FORCE error to test summarizeErrors
                 newCreditNotes.getCreditNotes().get(0).getLineItems().get(0).setAccountCode("4444444");
                 
                 // UPDATE MULTIPLE CREDIT NOTES
-                CreditNotes newCreditNote = accountingApi.updateOrCreateCreditNotes(accessToken, xeroTenantId, newCreditNotes, summarizeErrors,unitdp);
+                CreditNotes newCreditNote = accountingApi.updateOrCreateCreditNotes(accessToken, xeroTenantId, newCreditNotes, summarizeErrors,unitdp, null);
                 messages.add("Create a CreditNote - Amount : " + newCreditNote.getCreditNotes().get(0).getTotal());
                 UUID newCreditNoteId = newCreditNote.getCreditNotes().get(0).getCreditNoteID();
 
@@ -4416,7 +4401,7 @@ public class AuthenticatedResource extends HttpServlet {
                 // UPDATE Credit Note
                 newCNs.getCreditNotes().get(0).setStatus(com.xero.models.accounting.CreditNote.StatusEnum.AUTHORISED);
                 CreditNotes updatedCreditNote = accountingApi.updateCreditNote(accessToken, xeroTenantId,
-                        newCreditNoteId, newCNs,unitdp);
+                        newCreditNoteId, newCNs,unitdp, null);
                 messages.add("Update a CreditNote - Ref : " + updatedCreditNote.getCreditNotes().get(0).getReference());
 
                 // Allocate Credit Note
@@ -4437,7 +4422,7 @@ public class AuthenticatedResource extends HttpServlet {
                     allocations.addAllocationsItem(allocation);
                     where = null;
                     Allocations allocatedCreditNote = accountingApi.createCreditNoteAllocation(accessToken, xeroTenantId,
-                            newCreditNoteId, allocations, false);
+                            newCreditNoteId, allocations, false, null);
                     messages.add("Update CreditNote Allocation - Amount : "
                             + allocatedCreditNote.getAllocations().get(0).getAmount());
                 } else {
@@ -4455,7 +4440,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newHistoryRecords.addHistoryRecordsItem(newHistoryRecord);
 
                 HistoryRecords newHistory = accountingApi.createCreditNoteHistory(accessToken, xeroTenantId,
-                        creditNoteID, newHistoryRecords);
+                        creditNoteID, newHistoryRecords, null);
                 messages.add("History - note added to  : " + newHistory.getHistoryRecords().get(0).getDetails());
             } catch (XeroBadRequestException e) {
                 this.addBadRequest(e, messages); 
@@ -4482,7 +4467,7 @@ public class AuthenticatedResource extends HttpServlet {
 
                 // Create New
                  Currency curr = new Currency(); curr.setCode(com.xero.models.accounting.CurrencyCode.SGD); Currencies
-                 newCurrency = accountingApi.createCurrency(accessToken, xeroTenantId, curr);
+                 newCurrency = accountingApi.createCurrency(accessToken, xeroTenantId, curr, null);
                  messages.add("New Currencies - Code : " +
                  newCurrency.getCurrencies().get(0).getCode());
                  
@@ -4513,7 +4498,7 @@ public class AuthenticatedResource extends HttpServlet {
                 emps.addEmployeesItem(employee1);
                 emps.addEmployeesItem(employee2);
 
-                Employees newEmployees = accountingApi.updateOrCreateEmployees(accessToken, xeroTenantId, emps, false);
+                Employees newEmployees = accountingApi.updateOrCreateEmployees(accessToken, xeroTenantId, emps, false, null);
                 messages.add("Create multiple Employees - count : " + newEmployees.getEmployees().size());
             } catch (XeroBadRequestException e) {
                 this.addBadRequest(e, messages); 
@@ -4595,7 +4580,7 @@ public class AuthenticatedResource extends HttpServlet {
                         receipt.contact(useContact);
                         receipt.setStatus(com.xero.models.accounting.Receipt.StatusEnum.DRAFT);
                         receipts.addReceiptsItem(receipt);
-                        Receipts newReceipts = accountingApi.createReceipt(accessToken, xeroTenantId, receipts,unitdp);
+                        Receipts newReceipts = accountingApi.createReceipt(accessToken, xeroTenantId, receipts,unitdp, null);
     
                         // CREATE EXPENSE CLAIM
                         ExpenseClaim expenseClaim = new ExpenseClaim();
@@ -4611,13 +4596,13 @@ public class AuthenticatedResource extends HttpServlet {
                         expenseClaim.setStatus(com.xero.models.accounting.ExpenseClaim.StatusEnum.SUBMITTED);
                         createExpenseClaims.addExpenseClaimsItem(expenseClaim);
     
-                        ExpenseClaims newExpenseClaim = accountingApi.createExpenseClaims(accessToken, xeroTenantId, createExpenseClaims);
+                        ExpenseClaims newExpenseClaim = accountingApi.createExpenseClaims(accessToken, xeroTenantId, createExpenseClaims, null);
                         messages.add("Create new Expense Claim - Status : "  + newExpenseClaim.getExpenseClaims().get(0).getStatus());
     
                         // UPDATE EXPENSE CLAIM
                         newExpenseClaim.getExpenseClaims().get(0).setStatus(com.xero.models.accounting.ExpenseClaim.StatusEnum.AUTHORISED);
                         UUID expenseClaimID = newExpenseClaim.getExpenseClaims().get(0).getExpenseClaimID();
-                        ExpenseClaims updateExpenseClaims = accountingApi.updateExpenseClaim(accessToken, xeroTenantId, expenseClaimID, newExpenseClaim);
+                        ExpenseClaims updateExpenseClaims = accountingApi.updateExpenseClaim(accessToken, xeroTenantId, expenseClaimID, newExpenseClaim, null);
                         messages.add("Update new Expense Claim - Status : " + updateExpenseClaims.getExpenseClaims().get(0).getStatus());
     
                         // Get All Expense Claims
@@ -4630,7 +4615,7 @@ public class AuthenticatedResource extends HttpServlet {
     
                         // VOID EXPENSE CLAIM
                         newExpenseClaim.getExpenseClaims().get(0).setStatus(com.xero.models.accounting.ExpenseClaim.StatusEnum.VOIDED);
-                        ExpenseClaims voidExpenseClaims = accountingApi.updateExpenseClaim(accessToken, xeroTenantId, expenseClaimID, newExpenseClaim);
+                        ExpenseClaims voidExpenseClaims = accountingApi.updateExpenseClaim(accessToken, xeroTenantId, expenseClaimID, newExpenseClaim, null);
                         messages.add("Void new Expense Claim - Status : "
                                 + voidExpenseClaims.getExpenseClaims().get(0).getStatus());
     
@@ -4741,7 +4726,7 @@ public class AuthenticatedResource extends HttpServlet {
                         // CREATE multiple INVOICES
                         Invoices myNewInvoices = new Invoices();
                         myNewInvoices.addInvoicesItem(myInvoice);
-                        Invoices newInvoices = accountingApi.createInvoices(accessToken, xeroTenantId, myNewInvoices,false,unitdp);
+                        Invoices newInvoices = accountingApi.createInvoices(accessToken, xeroTenantId, myNewInvoices,false,unitdp, null);
                         messages.add("Create multiple invoice - count : " + newInvoices.getInvoices().size());
             
                         //MODIFY to force ERROR and test SummarizeError
@@ -4749,7 +4734,7 @@ public class AuthenticatedResource extends HttpServlet {
                         //newInvoices.getInvoices().add(myInvoice);
             
                         // CREATE OR UPDATE multiple INVOICES
-                        Invoices updatedInvoices = accountingApi.updateOrCreateInvoices(accessToken, xeroTenantId, newInvoices, true,unitdp);
+                        Invoices updatedInvoices = accountingApi.updateOrCreateInvoices(accessToken, xeroTenantId, newInvoices, true,unitdp, null);
                         messages.add("Create OR Update invoice - Reference : " + updatedInvoices.getInvoices().get(0).getReference());                        
                         UUID newInvoiceID = newInvoices.getInvoices().get(0).getInvoiceID();
                         /*
@@ -4791,7 +4776,7 @@ public class AuthenticatedResource extends HttpServlet {
             
                         // Email Invoice
                         RequestEmpty empty2 = new RequestEmpty();
-                        accountingApi.emailInvoice(accessToken, xeroTenantId, newInvoiceID, empty2);
+                        accountingApi.emailInvoice(accessToken, xeroTenantId, newInvoiceID, empty2, null);
                         messages.add("Email invoice - no content in response");
             
                         // Get Invoice History
@@ -4804,7 +4789,7 @@ public class AuthenticatedResource extends HttpServlet {
                         newHistoryRecord.setDetails("Hello World");
                         newHistoryRecords.addHistoryRecordsItem(newHistoryRecord);
                         HistoryRecords newHistory = accountingApi.createInvoiceHistory(accessToken, xeroTenantId, newInvoiceID,
-                                newHistoryRecords);
+                                newHistoryRecords, null);
                         messages.add("History - note added to  : " + newHistory.getHistoryRecords().get(0).getDetails());
             
                         // CREATE invoice attachment
@@ -4816,7 +4801,7 @@ public class AuthenticatedResource extends HttpServlet {
                                 "/Users/sid.maestre/eclipse-workspace/xero-sdk-oauth2-dev-01/resources/youngsid.jpg");
                         String newFileName = requestBodyFile.getName();
             
-                        Attachments createdAttachments = accountingApi.createInvoiceAttachmentByFileName(accessToken, xeroTenantId, invoiceID, newFileName, requestBodyFile, null);
+                        Attachments createdAttachments = accountingApi.createInvoiceAttachmentByFileName(accessToken, xeroTenantId, invoiceID, newFileName, requestBodyFile, null, null);
                         messages.add("Attachment to Invoice complete - ID: "
                                 + createdAttachments.getAttachments().get(0).getAttachmentID());
             
@@ -4888,7 +4873,7 @@ public class AuthenticatedResource extends HttpServlet {
                 myItems.addItemsItem(item2);
 
                 // CREATE Multiple Items
-                Items newItems = accountingApi.createItems(accessToken, xeroTenantId, myItems, false,unitdp);
+                Items newItems = accountingApi.createItems(accessToken, xeroTenantId, myItems, false,unitdp, null);
                 messages.add("Create multiple items - count : " + newItems.getItems().size());
                 UUID newItemId = newItems.getItems().get(0).getItemID();
                 
@@ -5029,7 +5014,7 @@ public class AuthenticatedResource extends HttpServlet {
                 myInvoice.setStatus(com.xero.models.accounting.Invoice.StatusEnum.AUTHORISED);
                 Invoices newInvoices = new Invoices();
                 newInvoices.addInvoicesItem(myInvoice);
-                Invoices newInvoice = accountingApi.createInvoices(accessToken, xeroTenantId, newInvoices, false,unitdp);
+                Invoices newInvoice = accountingApi.createInvoices(accessToken, xeroTenantId, newInvoices, false,unitdp, null);
 
                 UUID sourceTransactionID1 = newInvoice.getInvoices().get(0).getInvoiceID();
                 UUID sourceLineItemID1 = newInvoice.getInvoices().get(0).getLineItems().get(0).getLineItemID();
@@ -5037,7 +5022,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newLinkedTransaction.setSourceTransactionID(sourceTransactionID1);
                 newLinkedTransaction.setSourceLineItemID(sourceLineItemID1);
                 
-                LinkedTransactions createdLinkedTransaction = accountingApi.createLinkedTransaction(accessToken,  xeroTenantId, newLinkedTransaction);
+                LinkedTransactions createdLinkedTransaction = accountingApi.createLinkedTransaction(accessToken,  xeroTenantId, newLinkedTransaction, null);
                 messages.add("TEST Create LinkedTransaction - Status : "
                         + createdLinkedTransaction.getLinkedTransactions().get(0).getStatus());
 
@@ -5047,10 +5032,10 @@ public class AuthenticatedResource extends HttpServlet {
                 contact.setEmailAddress("sid" + loadRandomNum() + "@blah.com");
                 Contacts arrayContacts = new Contacts();
                 arrayContacts.addContactsItem(contact);
-                Contacts newContact = accountingApi.createContacts(accessToken, xeroTenantId, arrayContacts,false);
+                Contacts newContact = accountingApi.createContacts(accessToken, xeroTenantId, arrayContacts,false, null);
                 UUID newContactID = newContact.getContacts().get(0).getContactID();
 
-                Invoices newInvoice2 = accountingApi.createInvoices(accessToken, xeroTenantId, newInvoices, true, 1);
+                Invoices newInvoice2 = accountingApi.createInvoices(accessToken, xeroTenantId, newInvoices, true, 1, null);
 
                 UUID sourceTransactionID2 = newInvoice2.getInvoices().get(0).getInvoiceID();
                 UUID sourceLineItemID2 = newInvoice2.getInvoices().get(0).getLineItems().get(0).getLineItemID();
@@ -5061,7 +5046,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newLinkedTransaction2.setContactID(newContactID);
                 newLinkedTransactions2.addLinkedTransactionsItem(newLinkedTransaction2);
 
-                LinkedTransactions createdLinkedTransaction2 = accountingApi.createLinkedTransaction(accessToken,xeroTenantId, newLinkedTransaction2);
+                LinkedTransactions createdLinkedTransaction2 = accountingApi.createLinkedTransaction(accessToken,xeroTenantId, newLinkedTransaction2, null);
                 messages.add("Create LinkedTransaction 2 - Status : "
                         + createdLinkedTransaction2.getLinkedTransactions().get(0).getStatus());
 
@@ -5080,11 +5065,11 @@ public class AuthenticatedResource extends HttpServlet {
                 newInvoicesAccRec.addInvoicesItem(myInvoiceAccRec);
                 
 
-                Invoices newInvoiceAccRec = accountingApi.createInvoices(accessToken, xeroTenantId, newInvoicesAccRec, true, 1);
+                Invoices newInvoiceAccRec = accountingApi.createInvoices(accessToken, xeroTenantId, newInvoicesAccRec, true, 1, null);
                 UUID sourceTransactionID4 = newInvoiceAccRec.getInvoices().get(0).getInvoiceID();
                 UUID sourceLineItemID4 = newInvoiceAccRec.getInvoices().get(0).getLineItems().get(0).getLineItemID();
 
-                Invoices newInvoice3 = accountingApi.createInvoices(accessToken, xeroTenantId, newInvoices, true, 1);
+                Invoices newInvoice3 = accountingApi.createInvoices(accessToken, xeroTenantId, newInvoices, true, 1, null);
 
                 UUID sourceTransactionID3 = newInvoice3.getInvoices().get(0).getInvoiceID();
                 UUID sourceLineItemID3 = newInvoice3.getInvoices().get(0).getLineItems().get(0).getLineItemID();
@@ -5096,12 +5081,12 @@ public class AuthenticatedResource extends HttpServlet {
                 newLinkedTransaction3.setTargetLineItemID(sourceLineItemID4);
                  
 
-                LinkedTransactions createdLinkedTransaction3 = accountingApi.createLinkedTransaction(accessToken, xeroTenantId, newLinkedTransaction3);
+                LinkedTransactions createdLinkedTransaction3 = accountingApi.createLinkedTransaction(accessToken, xeroTenantId, newLinkedTransaction3, null);
                 messages.add("Create LinkedTransaction 3 - Status : "
                         + createdLinkedTransaction3.getLinkedTransactions().get(0).getStatus());
                 
                 LinkedTransactions createdLinkedTransactionSINGLE = accountingApi.createLinkedTransaction(accessToken,
-                        xeroTenantId, newLinkedTransaction);
+                        xeroTenantId, newLinkedTransaction, null);
                 messages.add("Create LinkedTransaction SINGLE - Status : "
                         + createdLinkedTransactionSINGLE.getLinkedTransactions().get(0).getStatus());
 
@@ -5190,13 +5175,13 @@ public class AuthenticatedResource extends HttpServlet {
                 manualJournals.addManualJournalsItem(manualJournal2);
                 
                 ManualJournals createdManualJournals = accountingApi.createManualJournals(accessToken, xeroTenantId,
-                        manualJournals, false);
+                        manualJournals, false, null);
                 UUID newManualJournalId = createdManualJournals.getManualJournals().get(0).getManualJournalID();
                 messages.add("Create Manual Journal - Narration : "
                         + createdManualJournals.getManualJournals().get(0).getNarration());
 
                 
-                ManualJournals updateOrcreatedManualJournal = accountingApi.updateOrCreateManualJournals(accessToken, xeroTenantId, manualJournals, false);
+                ManualJournals updateOrcreatedManualJournal = accountingApi.updateOrCreateManualJournals(accessToken, xeroTenantId, manualJournals, false, null);
                 messages.add("Create Single Manual Journal - Narration : "
                         + updateOrcreatedManualJournal.getManualJournals().get(0).getNarration());
                 
@@ -5219,7 +5204,7 @@ public class AuthenticatedResource extends HttpServlet {
                 updateManualJournal.setNarration("Hello Xero");
                 updateManualJournals.addManualJournalsItem(updateManualJournal);
                 ManualJournals updatedManualJournal = accountingApi.updateManualJournal(accessToken, xeroTenantId,
-                        newManualJournalId, updateManualJournals);
+                        newManualJournalId, updateManualJournals, null);
                 messages.add("Update Manual Journal - Narration : "
                         + updatedManualJournal.getManualJournals().get(0).getNarration());
 
@@ -5290,7 +5275,7 @@ public class AuthenticatedResource extends HttpServlet {
                     bt.setType(com.xero.models.accounting.BankTransaction.TypeEnum.RECEIVE_OVERPAYMENT);
                     BankTransactions bts = new BankTransactions();
                     bts.addBankTransactionsItem(bt);
-                    BankTransactions newBankTransaction = accountingApi.createBankTransactions(accessToken, xeroTenantId, bts, false,unitdp);
+                    BankTransactions newBankTransaction = accountingApi.createBankTransactions(accessToken, xeroTenantId, bts, false,unitdp, null);
     
                     Overpayments overpayments = accountingApi.getOverpayments(accessToken, xeroTenantId, null, null, order, null, null);
                     messages.add("Get a Overpayments - Count : " + overpayments.getOverpayments().size());
@@ -5323,7 +5308,7 @@ public class AuthenticatedResource extends HttpServlet {
                         allocations.addAllocationsItem(allocation2);
     
                         try {
-                            Allocations newAllocation = accountingApi.createOverpaymentAllocations(accessToken, xeroTenantId, overpaymentId, allocations, false);
+                            Allocations newAllocation = accountingApi.createOverpaymentAllocations(accessToken, xeroTenantId, overpaymentId, allocations, false, null);
                             messages.add("Create OverPayment allocations - Amt : "      + newAllocation.getAllocations().get(0).getAmount());
                         } catch (XeroBadRequestException e) {
                             this.addBadRequest(e, messages); 
@@ -5403,7 +5388,7 @@ public class AuthenticatedResource extends HttpServlet {
                 //Payments newPayments = accountingApi.createPayments(accessToken, xeroTenantId, createPayments);
                 //messages.add("Create Payments - Amt : " + newPayments.getPayments().get(0).getAmount());
 
-                Payments newPaymentSingle = accountingApi.createPayment(accessToken, xeroTenantId, createPayment);
+                Payments newPaymentSingle = accountingApi.createPayment(accessToken, xeroTenantId, createPayment, null);
                 messages.add("Create Payments - Amt : " + newPaymentSingle.getPayments().get(0).getAmount());
 
                 
@@ -5419,7 +5404,7 @@ public class AuthenticatedResource extends HttpServlet {
                 // DELETE Payment
                 UUID paymentID2 = payments.getPayments().get(1).getPaymentID();  
                 PaymentDelete paymentDelete = new PaymentDelete();
-                Payments deletedPayment = accountingApi.deletePayment(accessToken, xeroTenantId, paymentID2, paymentDelete);
+                Payments deletedPayment = accountingApi.deletePayment(accessToken, xeroTenantId, paymentID2, paymentDelete, null);
                 messages.add("DELETE Payment - ID : " + deletedPayment.getPayments().get(0).getPaymentID());
                 
                 
@@ -5462,7 +5447,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newPaymentService.setPayNowText("Time To PayUp");
                 newPaymentServices.addPaymentServicesItem(newPaymentService);
                 PaymentServices createdPaymentService = accountingApi.createPaymentService(accessToken, xeroTenantId,
-                        newPaymentServices);
+                        newPaymentServices, null);
                 messages.add("Create PaymentServices - name : "
                         + createdPaymentService.getPaymentServices().get(0).getPaymentServiceName());
 
@@ -5633,20 +5618,20 @@ public class AuthenticatedResource extends HttpServlet {
                 PurchaseOrders purchaseOrders = new PurchaseOrders();
                 purchaseOrders.addPurchaseOrdersItem(purchaseOrder);
                 purchaseOrders.addPurchaseOrdersItem(purchaseOrder2);
-                PurchaseOrders createdPurchaseOrders = accountingApi.createPurchaseOrders(accessToken, xeroTenantId, purchaseOrders, summarizeErrors);
+                PurchaseOrders createdPurchaseOrders = accountingApi.createPurchaseOrders(accessToken, xeroTenantId, purchaseOrders, summarizeErrors, null);
                 messages.add("Create multiple Purchase order - count : " + createdPurchaseOrders.getPurchaseOrders().size());
 
                 // UPDATE MULTIPLE Purchase Orders
                 createdPurchaseOrders.getPurchaseOrders().get(0).getLineItems().get(0).setAccountCode("11111");
                 createdPurchaseOrders.addPurchaseOrdersItem(purchaseOrder);
-                PurchaseOrders updatedPurchaseOrders = accountingApi.updateOrCreatePurchaseOrders(accessToken, xeroTenantId,  createdPurchaseOrders, summarizeErrors);
+                PurchaseOrders updatedPurchaseOrders = accountingApi.updateOrCreatePurchaseOrders(accessToken, xeroTenantId,  createdPurchaseOrders, summarizeErrors, null);
                 messages.add("Create Purchase order - total : " + updatedPurchaseOrders.getPurchaseOrders().get(0).getTotal());
               
                 // UPDATE Purchase Order
                 UUID newPurchaseOrderID = createdPurchaseOrders.getPurchaseOrders().get(0).getPurchaseOrderID();
                 createdPurchaseOrders.getPurchaseOrders().get(0).setAttentionTo("Jimmy");
                 PurchaseOrders updatePurchaseOrders = accountingApi.updatePurchaseOrder(accessToken, xeroTenantId,
-                        newPurchaseOrderID, createdPurchaseOrders);
+                        newPurchaseOrderID, createdPurchaseOrders, null);
                 messages.add("Update Purchase order - attn : "
                         + updatePurchaseOrders.getPurchaseOrders().get(0).getAttentionTo());
 
@@ -5674,7 +5659,7 @@ public class AuthenticatedResource extends HttpServlet {
                 createdPurchaseOrders.getPurchaseOrders().get(0)
                 .setStatus(com.xero.models.accounting.PurchaseOrder.StatusEnum.DELETED);
                 PurchaseOrders deletePurchaseOrders = accountingApi.updatePurchaseOrder(accessToken, xeroTenantId,
-                        newPurchaseOrderID, createdPurchaseOrders);
+                        newPurchaseOrderID, createdPurchaseOrders, null);
                 messages.add("Delete Purchase order - Status : "
                         + deletePurchaseOrders.getPurchaseOrders().get(0).getStatus());
 
@@ -5688,7 +5673,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newHistoryRecord.setDetails("Hello World");
                 newHistoryRecords.addHistoryRecordsItem(newHistoryRecord);
                 HistoryRecords newHistory = accountingApi.createPurchaseOrderHistory(accessToken, xeroTenantId,
-                        purchaseOrderID, newHistoryRecords);
+                        purchaseOrderID, newHistoryRecords, null);
                 messages.add("History - note added to  : " + newHistory.getHistoryRecords().get(0).getDetails());
             
             } catch (XeroBadRequestException e) {
@@ -5738,10 +5723,10 @@ public class AuthenticatedResource extends HttpServlet {
                 quote.addLineItemsItem(li);
                 quotes.addQuotesItem(quote);
 
-                Quotes createdQuotes = accountingApi.createQuotes(accessToken, xeroTenantId, quotes, summarizeErrors);
+                Quotes createdQuotes = accountingApi.createQuotes(accessToken, xeroTenantId, quotes, summarizeErrors, null);
                 messages.add("Created Quote - ID : " + createdQuotes.getQuotes().get(0).getQuoteID());
                 
-                Quotes updatedOrCreatedQuotes = accountingApi.updateOrCreateQuotes(accessToken, xeroTenantId, quotes, summarizeErrors);
+                Quotes updatedOrCreatedQuotes = accountingApi.updateOrCreateQuotes(accessToken, xeroTenantId, quotes, summarizeErrors, null);
                 messages.add("update OR create Quotes - Count : " + updatedOrCreatedQuotes.getQuotes().size());
               
                 Quotes allQuotes = accountingApi.getQuotes(savedAccessToken, xeroTenantId, ifModifiedSince, dateFrom, dateTo, expiryDateFrom, expiryDateTo, contactID, status, page, order, null);
@@ -5757,7 +5742,7 @@ public class AuthenticatedResource extends HttpServlet {
                 upQuote.contact(contact);
                 upQuote.setDate(currDate);
                 upQuotes.addQuotesItem(upQuote);
-                Quotes updateQuotes = accountingApi.updateQuote(accessToken, xeroTenantId, quoteID, upQuotes);
+                Quotes updateQuotes = accountingApi.updateQuote(accessToken, xeroTenantId, quoteID, upQuotes, null);
                 messages.add("Updated Quote - ID : " + updateQuotes.getQuotes().get(0).getQuoteID());
                                 
                 // Get History
@@ -5769,7 +5754,7 @@ public class AuthenticatedResource extends HttpServlet {
                 HistoryRecord newHistoryRecord = new HistoryRecord();
                 newHistoryRecord.setDetails("Hello World");
                 newHistoryRecords.addHistoryRecordsItem(newHistoryRecord);
-                HistoryRecords newHistory = accountingApi.createQuoteHistory(accessToken, xeroTenantId, quoteID, newHistoryRecords);
+                HistoryRecords newHistory = accountingApi.createQuoteHistory(accessToken, xeroTenantId, quoteID, newHistoryRecords, null);
                 messages.add("History - note added to  : " + newHistory.getHistoryRecords().get(0).getDetails());     
             
             } catch (XeroBadRequestException e) {
@@ -5825,14 +5810,14 @@ public class AuthenticatedResource extends HttpServlet {
                     receipt.contact(useContact);
                     receipt.setStatus(com.xero.models.accounting.Receipt.StatusEnum.DRAFT);
                     receipts.addReceiptsItem(receipt);
-                    Receipts newReceipts = accountingApi.createReceipt(accessToken, xeroTenantId, receipts,unitdp);
+                    Receipts newReceipts = accountingApi.createReceipt(accessToken, xeroTenantId, receipts,unitdp, null);
                     messages.add("Create Receipts - Total : " + newReceipts.getReceipts().get(0).getTotal());
     
                     // UPDATE Receipts
                     UUID newReceiptId = newReceipts.getReceipts().get(0).getReceiptID();
                     newReceipts.getReceipts().get(0).setReference("Foobar");
                     Receipts updateReceipts = accountingApi.updateReceipt(accessToken, xeroTenantId, newReceiptId,
-                            newReceipts,unitdp);
+                            newReceipts,unitdp, null);
                     messages.add("Create Receipts - Ref : " + updateReceipts.getReceipts().get(0).getReference());
     
                     // GET all Receipts
@@ -6045,7 +6030,7 @@ public class AuthenticatedResource extends HttpServlet {
                 TrackingCategory newTrackingCategory = new TrackingCategory();
                 newTrackingCategory.setName("Foo" + loadRandomNum());
                 TrackingCategories createdTrackingCategories = accountingApi.createTrackingCategory(accessToken,
-                        xeroTenantId, newTrackingCategory);
+                        xeroTenantId, newTrackingCategory, null);
                 messages.add("CREATED tracking categories - name : "
                         + createdTrackingCategories.getTrackingCategories().get(0).getName());
 
@@ -6054,7 +6039,7 @@ public class AuthenticatedResource extends HttpServlet {
                         .getTrackingCategoryID();
                 newTrackingCategory.setName("Foo" + loadRandomNum());
                 TrackingCategories updatedTrackingCategories = accountingApi.updateTrackingCategory(accessToken,
-                        xeroTenantId, newTrackingCategoryID, newTrackingCategory);
+                        xeroTenantId, newTrackingCategoryID, newTrackingCategory, null);
                 messages.add("UPDATED tracking categories - name : "
                         + updatedTrackingCategories.getTrackingCategories().get(0).getName());
 
@@ -6071,7 +6056,7 @@ public class AuthenticatedResource extends HttpServlet {
                     TrackingOption option = new TrackingOption();
                     option.setName("Bar" + loadRandomNum());
                     TrackingOptions newTrackingOptions = accountingApi.createTrackingOptions(accessToken, xeroTenantId,
-                            oneTrackingCategoryID, option);
+                            oneTrackingCategoryID, option, null);
                     messages.add("CREATE option - name : " + newTrackingOptions.getOptions().get(0).getName());
 
                     // DELETE All options
@@ -6109,12 +6094,12 @@ public class AuthenticatedResource extends HttpServlet {
                 newTaxRate.addTaxComponentsItem(rate01);
                 newTaxRates.addTaxRatesItem(newTaxRate);
 
-                TaxRates createdTaxRate = accountingApi.createTaxRates(accessToken, xeroTenantId, newTaxRates);
+                TaxRates createdTaxRate = accountingApi.createTaxRates(accessToken, xeroTenantId, newTaxRates, null);
                 messages.add("CREATE TaxRate - name : " + createdTaxRate.getTaxRates().get(0).getName());
 
                 // UDPATE Tax Rate
                 newTaxRates.getTaxRates().get(0).setStatus(com.xero.models.accounting.TaxRate.StatusEnum.DELETED);
-                TaxRates updatedTaxRate = accountingApi.updateTaxRate(accessToken, xeroTenantId, newTaxRates);
+                TaxRates updatedTaxRate = accountingApi.updateTaxRate(accessToken, xeroTenantId, newTaxRates, null);
                 messages.add("UPDATED TaxRate - status : " + updatedTaxRate.getTaxRates().get(0).getStatus());
 
                 // GET Tax Rate
@@ -6173,8 +6158,8 @@ public class AuthenticatedResource extends HttpServlet {
                 contact.setName("Sidney Maestre");
                 Contacts contacts = new Contacts();
                 contacts.addContactsItem(contact);
-                Contacts createContact1 = accountingApi.createContacts(accessToken, xeroTenantId, contacts, false);
-                Contacts createContact2 = accountingApi.createContacts(accessToken, xeroTenantId, contacts, false);
+                Contacts createContact1 = accountingApi.createContacts(accessToken, xeroTenantId, contacts, false, null);
+                Contacts createContact2 = accountingApi.createContacts(accessToken, xeroTenantId, contacts, false, null);
             } catch (XeroBadRequestException e) {
                 this.addBadRequest(e, messages); 
             } catch (XeroForbiddenException e) {
@@ -6209,7 +6194,7 @@ public class AuthenticatedResource extends HttpServlet {
                 myInvoice.setStatus(com.xero.models.accounting.Invoice.StatusEnum.SUBMITTED);
                 Invoices myInvoices = new Invoices();
                 myInvoices.addInvoicesItem(myInvoice);
-                Invoices newInvoice = accountingApi.createInvoices(accessToken, xeroTenantId, myInvoices, false,unitdp);
+                Invoices newInvoice = accountingApi.createInvoices(accessToken, xeroTenantId, myInvoices, false,unitdp, null);
                 messages.add("Create invoice - Reference : " + newInvoice.getInvoices().get(0).getReference());
             } catch (XeroBadRequestException e) {
                 this.addBadRequest(e, messages); 

@@ -3,5 +3,5 @@
   <WatchedResource>WEB-INF/web.xml</WatchedResource>
   <WatchedResource>WEB-INF/tomcat-web.xml</WatchedResource>
   <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource> 
-  <CookieProcessor className="org.apache.tomcat.util.http.LegacyCookieProcessor" />
+  <!-- <CookieProcessor className="org.apache.tomcat.util.http.LegacyCookieProcessor" /> -->
 </Context>

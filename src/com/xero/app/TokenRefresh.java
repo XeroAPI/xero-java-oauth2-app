@@ -2,7 +2,7 @@ package com.xero.app;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
@@ -19,7 +19,7 @@ import com.google.api.client.auth.oauth2.TokenResponseException;
 import com.google.api.client.http.BasicAuthentication;
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.json.gson.GsonFactory;
 
 
 public class TokenRefresh {
@@ -51,7 +51,7 @@ public class TokenRefresh {
                     logger.debug("------------------ Refresh Token : BEGIN -------------------");
                 }
                 try {
-                    TokenResponse tokenResponse = new RefreshTokenRequest(new NetHttpTransport(), new JacksonFactory(),
+                    TokenResponse tokenResponse = new RefreshTokenRequest(new NetHttpTransport(), new GsonFactory(),
                             new GenericUrl(TOKEN_SERVER_URL), refreshToken)
                             .setClientAuthentication(new BasicAuthentication(this.clientId, this.clientSecret))
                             .execute();

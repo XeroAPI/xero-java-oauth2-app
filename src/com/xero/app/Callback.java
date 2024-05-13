@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.BearerToken;
@@ -16,8 +16,7 @@ import com.google.api.client.auth.oauth2.ClientParametersAuthentication;
 import com.google.api.client.auth.oauth2.TokenResponse;
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.store.DataStoreFactory;
 import com.google.api.client.util.store.MemoryDataStoreFactory;
 import com.xero.api.ApiClient;
@@ -33,7 +32,7 @@ public class Callback extends HttpServlet {
     final String TOKEN_SERVER_URL = "https://identity.xero.com/connect/token";
     final String AUTHORIZATION_SERVER_URL = "https://login.xero.com/identity/connect/authorize";
     final NetHttpTransport HTTP_TRANSPORT = new NetHttpTransport();
-    final JsonFactory JSON_FACTORY = new JacksonFactory();
+    final GsonFactory JSON_FACTORY = new GsonFactory();
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -90,7 +89,7 @@ public class Callback extends HttpServlet {
             List<Connection> connection = idApi.getConnections(tokenResponse.getAccessToken(),null);
         
             //TokenStorage store = new TokenStorage();
-            store.saveItem(response, "jwt_token", tokenResponse.toPrettyString());
+            // store.saveItem(response, "jwt_token", tokenResponse.toPrettyString());
             store.saveItem(response, "id_token", tokenResponse.get("id_token").toString());
             store.saveItem(response, "access_token", tokenResponse.getAccessToken());
             store.saveItem(response, "refresh_token", tokenResponse.getRefreshToken());
