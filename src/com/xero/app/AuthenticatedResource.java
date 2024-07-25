@@ -867,7 +867,7 @@ public class AuthenticatedResource extends HttpServlet {
           
             try {
                 // CREATE a Project
-                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
+                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null, null);
                 if (contacts.getContacts().size() > 0) {
                     UUID contactId = contacts.getContacts().get(0).getContactID();
                     ProjectCreateOrUpdate project = new ProjectCreateOrUpdate();
@@ -1420,7 +1420,7 @@ public class AuthenticatedResource extends HttpServlet {
                             messages.add("Total Accounts: " + trialBalanceResponse.getAccounts().size());
 
                             List<UUID> contacts = new ArrayList<UUID>();
-                            Contacts useContact = accountingApi.getContacts(accessToken, xeroTenantId, null, null,null,null,null,null, summaryOnly,null);
+                            Contacts useContact = accountingApi.getContacts(accessToken, xeroTenantId, null, null,null,null,null,null, summaryOnly,null, null);
                             contacts.add(useContact.getContacts().get(0).getContactID());
 
                             IncomeByContactResponse revResponse = financeApi.getFinancialStatementContactsRevenue(accessToken, xeroTenantId,contacts,true,null,null);
@@ -3139,7 +3139,7 @@ public class AuthenticatedResource extends HttpServlet {
             String accountCodeForInvoice = accounts.getAccounts().get(0).getCode();
             where = null;
 
-            Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
+            Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null, null);
 
             UUID contactIDForInvoice = contacts.getContacts().get(0).getContactID();
 
@@ -3336,7 +3336,7 @@ public class AuthenticatedResource extends HttpServlet {
                 // GET BankTransactions Attachment
                 where = null;
                 BankTransactions bankTransactions = accountingApi.getBankTransactions(accessToken, xeroTenantId,
-                        ifModifiedSince, where, order, null, null);
+                        ifModifiedSince, where, order, null, null, null);
                 if (bankTransactions.getBankTransactions().size() > 0) {
                     UUID BankTransactionID = bankTransactions.getBankTransactions().get(0).getBankTransactionID();
                     Attachments bankTransactionsAttachments = accountingApi.getBankTransactionAttachments(accessToken,
@@ -3377,7 +3377,7 @@ public class AuthenticatedResource extends HttpServlet {
                 }
                 // GET Contacts Attachment
                 where = "ContactStatus==\"ACTIVE\"";
-                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order,contactIds, null, includeArchived, summaryOnly, null);
+                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order,contactIds, null, includeArchived, summaryOnly, null, null);
                 if (contacts.getContacts().size() > 0) {
                     UUID ContactID = contacts.getContacts().get(0).getContactID();
                     Attachments contactsAttachments = accountingApi.getContactAttachments(accessToken, xeroTenantId,
@@ -3395,7 +3395,7 @@ public class AuthenticatedResource extends HttpServlet {
                 // GET CreditNotes Attachment
                 where = "Status==\"AUTHORISED\"";
                 CreditNotes creditNotes = accountingApi.getCreditNotes(accessToken, xeroTenantId, ifModifiedSince,
-                        where, order, null,null);
+                        where, order, null,null, null);
                 if (creditNotes.getCreditNotes().size() > 0) {
                     UUID CreditNoteID = creditNotes.getCreditNotes().get(0).getCreditNoteID();
                     Attachments creditNotesAttachments = accountingApi.getCreditNoteAttachments(accessToken,
@@ -3413,7 +3413,7 @@ public class AuthenticatedResource extends HttpServlet {
                 }
 
                 // GET Invoices Attachment
-                Invoices invoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly);
+                Invoices invoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly, null, null);
 
                 if (invoices.getInvoices().size() > 0) {
                     UUID InvoiceID = invoices.getInvoices().get(0).getInvoiceID();
@@ -3433,7 +3433,7 @@ public class AuthenticatedResource extends HttpServlet {
                 // GET ManualJournals Attachment
                 where = null;
                 ManualJournals manualJournals = accountingApi.getManualJournals(accessToken, xeroTenantId,
-                        ifModifiedSince, where, order, null);
+                        ifModifiedSince, where, order, null, null);
                 if (manualJournals.getManualJournals().size() > 0) {
                     UUID ManualJournalID = manualJournals.getManualJournals().get(0).getManualJournalID();
                     Attachments manualJournalsAttachments = accountingApi.getManualJournalAttachments(accessToken,
@@ -3567,7 +3567,7 @@ public class AuthenticatedResource extends HttpServlet {
                 where = null;
                 // CREATE BankTransactions attachment
                 BankTransactions myBanktransactions = accountingApi.getBankTransactions(accessToken, xeroTenantId,
-                        ifModifiedSince, where, order, null, null);
+                        ifModifiedSince, where, order, null, null, null);
                 if (myBanktransactions.getBankTransactions().size() > 0) {
                     UUID banktransactionID = myBanktransactions.getBankTransactions().get(0).getBankTransactionID();
                     Attachments createdBanktransationAttachments = accountingApi
@@ -3614,7 +3614,7 @@ public class AuthenticatedResource extends HttpServlet {
             try {
                 // CREATE Contacts attachment
                 where = "ContactStatus==\"ACTIVE\"";
-                Contacts contactsWhere = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
+                Contacts contactsWhere = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null, null);
                 if (contactsWhere.getContacts().size() > 0) {
                     UUID contactID = contactsWhere.getContacts().get(0).getContactID();
                     Attachments createdContactAttachments = accountingApi.createContactAttachmentByFileName(accessToken,
@@ -3638,7 +3638,7 @@ public class AuthenticatedResource extends HttpServlet {
                 where = "Status==\"AUTHORISED\"";
                 // CREATE CreditNotes attachment
                 CreditNotes myCreditNotes = accountingApi.getCreditNotes(accessToken, xeroTenantId, ifModifiedSince,
-                        where, order, null, null);
+                        where, order, null, null, null);
                 if (myCreditNotes.getCreditNotes().size() > 0) {
                     UUID creditNoteID = myCreditNotes.getCreditNotes().get(0).getCreditNoteID();
                     Attachments createdCreditNoteAttachments = accountingApi.createCreditNoteAttachmentByFileName(
@@ -3660,7 +3660,7 @@ public class AuthenticatedResource extends HttpServlet {
 
             try {
                 // CREATE invoice attachment
-                Invoices myInvoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly);
+                Invoices myInvoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly, null, null);
                 if (myInvoices.getInvoices().size() > 0) {
                     UUID invoiceID = myInvoices.getInvoices().get(0).getInvoiceID();
                     Attachments createdInvoiceAttachments = accountingApi.createInvoiceAttachmentByFileName(accessToken,
@@ -3684,7 +3684,7 @@ public class AuthenticatedResource extends HttpServlet {
                 // CREATE ManualJournals attachment
                 where = null;
                 ManualJournals myManualJournals = accountingApi.getManualJournals(accessToken, xeroTenantId,
-                        ifModifiedSince, where, order, null);
+                        ifModifiedSince, where, order, null, null);
                 System.out.println(myManualJournals.getManualJournals().size());
 
                 if (myManualJournals.getManualJournals().size() > 0) {
@@ -3856,7 +3856,7 @@ public class AuthenticatedResource extends HttpServlet {
                         order);
                 where = null;
                 
-                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order,contactIds, null, includeArchived, summaryOnly, null);
+                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order,contactIds, null, includeArchived, summaryOnly, null, null);
                 Contact useContact = new Contact();
                 if (contacts.getContacts().size() > 0) {
                     useContact.setContactID(contacts.getContacts().get(0).getContactID());
@@ -3897,7 +3897,7 @@ public class AuthenticatedResource extends HttpServlet {
 
                     // GET all Bank Transaction
                     BankTransactions bankTransactions = accountingApi.getBankTransactions(accessToken, xeroTenantId,
-                            ifModifiedSince, where, order, null, null);
+                            ifModifiedSince, where, order, null, null, null);
                     messages.add("Get a all Bank Transactions - total : " + bankTransactions.getBankTransactions().size());
 
                     // GET one Bank Transaction
@@ -3964,7 +3964,7 @@ public class AuthenticatedResource extends HttpServlet {
             try {
                 // CREATE payment
                 where = "Status==\"AUTHORISED\"&&Type==\"ACCREC\"";
-                Invoices allInvoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly);
+                Invoices allInvoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly, null, null);
                 if (allInvoices.getInvoices().size() > 3) {
                     
                     Invoice inv = new Invoice();
@@ -4154,7 +4154,7 @@ public class AuthenticatedResource extends HttpServlet {
                 messages.add("Update multiple Contact - Name : " + updatedContacts.getContacts().get(0).getName());
 
                 // GET all contact
-                Contacts contactsAll = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
+                Contacts contactsAll = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null, null);
                 messages.add("Get a All Contacts - Total : " + contacts.getContacts().size());
 
                 // GET one contact
@@ -4164,7 +4164,7 @@ public class AuthenticatedResource extends HttpServlet {
 
                 // GET contact cisSettings
                 where = "Name==\"sidney\"";
-                Contacts cisContact = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
+                Contacts cisContact = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null, null);
                 if (cisContact.getContacts().size() > 0) {
                     CISSettings cisSettings = accountingApi.getContactCISSettings(accessToken, xeroTenantId,
                             cisContact.getContacts().get(0).getContactID());
@@ -4175,7 +4175,7 @@ public class AuthenticatedResource extends HttpServlet {
                 where = null;
                 // GET active contacts
                 where = "ContactStatus==\"ACTIVE\"";
-                Contacts contactsWhere = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
+                Contacts contactsWhere = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null, null);
                 messages.add("Get a all ACTIVE Contacts - Total : " + contactsWhere.getContacts().size());
                 where = null;
 
@@ -4270,7 +4270,7 @@ public class AuthenticatedResource extends HttpServlet {
                 newCGs.addContactGroupsItem(cg);
                 ContactGroups newContactGroup = accountingApi.createContactGroup(accessToken, xeroTenantId, newCGs, null);
 
-                Contacts allContacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
+                Contacts allContacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null, null);
 
                 // Create Contacts in Group
                 Contacts contactList = new Contacts();
@@ -4333,7 +4333,7 @@ public class AuthenticatedResource extends HttpServlet {
             try {
                 // GET CreditNote As a PDF
                 CreditNotes creditNotes = accountingApi.getCreditNotes(accessToken, xeroTenantId, ifModifiedSince, where,
-                        order, null,unitdp);
+                        order, null,unitdp,null);
                 UUID creditNoteId = creditNotes.getCreditNotes().get(0).getCreditNoteID();
                 ByteArrayInputStream CreditNoteInput = accountingApi.getCreditNoteAsPdf(accessToken, xeroTenantId, creditNoteId);
                 String CreditNoteFileName = "CreditNoteAsPDF.pdf";
@@ -4356,7 +4356,7 @@ public class AuthenticatedResource extends HttpServlet {
         } else if (object.equals("CreditNotes")) {
             // CREDIT NOTE
             try {
-                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
+                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null, null);
 
                 // Create Credit Note
                 List<LineItem> lineItems = new ArrayList<>();
@@ -4390,7 +4390,7 @@ public class AuthenticatedResource extends HttpServlet {
 
                 // GET all Credit Note
                 CreditNotes creditNotes = accountingApi.getCreditNotes(accessToken, xeroTenantId, ifModifiedSince,
-                        where, order, null,unitdp);
+                        where, order, null,unitdp,null);
                 messages.add("Get all CreditNotes - Total : " + creditNotes.getCreditNotes().size());
 
                 // GET One Credit Note
@@ -4409,7 +4409,7 @@ public class AuthenticatedResource extends HttpServlet {
                 Allocation allocation = new Allocation();
 
                 where = "Status==\"AUTHORISED\"&&Type==\"ACCPAY\"";
-                Invoices allInvoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly);
+                Invoices allInvoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly, null, null);
                 Invoice inv = new Invoice();
 
                 if (allInvoices.getInvoices().size() > 0) {
@@ -4555,7 +4555,7 @@ public class AuthenticatedResource extends HttpServlet {
                     User user = new User();
                     user.setUserID(users.getUsers().get(0).getUserID());
 
-                    Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
+                    Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null, null);
                     Contact useContact = new Contact();
                     
                     if (contacts.getContacts().size() > 0 ) {
@@ -4663,7 +4663,7 @@ public class AuthenticatedResource extends HttpServlet {
             // INVOICE
             try {
                 // GET Invoice As a PDF
-                Invoices myInvoicesForPDF = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly);
+                Invoices myInvoicesForPDF = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly, null, null);
                 
                 if (myInvoicesForPDF.getInvoices().size() > 0) {
                     UUID invoiceIDForPDF = myInvoicesForPDF.getInvoices().get(0).getInvoiceID();
@@ -4684,7 +4684,7 @@ public class AuthenticatedResource extends HttpServlet {
                     String accountCodeForInvoice = accounts.getAccounts().get(0).getCode();
                     where = null;
         
-                    Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
+                    Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null, null);
                     
                     if (contacts.getContacts().size() > 0) {
                         UUID contactIDForInvoice = contacts.getContacts().get(0).getContactID();
@@ -4754,12 +4754,12 @@ public class AuthenticatedResource extends HttpServlet {
                         messages.add("Update invoice - Reference : " + updatedInvoice.getInvoices().get(0).getReference());
                         */
                         // Get All
-                        Invoices invoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly);
+                        Invoices invoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly, null, null);
                         messages.add("Get all invoices - Total : " + invoices.getInvoices().size());
             
                         // Get Invoice If-Modified-Since
                         OffsetDateTime invModified = OffsetDateTime.of(LocalDateTime.of(2019, 12, 06, 15, 00), ZoneOffset.UTC);
-                        Invoices invoicesSince = accountingApi.getInvoices(accessToken, xeroTenantId, invModified, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly);
+                        Invoices invoicesSince = accountingApi.getInvoices(accessToken, xeroTenantId, invModified, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly, null, null);
                         messages.add("Get all invoices - Since Modfied Date - Total : " + invoicesSince.getInvoices().size());
         
                         // Get One
@@ -4794,7 +4794,7 @@ public class AuthenticatedResource extends HttpServlet {
             
                         // CREATE invoice attachment
                         statuses.add("AUTHORISED");
-                        Invoices myInvoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly);
+                        Invoices myInvoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly, null, null);
                         UUID invoiceID = myInvoices.getInvoices().get(0).getInvoiceID();
             
                         File requestBodyFile = new File(
@@ -4989,7 +4989,7 @@ public class AuthenticatedResource extends HttpServlet {
                 Accounts accounts = accountingApi.getAccounts(accessToken, xeroTenantId, ifModifiedSince, where, order);
                 where = null;
 
-                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order,contactIds, null, includeArchived, summaryOnly, null);
+                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order,contactIds, null, includeArchived, summaryOnly, null, null);
                 Contact useContact = new Contact();
                 useContact.setContactID(contacts.getContacts().get(0).getContactID());
 
@@ -5187,7 +5187,7 @@ public class AuthenticatedResource extends HttpServlet {
                 
                 // GET all Manual Journal
                 ManualJournals getManualJournals = accountingApi.getManualJournals(accessToken, xeroTenantId,
-                        ifModifiedSince, where, order, null);
+                        ifModifiedSince, where, order, null,null);
                 messages.add("Get Manual Journal - total : " + getManualJournals.getManualJournals().size());
 
                 // GET one Manual Journal
@@ -5254,7 +5254,7 @@ public class AuthenticatedResource extends HttpServlet {
                 Account arAccount = arAccounts.getAccounts().get(0);
                 where = null;
     
-                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
+                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null, null);
                 Contact useContact = new Contact();
                 useContact.setContactID(contacts.getContacts().get(0).getContactID());
     
@@ -5277,7 +5277,7 @@ public class AuthenticatedResource extends HttpServlet {
                     bts.addBankTransactionsItem(bt);
                     BankTransactions newBankTransaction = accountingApi.createBankTransactions(accessToken, xeroTenantId, bts, false,unitdp, null);
     
-                    Overpayments overpayments = accountingApi.getOverpayments(accessToken, xeroTenantId, null, null, order, null, null);
+                    Overpayments overpayments = accountingApi.getOverpayments(accessToken, xeroTenantId, null, null, order, null, null, null);
                     messages.add("Get a Overpayments - Count : " + overpayments.getOverpayments().size());
     
                     if (overpayments.getOverpayments().size() > 0) {
@@ -5287,7 +5287,7 @@ public class AuthenticatedResource extends HttpServlet {
                         messages.add("Get one Overpayment - Total : " + oneOverpayment.getOverpayments().get(0).getTotal());
     
                         where = "Status==\"AUTHORISED\"&&Type==\"ACCREC\"";
-                        Invoices allInvoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where,order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly);
+                        Invoices allInvoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where,order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly,null,null);
                         Invoice inv = new Invoice();
                         inv.setInvoiceID(allInvoices.getInvoices().get(0).getInvoiceID());
                         where = null;
@@ -5363,7 +5363,7 @@ public class AuthenticatedResource extends HttpServlet {
 
                 // CREATE payment
                 where = "Status==\"AUTHORISED\"&&Type==\"ACCREC\"";
-                Invoices allInvoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly);
+                Invoices allInvoices = accountingApi.getInvoices(accessToken, xeroTenantId, ifModifiedSince, where, order, invoiceIds, invoiceNumbers, contactIds, statuses, null, includeArchived, createdByMyApp, null, summaryOnly,null,null);
                 Invoice inv = new Invoice();
                 inv.setInvoiceID(allInvoices.getInvoices().get(0).getInvoiceID());
                 where = null;
@@ -5393,7 +5393,7 @@ public class AuthenticatedResource extends HttpServlet {
 
                 
                 // GET all Payments
-                Payments payments = accountingApi.getPayments(accessToken, xeroTenantId, ifModifiedSince, where, order, 1);
+                Payments payments = accountingApi.getPayments(accessToken, xeroTenantId, ifModifiedSince, where, order, 1,null);
                 messages.add("Get Payments - Total : " + payments.getPayments().size());
 
                 // GET one Payment
@@ -5592,7 +5592,7 @@ public class AuthenticatedResource extends HttpServlet {
                 PurchaseOrder purchaseOrder = new PurchaseOrder();
                 LocalDate currDate = LocalDate.now();
                 purchaseOrder.setDate(currDate);
-                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
+                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null, null);
                 Contact useContact = new Contact();
                 useContact.setContactID(contacts.getContacts().get(0).getContactID());
                 purchaseOrder.setContact(useContact);
@@ -5640,7 +5640,7 @@ public class AuthenticatedResource extends HttpServlet {
                 String dateFrom = null;
                 String dateTo = null;
                 PurchaseOrders allPurchaseOrders = accountingApi.getPurchaseOrders(accessToken, xeroTenantId,
-                        ifModifiedSince, status, dateFrom, dateTo, order, null);
+                        ifModifiedSince, status, dateFrom, dateTo, order, null, null);
                 messages.add("Get Purchase orders - Count : " + allPurchaseOrders.getPurchaseOrders().size());
 
                 // GET one Purchase Order
@@ -5705,7 +5705,7 @@ public class AuthenticatedResource extends HttpServlet {
                 Accounts accounts = accountingApi.getAccounts(accessToken, xeroTenantId, ifModifiedSince, where, order);
                 String accountCodeForInvoice = accounts.getAccounts().get(0).getCode();
                 
-                Contacts useContact = accountingApi.getContacts(accessToken, xeroTenantId, null, null,null,null,null,null, summaryOnly,null);
+                Contacts useContact = accountingApi.getContacts(accessToken, xeroTenantId, null, null,null,null,null,null, summaryOnly,null,null);
                 Contact contact = new Contact();
                 contact.setContactID(useContact.getContacts().get(0).getContactID());
                 
@@ -5784,7 +5784,7 @@ public class AuthenticatedResource extends HttpServlet {
                 where = null;
                 User useUser = new User();
 
-                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order,contactIds, null, includeArchived, summaryOnly, null);
+                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order,contactIds, null, includeArchived, summaryOnly, null, null);
                 Contact useContact = new Contact();
                 
                 if (accounts.getAccounts().size() > 0 && users.getUsers().size() > 0 && contacts.getContacts().size() > 0) {
@@ -5933,7 +5933,7 @@ public class AuthenticatedResource extends HttpServlet {
                 String trackingCategoryID2 = null;
                 String trackingOptionID = null;
 
-                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order,contactIds, null, includeArchived, summaryOnly, null);
+                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order,contactIds, null, includeArchived, summaryOnly, null, null);
                 UUID contactId = contacts.getContacts().get(0).getContactID();
                 LocalDate xDate = LocalDate.now();
                 LocalDate xFromDate = LocalDate.now();
@@ -6103,13 +6103,11 @@ public class AuthenticatedResource extends HttpServlet {
                 messages.add("UPDATED TaxRate - status : " + updatedTaxRate.getTaxRates().get(0).getStatus());
 
                 // GET Tax Rate
-                String taxType = null;
-                TaxRates taxRates = accountingApi.getTaxRates(accessToken, xeroTenantId, where, order, taxType);
+                TaxRates taxRates = accountingApi.getTaxRates(accessToken, xeroTenantId, where, order);
                 messages.add("GET TaxRate - cnt : " + taxRates.getTaxRates().size());
 
                 // GET Tax Rate
-                taxType = "CAPEXINPUT2";
-                TaxRates taxRatesByType = accountingApi.getTaxRates(accessToken, xeroTenantId, where, order, taxType);
+                TaxRates taxRatesByType = accountingApi.getTaxRates(accessToken, xeroTenantId, where, order);
                 messages.add("GET TaxRate by Cap Purchase Type : " + taxRatesByType.getTaxRates().size());
             } catch (XeroBadRequestException e) {
                 this.addBadRequest(e, messages); 
@@ -6173,7 +6171,7 @@ public class AuthenticatedResource extends HttpServlet {
             }
 
             try {
-                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
+                Contacts contacts = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null, null);
                 Contact useContact = new Contact();
                 useContact.setContactID(contacts.getContacts().get(0).getContactID());
 
@@ -6223,7 +6221,7 @@ public class AuthenticatedResource extends HttpServlet {
                 System.out.println(e.getMessage());
             }
             
-            Contacts ContactList = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order,contactIds, null, includeArchived, summaryOnly, null);
+            Contacts ContactList = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order,contactIds, null, includeArchived, summaryOnly, null, null);
             int num4 = findRandomNum(ContactList.getContacts().size());
             UUID contactId = ContactList.getContacts().get(num4).getContactID();
             try {
